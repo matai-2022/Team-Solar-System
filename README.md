@@ -27,3 +27,15 @@ This repo includes:
 * configuration for Jest and testing library
 * configuration for server-side debugging in VS Code
 * a single client-side test (`client/components/App.test.js`)
+
+TEAM SOLAR SYSTEM! WE'RE ALL STARS!
+
+day structure:
+morning standup after opening circle
+checkins mandatory
+1 hour for lunch - eat together 
+standup after lunch.
+
+threeJS docs: check out tonight (wednesday)
+https://threejs.org/docs/
+check youtube too.
