@@ -30,6 +30,16 @@ This repo includes:
 
 TEAM SOLAR SYSTEM! WE'RE ALL STARS! WE'RE A SUPERNOVA!
 
+THURSDAY STANDUP:
+-erin found a planets API, need to decide if we'll use it or write our own
+-do we need light gallery if we want to display images from NASA api?
+-christelle found a tutorial on a make planets functions
+-possibily split up tasks by clickability, or animation
+- lucas found a repo with a solar system to scale
+- something called raycasting? for clickability
+-do we want to include a navbar? 
+-react three fibre can bind user events and render loops
+
 PLAN FOR THURSDAY 14/7
 -spend first half of day writing tickets, sorting data agreement, file structure, planning as much as possible
 -decide on mvp, incremental releases 
