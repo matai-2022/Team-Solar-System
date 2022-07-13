@@ -39,3 +39,4 @@ standup after lunch.
 threeJS docs: check out tonight (wednesday)
 https://threejs.org/docs/
 check youtube too.
+https://www.youtube.com/watch?v=KOSMzSyiEiA
