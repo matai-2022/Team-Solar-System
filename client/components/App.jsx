@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react'
-import { Canvas, useLoader } from '@react-three/fiber'
+import React, { Suspense, useRef } from 'react'
+import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
@@ -24,43 +24,47 @@ function SolarSystem() {
         <meshStandardMaterial map={sunMap} />
       </mesh>
 
-      <mesh position={[4, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+      <mesh position={[1, 0, 0]}>
+        <sphereGeometry args={[0.004]} />
         <meshStandardMaterial map={mercuryMap} />
       </mesh>
 
-      <mesh position={[6, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+      <mesh position={[2, 0, 0]}>
+        <sphereGeometry args={[0.009]} />
         <meshStandardMaterial map={venusMap} />
       </mesh>
 
       <mesh position={[10, 0, 0]}>
-        <sphereGeometry args={[0.5]} />
+        <sphereGeometry args={[0.0095]} />
         <meshStandardMaterial map={earthMap} />
+        <mesh position={[0.2, 0, 0]}>
+          <sphereGeometry args={[0.002]} />
+          <meshStandardMaterial color="#78D481" />
+        </mesh>
       </mesh>
 
       <mesh position={[13, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+        <sphereGeometry args={[0.005]} />
         <meshStandardMaterial map={marsMap} />
       </mesh>
 
       <mesh position={[15, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+        <sphereGeometry args={[0.1]} />
         <meshStandardMaterial map={jupiterMap} />
       </mesh>
 
       <mesh position={[18, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+        <sphereGeometry args={[0.0088]} />
         <meshStandardMaterial map={saturnMap} />
       </mesh>
 
       <mesh position={[20, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+        <sphereGeometry args={[0.0037]} />
         <meshStandardMaterial map={uranusMap} />
       </mesh>
 
       <mesh position={[22, 0, 0]}>
-        <sphereGeometry args={[0.3]} />
+        <sphereGeometry args={[0.0036]} />
         <meshStandardMaterial map={neptuneMap} />
       </mesh>
     </>
