@@ -32,6 +32,22 @@ TEAM SOLAR SYSTEM! WE'RE ALL STARS! WE'RE A SUPERNOVA!
 WIREFRAMES:
 https://www.figma.com/file/djUm5T17YaxBjHz7fYsIDG/Untitled?node-id=0%3A1
 
+
+FRIDAY STANDUP AM:
+erin wants to do landing page
+ciara wants to learn more tailwind and do css
+christelle happy to do research, pull down a branch and play around
+lucas happy with anything, 
+daniel's learned about drei, keen to learn more around pause and play.
+we'll share learnings after lunch
+
+lucas and daniel to do planets,
+ciara and erin to do landing page.home page
+christelle to look into animating with three and fiber
+
+
+
+
 THURSDAY STANDUP:
 -erin found a planets API, need to decide if we'll use it or write our own
 -do we need light gallery if we want to display images from NASA api?
@@ -101,3 +117,33 @@ threeJS docs: check out tonight (wednesday)
 https://threejs.org/docs/
 check youtube too.
 https://www.youtube.com/watch?v=KOSMzSyiEiA
+
+
+day 1 
+what went well: 
+three js learnings 
+bug fixes
+rendering the sun! 
+team bonding - mantra 
+good lunch break
+fiber learnings 
+kanban
+wireframes
+catching problems early
+
+What could be better:
+More research beforehand so we could know what tech stack to use 
+energy levels
+communication with where we need to apply our time
+mob problem solving
+
+
+Actions: 
+learn more before diving into new things 
+adjusting expectations 
+plan manpower required
+
+
+plan for tomorrow morning: 
+get a planet 
+
