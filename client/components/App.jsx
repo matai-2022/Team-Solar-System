@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { Canvas, useLoader } from '@react-three/fiber'
+import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
@@ -14,12 +14,17 @@ function SolarSystem() {
   const uranusMap = useLoader(TextureLoader, '/images/uranus.jpg')
   const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
 
+  // https://docs.pmnd.rs/react-three-fiber/tutorials/basic-animations
+  const myMesh = React.useRef()
+  useFrame(({ clock }) => {
+    myMesh.current.rotation.y = clock.getElapsedTime()
+  })
   return (
     <>
       <ambientLight intensity={0.5} />
       <pointLight intensity={5} position={[0, 0, 0]} />
 
-      <mesh>
+      <mesh ref={myMesh}>
         <sphereGeometry args={[1]} />
         <meshStandardMaterial map={sunMap} />
       </mesh>
