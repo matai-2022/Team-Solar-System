@@ -29,6 +29,8 @@ This repo includes:
 * a single client-side test (`client/components/App.test.js`)
 
 TEAM SOLAR SYSTEM! WE'RE ALL STARS! WE'RE A SUPERNOVA!
+WIREFRAMES:
+https://www.figma.com/file/djUm5T17YaxBjHz7fYsIDG/Untitled?node-id=0%3A1
 
 THURSDAY STANDUP:
 -erin found a planets API, need to decide if we'll use it or write our own
