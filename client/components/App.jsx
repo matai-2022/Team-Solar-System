@@ -1,11 +1,29 @@
-import React from 'react'
-import Planets from './Planets'
-//import { PerspectiveCamera, TextureLoader } from 'three'
+import React, { Suspense } from 'react'
+import { Canvas, useLoader, useThree } from '@react-three/fiber'
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
-// /import { getPlanets } from '../apis/planets'
+function Scene() {
+  const sunMap = useLoader(TextureLoader, '/images/sun.png')
+  return (
+    <>
+      <ambientLight intensity={1} />
+      <mesh>
+        <sphereGeometry args={[2]} />
+        <meshStandardMaterial map={sunMap} />
+      </mesh>
+    </>
+  )
+}
 
 function App() {
-  return <Planets />
+  return (
+    <Canvas>
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
+    </Canvas>
+  )
+
   //insert react router
 }
 
