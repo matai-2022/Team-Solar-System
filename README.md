@@ -117,3 +117,33 @@ threeJS docs: check out tonight (wednesday)
 https://threejs.org/docs/
 check youtube too.
 https://www.youtube.com/watch?v=KOSMzSyiEiA
+
+
+day 1 
+what went well: 
+three js learnings 
+bug fixes
+rendering the sun! 
+team bonding - mantra 
+good lunch break
+fiber learnings 
+kanban
+wireframes
+catching problems early
+
+What could be better:
+More research beforehand so we could know what tech stack to use 
+energy levels
+communication with where we need to apply our time
+mob problem solving
+
+
+Actions: 
+learn more before diving into new things 
+adjusting expectations 
+plan manpower required
+
+
+plan for tomorrow morning: 
+get a planet 
+
