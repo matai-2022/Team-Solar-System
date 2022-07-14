@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import { Canvas, useLoader, useThree } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { OrbitControls } from '@react-three/drei'
 
 function Scene() {
   const sunMap = useLoader(TextureLoader, '/images/sun.png')
@@ -19,6 +20,7 @@ function App() {
   return (
     <Canvas>
       <Suspense fallback={null}>
+        <OrbitControls />
         <Scene />
       </Suspense>
     </Canvas>
