@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
   return (
@@ -20,13 +21,14 @@ const LandingPage = () => {
           </p>
         </h1>
 
-        <button
-          className="flex text-white items-center justify-self-end border border-double border-white p-3 px-6 mt-5"
-          type="button"
-          onClick="onClick"
-        >
-          BLAST OFF!!!
-        </button>
+        <Link to="/solarsystem">
+          <button
+            className="flex text-white items-center justify-self-end border border-double border-white p-3 px-6 mt-5"
+            type="button"
+          >
+            BLAST OFF!!!
+          </button>
+        </Link>
       </div>
     </div>
   )
