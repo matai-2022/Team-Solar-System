@@ -14,6 +14,8 @@ function SolarSystemMaker() {
   const saturnMap = useLoader(TextureLoader, '/images/saturn.jpg')
   const uranusMap = useLoader(TextureLoader, '/images/uranus.jpg')
   const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
+  const moonMap = useLoader(TextureLoader, '/images/moon.jpg')
+  const ringMap = useLoader(TextureLoader, '/images/ring2.png')
 
   const sunMesh = useRef()
   const mercuryMesh = useRef()
@@ -91,7 +93,7 @@ function SolarSystemMaker() {
           {/* moon */}
           <mesh position={[1, 0, 0]}>
             <sphereGeometry args={[0.1]} />
-            <meshStandardMaterial color="#78D481" />
+            <meshStandardMaterial map={moonMap} />
           </mesh>
         </mesh>
       </mesh>
@@ -116,7 +118,7 @@ function SolarSystemMaker() {
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
             <ringGeometry args={[0.6, 1.03, 32]} angle={0.15} />
-            <meshStandardMaterial color="#78D481" side={DoubleSide} />
+            <meshStandardMaterial map={ringMap} side={DoubleSide} />
           </mesh>
         </mesh>
       </mesh>
@@ -147,7 +149,7 @@ function SolarSystemMaker() {
 export default function SolarSystem() {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 20, 25], fov: 15 }}>
+      <Canvas camera={{ position: [25, 5, 25], fov: 15 }}>
         <color attach="background" args={[0x000000]} />
         <Suspense fallback={null}>
           <SolarSystemMaker />
