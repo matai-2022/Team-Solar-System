@@ -74,7 +74,17 @@ function App() {
     <div className="h-screen">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* <Route
+      </Routes>
+    </div>
+  )
+
+  //insert react router
+}
+
+export default App
+
+{
+  /* 
           path="/solarsystem"
           element={
             <div style={{ width: '100vw', height: '100vh' }}>
@@ -97,12 +107,7 @@ function App() {
             </Canvas>
             </div>
           }
-        /> */}
+        /> 
       </Routes>
-    </div>
-  )
-
-  //insert react router
+      */
 }
-
-export default App

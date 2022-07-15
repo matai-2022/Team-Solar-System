@@ -2,21 +2,21 @@ import React from 'react'
 
 const LandingPage = () => {
   return (
-    <div className="h-full bg-orange-200">
-      {/* <div
-        className="h-full"
-        style={{
-          backgroundImage: 'url(/images/sunrise.jpg)',
-          backgroundSize: 'auto',
-        }}
-      > */}
-      {/* <p className="text-orange-600"> helloop </p> */}
-      {/* </div> */}
-      {/* <div className="bg-orange-200 h-2/4"> */}
-      <p className="h-96 text-orange-600 bg-orange-500">
-        This is the landing page
-      </p>
-      {/* </div> */}
+    //entire page div
+    <div
+      className="h-full flex flex-col justify-center bg-black"
+      style={{
+        backgroundImage: 'url(/images/sunrise.jpg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+    >
+      {/* //holds all the stuff */}
+      <div className="flex flex-col h-3/4 items-center ">
+        <h1 className=" flex text-7xl text-white items-center pt-10">
+          Explore The Solar System
+        </h1>
+      </div>
     </div>
   )
 }
