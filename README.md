@@ -32,6 +32,28 @@ TEAM SOLAR SYSTEM! WE'RE ALL STARS! WE'RE A SUPERNOVA!
 WIREFRAMES:
 https://www.figma.com/file/djUm5T17YaxBjHz7fYsIDG/Untitled?node-id=0%3A1
 
+RETRO FRIDAY:
+what went well-
+hit mvp!
+lunch together
+landing page
+routing
+good comms
+excellent morning standup
+asking for help
+learning
+division of roles
+
+what could be better-
+timeboxing
+tailwind
+asking for help- less copying internet solutions
+
+
+actions to take into tomorrow-
+install vite
+timebox
+3JS vs tailwind
 
 FRIDAY STANDUP AM:
 erin wants to do landing page
