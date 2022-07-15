@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { DoubleSide } from 'three'
 
 function SolarSystem() {
   const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
@@ -16,9 +17,12 @@ function SolarSystem() {
 
   // https://docs.pmnd.rs/react-three-fiber/tutorials/basic-animations
   const myMesh = React.useRef()
+  const ringMesh = React.useRef()
   useFrame(({ clock }) => {
-    myMesh.current.rotation.y = clock.getElapsedTime()
+    // myMesh.current.rotation.y = clock.getElapsedTime()
+    ringMesh.current.rotation.x = 1
   })
+
   return (
     <>
       <ambientLight intensity={0.5} />
@@ -27,6 +31,10 @@ function SolarSystem() {
       <mesh ref={myMesh}>
         <sphereGeometry args={[1]} />
         <meshStandardMaterial map={sunMap} />
+        <mesh position={[0, 0, 0]} ref={ringMesh}>
+          <ringGeometry args={[1, 1.03, 32]} />
+          <meshStandardMaterial color="#78D481" side={DoubleSide} />
+        </mesh>
       </mesh>
 
       <mesh position={[4, 0, 0]}>
