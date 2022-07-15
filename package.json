@@ -10,7 +10,7 @@
     "start": "node server",
     "test": "jest",
     "test:watch": "jest --noStackTrace --watchAll",
-    "dev": "run-p dev:client dev:server",
+    "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "npm run webpack -- --watch",
     "dev:server": "nodemon --watch server server/index.js",
     "build": "run-p build:client build:server",
@@ -18,7 +18,8 @@
     "build:server": "npm run knex -- migrate:latest",
     "lint": "eslint --ext .js,.jsx .",
     "webpack": "webpack --config ./client/webpack.config.js",
-    "knex": "knex --knexfile ./server/db/knexfile.js"
+    "knex": "knex --knexfile ./server/db/knexfile.js",
+    "dev:css": "tailwindcss -i server/public/main.css -o server/public/output.css --watch"
   },
   "babel": {
     "presets": [
@@ -72,6 +73,7 @@
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "supertest": "^6.2.2",
+    "tailwindcss": "^3.1.6",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   },
