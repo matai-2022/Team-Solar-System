@@ -13,8 +13,8 @@ const LandingPage = () => {
     >
       {/* //holds all the stuff */}
       <div className="flex flex-col h-3/4 items-center ">
-        <h1 className=" flex text-7xl text-white items-center pt-10">
-          Explore The Solar System
+        <h1 className=" flex text-9xl text-white items-center pt-10 font-sans tracking-wider">
+          EXPLORE THE SOLAR SYSTEM
         </h1>
       </div>
     </div>

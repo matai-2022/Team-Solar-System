@@ -1,11 +1,13 @@
 module.exports = {
   content: ['./server/**/*.html', './client/**/*.jsx'],
   theme: {
-    extend: {
-      height: {
-        128: '32rem',
-      },
+    fontFamily: {
+      sans: ['Darker Grotesque'],
     },
+    fontSize: {
+      '9xl': '6rem',
+    },
+    extend: {},
   },
   plugins: [],
 }
