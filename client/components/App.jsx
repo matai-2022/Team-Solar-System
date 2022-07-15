@@ -15,32 +15,51 @@ function SolarSystem() {
   const uranusMap = useLoader(TextureLoader, '/images/uranus.jpg')
   const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
 
+  const sunMesh = useRef()
+  const mercuryMesh = useRef()
+  const venusMesh = useRef()
   const earthMesh = useRef()
+  const marsMesh = useRef()
+  const jupiterMesh = useRef()
   const saturnMesh = useRef()
   const ringMesh = useRef()
+  const uranusMesh = useRef()
+  const neptuneMesh = useRef()
+  const plutoMesh = useRef()
 
-  useFrame(({ clock }) => {
+  //const [earthMesh, saturnMesh] = useRef()
+
+  useFrame(() => {
+    sunMesh.current.rotation.y += 0.01 / 27
+    mercuryMesh.current.rotation.y += 0.01 / 58.8
+    venusMesh.current.rotation.y -= 0.01 / 244
+
     earthMesh.current.rotation.y += 0.01
-    saturnMesh.current.rotation.y = clock.getElapsedTime()
-    ringMesh.current.rotation.x = 1
+    marsMesh.current.rotation.y += 0.01 / 1.03
+    jupiterMesh.current.rotation.y += 0.01 / 0.41
+    saturnMesh.current.rotation.y += 0.01 / 0.44
+    ringMesh.current.rotation.x = 1.56
+    uranusMesh.current.rotation.y -= 0.01 / 0.72
+    neptuneMesh.current.rotation.y += 0.01 / 0.67
+    plutoMesh.current.rotation.y += 0.01 / 6.41
   })
 
   return (
     <>
-      <ambientLight intensity={0.5} />
-      <pointLight intensity={5} position={[0, 0, 0]} />
+      <ambientLight intensity={0.3} />
+      <pointLight intensity={1} position={[0, 0, 0]} />
 
-      <mesh>
+      <mesh ref={sunMesh}>
         <sphereGeometry args={[1]} />
         <meshStandardMaterial map={sunMap} />
       </mesh>
 
-      <mesh position={[4, 0, 0]}>
+      <mesh ref={mercuryMesh} position={[4, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={mercuryMap} />
       </mesh>
 
-      <mesh position={[6, 0, 0]}>
+      <mesh ref={venusMesh} position={[6, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={venusMap} />
       </mesh>
@@ -48,18 +67,19 @@ function SolarSystem() {
       <mesh ref={earthMesh} position={[10, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={earthMap} />
+        {/* moon */}
         <mesh position={[1, 0, 0]}>
           <sphereGeometry args={[0.1]} />
           <meshStandardMaterial color="#78D481" />
         </mesh>
       </mesh>
 
-      <mesh position={[13, 0, 0]}>
+      <mesh ref={marsMesh} position={[13, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={marsMap} />
       </mesh>
 
-      <mesh position={[15, 0, 0]}>
+      <mesh ref={jupiterMesh} position={[15, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={jupiterMap} />
       </mesh>
@@ -73,14 +93,18 @@ function SolarSystem() {
         </mesh>
       </mesh>
 
-      <mesh position={[20, 0, 0]}>
+      <mesh ref={uranusMesh} position={[20, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={uranusMap} />
       </mesh>
 
-      <mesh position={[22, 0, 0]}>
+      <mesh ref={neptuneMesh} position={[22, 0, 0]}>
         <sphereGeometry args={[0.3]} />
         <meshStandardMaterial map={neptuneMap} />
+      </mesh>
+      <mesh ref={plutoMesh} position={[26, 0, 0]}>
+        <sphereGeometry args={[0.3]} />
+        <meshStandardMaterial colour="#78D481" />
       </mesh>
     </>
   )
