@@ -558,6 +558,32 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.h-2\/4 {
+  height: 50%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-2\/4 {
+  width: 50%;
+}
+
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.bg-orange-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 215 170 / var(--tw-bg-opacity));
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
 .text-orange-600 {
   --tw-text-opacity: 1;
   color: rgb(234 88 12 / var(--tw-text-opacity));
