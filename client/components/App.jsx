@@ -2,6 +2,8 @@ import React, { Suspense } from 'react'
 import { Canvas, useLoader } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import LandingPage from './LandingPage'
+import { Route, Routes } from 'react-router-dom'
 
 function SolarSystem() {
   const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
@@ -69,25 +71,35 @@ function SolarSystem() {
 
 function App() {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 20, 25], fov: 15 }}>
-        <color attach="background" args={[0x000000]} />
-        <Suspense fallback={null}>
-          <SolarSystem />
-        </Suspense>
-        <OrbitControls />
+    <>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        {/* <Route
+          path="/solarsystem"
+          element={
+            <div style={{ width: '100vw', height: '100vh' }}>
+              <Canvas camera={{ position: [0, 20, 25], fov: 15 }}>
+                <color attach="background" args={[0x000000]} />
+                <Suspense fallback={null}>
+                  <SolarSystem />
+                </Suspense>
+                <OrbitControls />
 
-        <Stars
-          radius={100} // Radius of the inner sphere (default=100)
-          depth={50} // Depth of area where stars should fit (default=50)
-          count={90000} // Amount of stars (default=5000)
-          factor={4} // Size factor (default=4)
-          saturation={0} // Saturation 0-1 (default=0)
-          fade
-          speed={1} // Faded dots (default=false)
-        />
-      </Canvas>
-    </div>
+                <Stars
+                  radius={100} // Radius of the inner sphere (default=100)
+                  depth={50} // Depth of area where stars should fit (default=50)
+                  count={90000} // Amount of stars (default=5000)
+                  factor={4} // Size factor (default=4)
+                  saturation={0} // Saturation 0-1 (default=0)
+                  fade
+                  speed={1} // Faded dots (default=false)
+                />
+              </Canvas>
+            </div>
+          }
+        /> */}
+      </Routes>
+    </>
   )
 
   //insert react router
