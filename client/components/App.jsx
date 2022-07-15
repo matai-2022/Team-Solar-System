@@ -1,16 +1,17 @@
-import React, { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
+import React, { Suspense, useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 
 import SolarSystem from './SolarSystem'
 
 function App() {
+  const animate = useRef(true)
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <Canvas camera={{ position: [0, 20, 25], fov: 15 }}>
         <color attach="background" args={[0x000000]} />
         <Suspense fallback={null}>
-          <SolarSystem />
+          <SolarSystem animate={animate} />
         </Suspense>
         <OrbitControls />
 
@@ -24,6 +25,9 @@ function App() {
           speed={1} // Faded dots (default=false)
         />
       </Canvas>
+      <button onClick={() => (animate.current = !animate.current)}>
+        Pause
+      </button>
     </div>
   )
 
