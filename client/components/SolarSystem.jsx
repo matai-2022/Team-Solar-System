@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
-import { useLoader, useFrame } from '@react-three/fiber'
+import React, { Suspense, useRef } from 'react'
+import { Canvas, useLoader, useFrame } from '@react-three/fiber'
+import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
 
-export default function SolarSystem() {
+function SolarSystemMaker() {
   const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
   const earthMap = useLoader(TextureLoader, '/images/earth.jpg')
   const mercuryMap = useLoader(TextureLoader, '/images/mercury.jpg')
@@ -28,12 +29,12 @@ export default function SolarSystem() {
   const saturnMesh = useRef()
   const pin6 = useRef()
   const ringMesh = useRef()
-  const pin7 = useRef()
   const uranusMesh = useRef()
-  const pin8 = useRef()
+  const pin7 = useRef()
   const neptuneMesh = useRef()
-  const pin9 = useRef()
+  const pin8 = useRef()
   const plutoMesh = useRef()
+  const pin9 = useRef()
 
   useFrame(() => {
     sunMesh.current.rotation.y += 0.01 / 27
@@ -141,5 +142,28 @@ export default function SolarSystem() {
         </mesh>
       </mesh>
     </>
+  )
+}
+export default function SolarSystem() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <Canvas camera={{ position: [0, 20, 25], fov: 15 }}>
+        <color attach="background" args={[0x000000]} />
+        <Suspense fallback={null}>
+          <SolarSystemMaker />
+        </Suspense>
+        <OrbitControls />
+
+        <Stars
+          radius={100} // Radius of the inner sphere (default=100)
+          depth={50} // Depth of area where stars should fit (default=50)
+          count={90000} // Amount of stars (default=5000)
+          factor={4} // Size factor (default=4)
+          saturation={0} // Saturation 0-1 (default=0)
+          fade
+          speed={1} // Faded dots (default=false)
+        />
+      </Canvas>
+    </div>
   )
 }

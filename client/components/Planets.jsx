@@ -34,8 +34,7 @@ export default function Planets() {
       requestAnimationFrame(animate)
       // sun.rotation.x += 0.0
       sun.rotation.y += 0.01
-      // sun.rotation.z += 0.0
-      renderer.render(scene, camera)
+      // sun.rotation.z += 0.0git push --set-upstream origin clickable-planets
     }
     animate()
 
