@@ -12,10 +12,11 @@ function SolarSystemMaker() {
   const marsMap = useLoader(TextureLoader, '/images/mars.jpg')
   const jupiterMap = useLoader(TextureLoader, '/images/jupiter.jpg')
   const saturnMap = useLoader(TextureLoader, '/images/saturn.jpg')
-  const uranusMap = useLoader(TextureLoader, '/images/uranus.jpg')
+  const uranusMap = useLoader(TextureLoader, '/images/uranus2.jpg')
   const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
   const moonMap = useLoader(TextureLoader, '/images/moon.jpg')
   const ringMap = useLoader(TextureLoader, '/images/ring2.png')
+  const plutoMap = useLoader(TextureLoader, '/images/pluto.jpg')
 
   const sunMesh = useRef()
   const mercuryMesh = useRef()
@@ -140,7 +141,7 @@ function SolarSystemMaker() {
       <mesh ref={pin9} position={[0, 0, 0]}>
         <mesh ref={plutoMesh} position={[26, 0, 0]}>
           <sphereGeometry args={[0.3]} />
-          <meshStandardMaterial colour="#78D481" />
+          <meshStandardMaterial map={plutoMap} />
         </mesh>
       </mesh>
     </>
