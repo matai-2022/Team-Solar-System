@@ -28,8 +28,8 @@ exports.seed = async function (knex) {
       yearLength: '225 Earth days',
       planetType: 'Terrestrial',
       atmosphere:
-        'The pressure is so intense it is like being under a kilometre of water',
-      climate: 'Surface temperatur 480c ',
+        'The pressure is so intense it is like being under a kilometer of water',
+      climate: 'Surface temperature 480c ',
       moons: 'None',
       exploration: `The mariner 2 was one of the first missions to Venus in 1962`,
       coolFact: `Often called Earth's twin because it is similar in size and density. It's the hottest planet at 480c, and known as the morning and evening star (second brightest object in the sky after the moon)`,
@@ -40,7 +40,7 @@ exports.seed = async function (knex) {
       name: 'Earth',
       order: 3,
       dateDiscovered:
-        'The name Earth is atleast 1000 years old - germanic in origin, meaning ground',
+        'The name Earth is at least 1000 years old - germanic in origin, meaning ground',
       dayLength: '24 hours',
       yearLength: '365 Earth days',
       planetType: 'Terrestrial',
@@ -72,7 +72,7 @@ exports.seed = async function (knex) {
 
     {
       id: 5,
-      name: 'Juiter',
+      name: 'Jupiter',
       order: 5,
       dateDiscovered: '1610 Galileo Galilei makes the first observations',
       dayLength: 'Shortest day in the solar system - 10 hours',
