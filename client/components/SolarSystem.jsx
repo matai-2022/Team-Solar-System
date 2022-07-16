@@ -3,26 +3,19 @@ import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
+import CreatePlanet from './CreatePlanet'
 
 function SolarSystemMaker() {
-  const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
-  const earthMap = useLoader(TextureLoader, '/images/earth.jpg')
-  const mercuryMap = useLoader(TextureLoader, '/images/mercury.jpg')
-  const venusMap = useLoader(TextureLoader, '/images/venus.jpg')
-  const marsMap = useLoader(TextureLoader, '/images/mars.jpg')
-  const jupiterMap = useLoader(TextureLoader, '/images/jupiter.jpg')
-  const saturnMap = useLoader(TextureLoader, '/images/saturn.jpg')
-  const uranusMap = useLoader(TextureLoader, '/images/uranus2.jpg')
-  const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
-  const moonMap = useLoader(TextureLoader, '/images/moon.jpg')
-  const ringMap = useLoader(TextureLoader, '/images/ring2.png')
-  const plutoMap = useLoader(TextureLoader, '/images/pluto.jpg')
+  const earthMap = useLoader(TextureLoader, '/images/earth.png')
+  const marsMap = useLoader(TextureLoader, '/images/mars.png')
+  const jupiterMap = useLoader(TextureLoader, '/images/jupiter.png')
+  const saturnMap = useLoader(TextureLoader, '/images/saturn.png')
+  const uranusMap = useLoader(TextureLoader, '/images/uranus2.png')
+  const neptuneMap = useLoader(TextureLoader, '/images/neptune.png')
+  const moonMap = useLoader(TextureLoader, '/images/moon.png')
+  const ringMap = useLoader(TextureLoader, '/images/saturn-ring.png')
+  const plutoMap = useLoader(TextureLoader, '/images/pluto.png')
 
-  const sunMesh = useRef()
-  const mercuryMesh = useRef()
-  const pin1 = useRef()
-  const venusMesh = useRef()
-  const pin2 = useRef()
   const earthMesh = useRef()
   const pin3 = useRef()
   const marsMesh = useRef()
@@ -40,18 +33,18 @@ function SolarSystemMaker() {
   const pin9 = useRef()
 
   useFrame(() => {
-    sunMesh.current.rotation.y += 0.01 / 27
-    mercuryMesh.current.rotation.y += 0.01 / 58.8
-    pin1.current.rotation.y += 0.001 * 4.2
-    venusMesh.current.rotation.y -= 0.01 / 244
-    pin2.current.rotation.y += 0.001 * 1.6
+    // sunMesh.current.rotation.y += 0.01 / 27
+    // mercuryMesh.current.rotation.y += 0.01 / 58.8
+    // pin1.current.rotation.y += 0.001 * 4.2
+    // venusMesh.current.rotation.y -= 0.01 / 244
+    // pin2.current.rotation.y += 0.001 * 1.6
     earthMesh.current.rotation.y += 0.01
     pin3.current.rotation.y += 0.001
     marsMesh.current.rotation.y += 0.01 / 1.03
     pin4.current.rotation.y += 0.001 * 0.53
     jupiterMesh.current.rotation.y += 0.01 / 0.41
     pin5.current.rotation.y += 0.001 * 0.08
-    saturnMesh.current.rotation.y += 0.01 / 0.44
+    // saturnMesh.current.rotation.y += 0.01 / 0.44
     pin6.current.rotation.y += 0.001 * 0.03
     ringMesh.current.rotation.x = 1.56
 
@@ -63,29 +56,58 @@ function SolarSystemMaker() {
     pin9.current.rotation.y += 0.001 / 248
   })
 
+  const sun = (
+    <CreatePlanet
+      name={'sun'}
+      position={[0, 0, 0]}
+      geometry={[1]}
+      rotation={{ y: 0.01 / 27 }}
+    />
+  )
+  const mercury = (
+    <CreatePlanet
+      name={'mercury'}
+      position={[4, 0, 0]}
+      geometry={[0.3]}
+      rotation={{ y: 0.01 / 58.8 }}
+      parentRotation={{ y: 0.001 * 4.2 }}
+    />
+  )
+
+  const venus = (
+    <CreatePlanet
+      name={'venus'}
+      position={[6, 0, 0]}
+      geometry={[0.3]}
+      rotation={{ y: -0.01 / 244 }}
+      parentRotation={{ y: 0.001 * 1.6 }}
+    />
+  )
+
+  const saturn = (
+    <CreatePlanet
+      name={'saturn'}
+      position={[18, 0, 0]}
+      geometry={[0.3]}
+      rotation={{ y: 0.01 / 0.44 }}
+      parentRotation={{ x: 0.01 / 0.44 }}
+      ring={{
+        position: [0, 0, 0],
+        angle: 0.15,
+        args: [0.6, 1.03, 32],
+        xRotation: 1.56,
+      }}
+    />
+  )
+
   return (
     <>
       <ambientLight intensity={0.3} />
       <pointLight intensity={1} position={[0, 0, 0]} />
 
-      <mesh ref={sunMesh}>
-        <sphereGeometry args={[1]} />
-        <meshStandardMaterial map={sunMap} />
-      </mesh>
-
-      <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[4, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
-          <meshStandardMaterial map={mercuryMap} />
-        </mesh>
-      </mesh>
-
-      <mesh ref={pin2} position={[0, 0, 0]}>
-        <mesh ref={venusMesh} position={[6, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
-          <meshStandardMaterial map={venusMap} />
-        </mesh>
-      </mesh>
+      {sun}
+      {mercury}
+      {venus}
 
       <mesh ref={pin3} position={[0, 0, 0]}>
         <mesh ref={earthMesh} position={[10, 0, 0]}>
@@ -113,7 +135,8 @@ function SolarSystemMaker() {
         </mesh>
       </mesh>
 
-      <mesh ref={pin6} position={[0, 0, 0]}>
+      {saturn}
+      {/* <mesh ref={pin6} position={[0, 0, 0]}>
         <mesh ref={saturnMesh} position={[18, 0, 0]}>
           <sphereGeometry args={[0.3]} />
           <meshStandardMaterial map={saturnMap} />
@@ -122,7 +145,7 @@ function SolarSystemMaker() {
             <meshStandardMaterial map={ringMap} side={DoubleSide} />
           </mesh>
         </mesh>
-      </mesh>
+      </mesh> */}
 
       <mesh ref={pin7} position={[0, 0, 0]}>
         <mesh ref={uranusMesh} position={[20, 0, 0]}>
