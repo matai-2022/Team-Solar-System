@@ -15,7 +15,7 @@ function SolarSystemMaker() {
   const uranusMap = useLoader(TextureLoader, '/images/uranus2.jpg')
   const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
   const moonMap = useLoader(TextureLoader, '/images/moon.jpg')
-  const ringMap = useLoader(TextureLoader, '/images/ring2.png')
+  const ringMap = useLoader(TextureLoader, '/images/ring3.png')
   const plutoMap = useLoader(TextureLoader, '/images/pluto.jpg')
 
   const sunMesh = useRef()
@@ -70,30 +70,30 @@ function SolarSystemMaker() {
 
       {/* Sun */}
       <mesh ref={sunMesh}>
-        <sphereGeometry args={[0.5]} />
+        <sphereGeometry args={[1.5]} />
         <meshStandardMaterial map={sunMap} />
       </mesh>
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[1, 0, 0]}>
-          <sphereGeometry args={[0.004]} />
+        <mesh ref={mercuryMesh} position={[2.7, 0, 0]}>
+          <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
         </mesh>
       </mesh>
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
-        <mesh ref={venusMesh} position={[1.3, 0, 0]}>
-          <sphereGeometry args={[0.009]} />
+        <mesh ref={venusMesh} position={[2.9, 0, 0]}>
+          <sphereGeometry args={[0.09]} />
           <meshStandardMaterial map={venusMap} />
         </mesh>
       </mesh>
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
-        <mesh ref={earthMesh} position={[1.7, 0, 0]}>
-          <sphereGeometry args={[0.0095]} />
+        <mesh ref={earthMesh} position={[3.7, 0, 0]}>
+          <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
           {/* moon */}
           <mesh position={[0.02, 0, 0]}>
@@ -105,15 +105,15 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
-        <mesh ref={marsMesh} position={[2.1, 0, 0]}>
-          <sphereGeometry args={[0.005]} />
+        <mesh ref={marsMesh} position={[4.6, 0, 0]}>
+          <sphereGeometry args={[0.05]} />
           <meshStandardMaterial map={marsMap} />
         </mesh>
       </mesh>
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <mesh ref={jupiterMesh} position={[2.7, 0, 0]}>
+        <mesh ref={jupiterMesh} position={[5.5, 0, 0]}>
           <sphereGeometry args={[0.1]} />
           <meshStandardMaterial map={jupiterMap} />
         </mesh>
@@ -121,11 +121,11 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[3.5, 0, 0]}>
-          <sphereGeometry args={[0.085]} />
+        <mesh ref={saturnMesh} position={[8.0, 0, 0]}>
+          <sphereGeometry args={[0.75]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
-            <ringGeometry args={[0.15, 0.25, 32]} angle={0.15} />
+            <ringGeometry args={[1.5, 1.0, 32]} angle={0.15} />
             <meshStandardMaterial map={ringMap} side={DoubleSide} />
           </mesh>
         </mesh>
@@ -133,24 +133,24 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
-        <mesh ref={uranusMesh} position={[4.2, 0, 0]}>
-          <sphereGeometry args={[0.036]} />
+        <mesh ref={uranusMesh} position={[11.2, 0, 0]}>
+          <sphereGeometry args={[0.36]} />
           <meshStandardMaterial map={uranusMap} />
         </mesh>
       </mesh>
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
-        <mesh ref={neptuneMesh} position={[4.8, 0, 0]}>
-          <sphereGeometry args={[0.032]} />
+        <mesh ref={neptuneMesh} position={[13.5, 0, 0]}>
+          <sphereGeometry args={[0.32]} />
           <meshStandardMaterial map={neptuneMap} />
         </mesh>
       </mesh>
 
       {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
-        <mesh ref={plutoMesh} position={[5.3, 0, 0]}>
-          <sphereGeometry args={[0.00025]} />
+        <mesh ref={plutoMesh} position={[14.3, 0, 0]}>
+          <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
       </mesh>
@@ -160,7 +160,7 @@ function SolarSystemMaker() {
 export default function SolarSystem() {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [25, 5, 25], fov: 15 }}>
+      <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
         <color attach="background" args={[0x000000]} />
         <Suspense fallback={null}>
           <SolarSystemMaker />
@@ -170,7 +170,7 @@ export default function SolarSystem() {
         <Stars
           radius={100} // Radius of the inner sphere (default=100)
           depth={50} // Depth of area where stars should fit (default=50)
-          count={5000} // Amount of stars (default=5000)
+          count={50000} // Amount of stars (default=5000)
           factor={4} // Size factor (default=4)
           saturation={0} // Saturation 0-1 (default=0)
           fade
