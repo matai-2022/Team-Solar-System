@@ -47,7 +47,7 @@ exports.seed = async function (knex) {
       atmosphere:
         'Earth has an atmosphere that consists of 78% nitrogen, 21% oxygen, and 1% other gases such as argon, carbon dioxide, and neon near the surface',
       climate: '-89C to 56C  ',
-      moons: '1',
+      moons: 'One',
       exploration: `no known alien space exploration `,
       coolFact:
         'We live here, only planet with 70% of surface covered with water.',
