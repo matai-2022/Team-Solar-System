@@ -1,9 +1,9 @@
-import React, { useRef } from 'react'
+import React, {  useRef, useState} from 'react'
 import { useLoader, useFrame } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
 
-export default function SolarSystem() {
+export default function SolarSystem(props) {
   const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
   const earthMap = useLoader(TextureLoader, '/images/earth.jpg')
   const mercuryMap = useLoader(TextureLoader, '/images/mercury.jpg')
@@ -35,6 +35,9 @@ export default function SolarSystem() {
   const pin9 = useRef()
   const plutoMesh = useRef()
 
+  //const [hovered, hover] = useState(false)
+  const [clicked, click] = useState(false)
+
   useFrame(() => {
     sunMesh.current.rotation.y += 0.01 / 27
     mercuryMesh.current.rotation.y += 0.01 / 58.8
@@ -64,7 +67,12 @@ export default function SolarSystem() {
       <ambientLight intensity={0.3} />
       <pointLight intensity={1} position={[0, 0, 0]} />
 
-      <mesh ref={sunMesh}>
+      <mesh 
+      {...props}
+      ref={sunMesh}
+      scale={clicked ? 1.5 : 1}
+      onClick={() => click(!clicked)}
+      >
         <sphereGeometry args={[1]} />
         <meshStandardMaterial map={sunMap} />
       </mesh>
