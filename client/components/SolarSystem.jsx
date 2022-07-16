@@ -5,15 +5,24 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
 
 function SolarSystemMaker() {
-  const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
-  const earthMap = useLoader(TextureLoader, '/images/earth.jpg')
-  const mercuryMap = useLoader(TextureLoader, '/images/mercury.jpg')
-  const venusMap = useLoader(TextureLoader, '/images/venus.jpg')
-  const marsMap = useLoader(TextureLoader, '/images/mars.jpg')
-  const jupiterMap = useLoader(TextureLoader, '/images/jupiter.jpg')
-  const saturnMap = useLoader(TextureLoader, '/images/saturn.jpg')
-  const uranusMap = useLoader(TextureLoader, '/images/uranus.jpg')
-  const neptuneMap = useLoader(TextureLoader, '/images/neptune.jpg')
+  const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
+  const earthMap = useLoader(TextureLoader, '/server/public/images/earth.jpg')
+  const mercuryMap = useLoader(
+    TextureLoader,
+    '/server/public/images/mercury.jpg'
+  )
+  const venusMap = useLoader(TextureLoader, '/server/public/images/venus.jpg')
+  const marsMap = useLoader(TextureLoader, '/server/public/images/mars.jpg')
+  const jupiterMap = useLoader(
+    TextureLoader,
+    '/server/public/images/jupiter.jpg'
+  )
+  const saturnMap = useLoader(TextureLoader, '/server/public/images/saturn.jpg')
+  const uranusMap = useLoader(TextureLoader, '/server/public/images/uranus.jpg')
+  const neptuneMap = useLoader(
+    TextureLoader,
+    '/server/public/images/neptune.jpg'
+  )
 
   const sunMesh = useRef()
   const mercuryMesh = useRef()
