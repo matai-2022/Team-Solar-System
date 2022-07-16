@@ -247,7 +247,7 @@ Add the correct vertical alignment in Chrome and Firefox.
 
 progress {
   vertical-align: baseline;
-}
+} conflicts
 
 /*
 Correct the cursor style of increment and decrement buttons in Safari.
@@ -275,7 +275,7 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-search-decoration {
-  -webkit-appearance: none;
+  -webkit-appearance: none; conflicts
 }
 
 /*
@@ -586,7 +586,7 @@ video {
 
   .\!container {
     max-width: 1024px !important;
-  }
+  } conflicts
 }
 
 @media (min-width: 1280px) {
@@ -657,22 +657,6 @@ video {
   display: flex;
 }
 
-.table {
-  display: table;
-}
-
-.grid {
-  display: grid;
-}
-
-.contents {
-  display: contents;
-}
-
-.hidden {
-  display: none;
-}
-
 .h-screen {
   height: 100vh;
 }
@@ -683,46 +667,6 @@ video {
 
 .h-3\/4 {
   height: 75%;
-}
-
-.h-3 {
-  height: 0.75rem;
-}
-
-.w-7 {
-  width: 1.75rem;
-}
-
-.w-0 {
-  width: 0px;
-}
-
-.flex-shrink {
-  flex-shrink: 1;
-}
-
-.shrink {
-  flex-shrink: 1;
-}
-
-.flex-grow {
-  flex-grow: 1;
-}
-
-.grow {
-  flex-grow: 1;
-}
-
-.border-collapse {
-  border-collapse: collapse;
-}
-
-.transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.resize {
-  resize: both;
 }
 
 .flex-col {
