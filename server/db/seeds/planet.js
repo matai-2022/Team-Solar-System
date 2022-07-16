@@ -1,12 +1,9 @@
-// exports.seed = function (knex) {
-//   // Deletes ALL existing entries
-//   return knex('fruit').del()
-//     .then(function () {
-//       // Inserts seed entries
-//       return knex('fruit').insert([
-//         { id: 1, name: 'banana' },
-//         { id: 2, name: 'apple' },
-//         { id: 3, name: 'feijoa' }
-//       ])
-//     })
-// }
+exports.seed = async function (knex) {
+  // Deletes ALL existing entries
+  await knex('planets').del()
+  await knex('planets').insert([
+    { id: 1, colName: 'rowValue1' },
+    { id: 2, colName: 'rowValue2' },
+    { id: 3, colName: 'rowValue3' },
+  ])
+}
