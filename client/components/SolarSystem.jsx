@@ -68,79 +68,89 @@ function SolarSystemMaker() {
       <ambientLight intensity={0.3} />
       <pointLight intensity={1} position={[0, 0, 0]} />
 
+      {/* Sun */}
       <mesh ref={sunMesh}>
-        <sphereGeometry args={[1]} />
+        <sphereGeometry args={[0.5]} />
         <meshStandardMaterial map={sunMap} />
       </mesh>
 
+      {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[4, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={mercuryMesh} position={[1, 0, 0]}>
+          <sphereGeometry args={[0.004]} />
           <meshStandardMaterial map={mercuryMap} />
         </mesh>
       </mesh>
 
+      {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
-        <mesh ref={venusMesh} position={[6, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={venusMesh} position={[1.3, 0, 0]}>
+          <sphereGeometry args={[0.009]} />
           <meshStandardMaterial map={venusMap} />
         </mesh>
       </mesh>
 
+      {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
-        <mesh ref={earthMesh} position={[10, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={earthMesh} position={[1.7, 0, 0]}>
+          <sphereGeometry args={[0.0095]} />
           <meshStandardMaterial map={earthMap} />
           {/* moon */}
-          <mesh position={[1, 0, 0]}>
-            <sphereGeometry args={[0.1]} />
+          <mesh position={[0.02, 0, 0]}>
+            <sphereGeometry args={[0.002]} />
             <meshStandardMaterial map={moonMap} />
           </mesh>
         </mesh>
       </mesh>
 
+      {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
-        <mesh ref={marsMesh} position={[13, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={marsMesh} position={[2.1, 0, 0]}>
+          <sphereGeometry args={[0.005]} />
           <meshStandardMaterial map={marsMap} />
         </mesh>
       </mesh>
 
+      {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <mesh ref={jupiterMesh} position={[15, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={jupiterMesh} position={[2.7, 0, 0]}>
+          <sphereGeometry args={[0.1]} />
           <meshStandardMaterial map={jupiterMap} />
         </mesh>
       </mesh>
 
+      {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[18, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={saturnMesh} position={[3.5, 0, 0]}>
+          <sphereGeometry args={[0.085]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
-            <ringGeometry args={[0.6, 1.03, 32]} angle={0.15} />
+            <ringGeometry args={[0.15, 0.25, 32]} angle={0.15} />
             <meshStandardMaterial map={ringMap} side={DoubleSide} />
           </mesh>
         </mesh>
       </mesh>
 
+      {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
-        <mesh ref={uranusMesh} position={[20, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={uranusMesh} position={[4.2, 0, 0]}>
+          <sphereGeometry args={[0.036]} />
           <meshStandardMaterial map={uranusMap} />
         </mesh>
       </mesh>
 
+      {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
-        <mesh ref={neptuneMesh} position={[22, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={neptuneMesh} position={[4.8, 0, 0]}>
+          <sphereGeometry args={[0.032]} />
           <meshStandardMaterial map={neptuneMap} />
         </mesh>
       </mesh>
 
+      {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
-        <mesh ref={plutoMesh} position={[26, 0, 0]}>
-          <sphereGeometry args={[0.3]} />
+        <mesh ref={plutoMesh} position={[5.3, 0, 0]}>
+          <sphereGeometry args={[0.00025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
       </mesh>
@@ -160,7 +170,7 @@ export default function SolarSystem() {
         <Stars
           radius={100} // Radius of the inner sphere (default=100)
           depth={50} // Depth of area where stars should fit (default=50)
-          count={90000} // Amount of stars (default=5000)
+          count={5000} // Amount of stars (default=5000)
           factor={4} // Size factor (default=4)
           saturation={0} // Saturation 0-1 (default=0)
           fade
