@@ -2,21 +2,29 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-  const [toggle, setToggle] = useState(false)
-  const [sunToggle, setSunToggle] = useState(false)
+  const [activePlanet, setActivePlanet] = useState(null)
   return (
     <nav
-      // style={{ width: '12vw', height: '100vh' }}
+      style={{
+        background: 'rgba(0, 0, 0, 0.2)',
+        position: 'absolute',
+        zIndex: 10,
+        // width: '12vw',
+        // height: '100vh',
+      }}
       className="flex flex-col text-white w-1/5 h-full"
     >
       <div className="flex flex-col text-4xl">
         <Link className="flex border-b-2 border-gray-600" to="/">
           HOME
         </Link>
-        <button onClick={() => setSunToggle(!sunToggle)} className="flex">
+        <button
+          onClick={() => setActivePlanet(activePlanet === 'sun' ? null : 'sun')}
+          className="flex"
+        >
           SUN
         </button>
-        {sunToggle && (
+        {activePlanet === 'sun' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> Size: 1 Million Earths</li>
             <li> Temperature: 5,500°C </li>
@@ -28,10 +36,15 @@ const Navbar = () => {
         )}
 
         {/* Mercury */}
-        <button onClick={() => setToggle(!toggle)} className="flex">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'mercury' ? null : 'mercury')
+          }
+          className="flex"
+        >
           MERCURY
         </button>
-        {toggle && (
+        {activePlanet === 'mercury' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> 1st Planet From The Sun</li>
             <li> Size: 18 Mercuries Would Fit in Earth </li>
@@ -42,8 +55,15 @@ const Navbar = () => {
           </ul>
         )}
 
-        <button className="flex">VENUS</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'venus' ? null : 'venus')
+          }
+          className="flex"
+        >
+          VENUS
+        </button>
+        {activePlanet === 'venus' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li>2nd Planet From The Sun </li>
             <li> Size: Almost Same Size As Earth </li>
@@ -54,10 +74,17 @@ const Navbar = () => {
             <li> Fun Fact: The Days are Longer Than the Years </li>
             <li> Hottest Planet In Solar System</li>
           </ul>
-        </div>
+        )}
 
-        <button className="flex">EARTH</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'earth' ? null : 'earth')
+          }
+          className="flex"
+        >
+          EARTH
+        </button>
+        {activePlanet === 'earth' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li>3rd Planet From The Sun</li>
             <li> Temperature: -89°C to 56°C </li>
@@ -68,12 +95,19 @@ const Navbar = () => {
             <li> 70% of Surface is Covered With Water </li>
             <li> Densest Planet In Solar System</li>
           </ul>
-        </div>
+        )}
 
         {/* mars */}
 
-        <button className="flex">MARS</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'mars' ? null : 'mars')
+          }
+          className="flex"
+        >
+          MARS
+        </button>
+        {activePlanet === 'mars' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> 4th Planet From The Sun</li>
             <li> Size: Half the Size of Earth </li>
@@ -83,12 +117,19 @@ const Navbar = () => {
             <li> Moons: 2</li>
             <li> Fun Fact: Has The Largest Volcano in the Solar System</li>
           </ul>
-        </div>
+        )}
 
         {/* Jupiter */}
 
-        <button className="flex">JUPITER</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'jupiter' ? null : 'jupiter')
+          }
+          className="flex"
+        >
+          JUPITER
+        </button>
+        {activePlanet === 'jupiter' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> 5th Planet From The Sun</li>
             <li> Size: 1,300 Earths Would Fit in Jupiter </li>
@@ -98,10 +139,17 @@ const Navbar = () => {
             <li> Moons: 53 </li>
             <li> Fun Fact: Largest Planet in Solar System </li>
           </ul>
-        </div>
+        )}
 
-        <button className="flex">SATURN</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'saturn' ? null : 'saturn')
+          }
+          className="flex"
+        >
+          SATURN
+        </button>
+        {activePlanet === 'saturn' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> 6th Planet From The Sun</li>
             <li> Size: 700 Earths Would Fit in Saturn </li>
@@ -115,10 +163,17 @@ const Navbar = () => {
               Comets, Asteroids and Shattered Moons
             </li>
           </ul>
-        </div>
+        )}
 
-        <button className="flex">URANUS</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'uranus' ? null : 'uranus')
+          }
+          className="flex"
+        >
+          URANUS
+        </button>
+        {activePlanet === 'uranus' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> 7th Planet From The Sun</li>
             <li>Size: 63 Earths Would Fit in Uranus</li>
@@ -131,10 +186,17 @@ const Navbar = () => {
               Fun Fact: Uranus Was The First Planet Found With a Telescope.
             </li>
           </ul>
-        </div>
+        )}
 
-        <button className="flex">NEPTUNE</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'neptune' ? null : 'neptune')
+          }
+          className="flex"
+        >
+          NEPTUNE
+        </button>
+        {activePlanet === 'neptune' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li> 8th Planet From The Sun</li>
             <li> Size: 57 Earths Would Fit in Neptune</li>
@@ -147,10 +209,17 @@ const Navbar = () => {
               With Telescope
             </li>
           </ul>
-        </div>
+        )}
 
-        <button className="flex">PLUTO</button>
-        <div className="hidden">
+        <button
+          onClick={() =>
+            setActivePlanet(activePlanet === 'pluto' ? null : 'pluto')
+          }
+          className="flex"
+        >
+          PLUTO
+        </button>
+        {activePlanet === 'pluto' && (
           <ul className="list-disc text-xl bg-gray-600">
             <li>
               Pluto Was Downgraded from a Planet To a Dwarf Planet in 2006
@@ -163,7 +232,7 @@ const Navbar = () => {
             <li> Planet Type: Dwarf Planet </li>
             <li> Fun Fact: Named by an 11-Year-Old Girl in 1930</li>
           </ul>
-        </div>
+        )}
       </div>
     </nav>
   )

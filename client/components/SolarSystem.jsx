@@ -162,10 +162,15 @@ export default function SolarSystem() {
   return (
     <div
       className="flex flex-row bg-black"
-      style={{ width: '100vw', height: '100vh' }}
+      // style={{ width: '100vw', height: '100vh' }}
     >
       <Navbar />
-      <div style={{ width: '100vw', height: '100vh' }}>
+      <div
+        style={{
+          width: '100vw',
+          height: '100vh',
+        }}
+      >
         <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
           <color attach="background" args={[0x000000]} />
           <Suspense fallback={null}>
