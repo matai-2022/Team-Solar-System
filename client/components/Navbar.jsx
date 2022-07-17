@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        background: 'rgba(0, 0, 0, 0.2)',
+        background: 'rgba(0, 0, 0, 0)',
         position: 'absolute',
         zIndex: 10,
         // width: '12vw',
