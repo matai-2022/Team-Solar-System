@@ -5,7 +5,7 @@ import LandingPage from './LandingPage'
 
 function App() {
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-black">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/solarsystem" element={<SolarSystem />} />
