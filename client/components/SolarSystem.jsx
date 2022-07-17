@@ -3,6 +3,7 @@ import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
+import Navbar from './Navbar'
 
 function SolarSystemMaker() {
   const sunMap = useLoader(TextureLoader, '/images/sun.jpg')
@@ -159,24 +160,30 @@ function SolarSystemMaker() {
 }
 export default function SolarSystem() {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
-        <color attach="background" args={[0x000000]} />
-        <Suspense fallback={null}>
-          <SolarSystemMaker />
-        </Suspense>
-        <OrbitControls />
+    <div
+      className="flex flex-row bg-black"
+      style={{ width: '100vw', height: '100vh' }}
+    >
+      <Navbar />
+      <div style={{ width: '100vw', height: '100vh' }}>
+        <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
+          <color attach="background" args={[0x000000]} />
+          <Suspense fallback={null}>
+            <SolarSystemMaker />
+          </Suspense>
+          <OrbitControls />
 
-        <Stars
-          radius={100} // Radius of the inner sphere (default=100)
-          depth={50} // Depth of area where stars should fit (default=50)
-          count={50000} // Amount of stars (default=5000)
-          factor={4} // Size factor (default=4)
-          saturation={0} // Saturation 0-1 (default=0)
-          fade
-          speed={1} // Faded dots (default=false)
-        />
-      </Canvas>
+          <Stars
+            radius={100} // Radius of the inner sphere (default=100)
+            depth={50} // Depth of area where stars should fit (default=50)
+            count={50000} // Amount of stars (default=5000)
+            factor={4} // Size factor (default=4)
+            saturation={0} // Saturation 0-1 (default=0)
+            fade
+            speed={1} // Faded dots (default=false)
+          />
+        </Canvas>
+      </div>
     </div>
   )
 }
