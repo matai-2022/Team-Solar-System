@@ -1,6 +1,6 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import { OrbitControls, Stars, Billboard, Text } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
 
@@ -45,6 +45,9 @@ function SolarSystemMaker() {
   const plutoMesh = useRef()
   const pin9 = useRef()
 
+  //const [clicked, click] = useState(false)
+  const [hovered, hover] = useState(false)
+
   useFrame(() => {
     sunMesh.current.rotation.y += 0.01 / 27
     mercuryMesh.current.rotation.y += 0.01 / 58.8
@@ -74,15 +77,48 @@ function SolarSystemMaker() {
       <ambientLight intensity={0.3} />
       <pointLight intensity={1} position={[0, 0, 0]} />
 
-      <mesh ref={sunMesh}>
+      <mesh
+        ref={sunMesh}
+        //scale={clicked ? 1.5 : 1}
+        //onClick={() => click(!clicked)}
+        onPointerOver={(event) => hover(true)}
+        onPointerOut={(event) => hover(false)}
+      >
         <sphereGeometry args={[1]} />
         <meshStandardMaterial map={sunMap} />
+        <Billboard
+          follow={true}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[0, 2, 0]}
+        >
+          <Text fontSize={hovered ? [1.001] : [0.001]} color={'white'}>
+            Sun
+          </Text>
+        </Billboard>
       </mesh>
 
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[4, 0, 0]}>
+        <mesh
+          onPointerOver={(event) => hover(true)}
+          onPointerOut={(event) => hover(false)}
+          ref={mercuryMesh}
+          position={[4, 0, 0]}
+        >
           <sphereGeometry args={[0.3]} />
           <meshStandardMaterial map={mercuryMap} />
+          <Billboard
+            follow={true}
+            lockX={false}
+            lockY={false}
+            lockZ={false} // Lock the rotation on the z axis (default=false)
+            position={[0, 2, 0]}
+          >
+            <Text fontSize={hovered ? [1.001] : [0.001]} color={'white'}>
+              Mercury
+            </Text>
+          </Billboard>
         </mesh>
       </mesh>
 
