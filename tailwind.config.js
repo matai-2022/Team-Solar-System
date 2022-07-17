@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./server/**/*.html', './client/**/*.jsx'],
+  content: ['./server/**/*', './client/**/*.jsx'],
   theme: {
     fontFamily: {
       sans: ['Darker Grotesque'],

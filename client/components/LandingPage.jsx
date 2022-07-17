@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div
       className="h-full flex flex-col justify-center bg-black"
       style={{
-        backgroundImage: 'url(/images/sunrise.jpg)',
+        backgroundImage: 'url(/server/public/images/sunrise.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
