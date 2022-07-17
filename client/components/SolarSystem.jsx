@@ -1,6 +1,6 @@
 import React, { Suspense, useRef } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import { OrbitControls, Stars, Html, useProgress } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
 import Navbar from './Navbar'
@@ -67,7 +67,15 @@ function SolarSystemMaker() {
   return (
     <>
       <ambientLight intensity={0.3} />
-      <pointLight intensity={1} position={[0, 0, 0]} />
+      <pointLight
+        castShadow
+        shadow-mapSize-height={512}
+        shadow-mapSize-width={512}
+        // shadow-radius={10}
+        // shadow-bias={-0.0001}
+        intensity={1}
+        position={[0, 0, 0]}
+      />
 
       {/* Sun */}
       <mesh ref={sunMesh}>
@@ -77,7 +85,7 @@ function SolarSystemMaker() {
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[3.7, 0, 0]}>
+        <mesh castShadow receiveShadow ref={mercuryMesh} position={[3.7, 0, 0]}>
           <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
         </mesh>
@@ -85,7 +93,7 @@ function SolarSystemMaker() {
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
-        <mesh ref={venusMesh} position={[3.9, 0, 0]}>
+        <mesh castShadow receiveShadow ref={venusMesh} position={[3.9, 0, 0]}>
           <sphereGeometry args={[0.09]} />
           <meshStandardMaterial map={venusMap} />
         </mesh>
@@ -93,11 +101,11 @@ function SolarSystemMaker() {
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
-        <mesh ref={earthMesh} position={[4.7, 0, 0]}>
+        <mesh castShadow receiveShadow ref={earthMesh} position={[4.7, 0, 0]}>
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
           {/* moon */}
-          <mesh position={[0.2, 0, 0]}>
+          <mesh castShadow receiveShadow position={[0.2, 0, 0]}>
             <sphereGeometry args={[0.02]} />
             <meshStandardMaterial map={moonMap} />
           </mesh>
@@ -106,7 +114,7 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
-        <mesh ref={marsMesh} position={[5.6, 0, 0]}>
+        <mesh castShadow receiveShadow ref={marsMesh} position={[5.6, 0, 0]}>
           <sphereGeometry args={[0.05]} />
           <meshStandardMaterial map={marsMap} />
         </mesh>
@@ -114,7 +122,7 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <mesh ref={jupiterMesh} position={[7.5, 0, 0]}>
+        <mesh castShadow receiveShadow ref={jupiterMesh} position={[7.5, 0, 0]}>
           <sphereGeometry args={[1.0]} />
           <meshStandardMaterial map={jupiterMap} />
         </mesh>
@@ -122,7 +130,7 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[12.0, 0, 0]}>
+        <mesh castShadow receiveShadow ref={saturnMesh} position={[12.0, 0, 0]}>
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
@@ -134,7 +142,7 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
-        <mesh ref={uranusMesh} position={[15.8, 0, 0]}>
+        <mesh castShadow receiveShadow ref={uranusMesh} position={[15.8, 0, 0]}>
           <sphereGeometry args={[0.38]} />
           <meshStandardMaterial map={uranusMap} />
         </mesh>
@@ -142,7 +150,7 @@ function SolarSystemMaker() {
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
-        <mesh ref={neptuneMesh} position={[18, 0, 0]}>
+        <mesh castShadow receiveShadow ref={neptuneMesh} position={[18, 0, 0]}>
           <sphereGeometry args={[0.32]} />
           <meshStandardMaterial map={neptuneMap} />
         </mesh>
@@ -150,7 +158,7 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
-        <mesh ref={plutoMesh} position={[19.3, 0, 0]}>
+        <mesh castShadow receiveShadow ref={plutoMesh} position={[19.3, 0, 0]}>
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
@@ -158,6 +166,12 @@ function SolarSystemMaker() {
     </>
   )
 }
+
+// function Loader() {
+//   const { progress } = useProgress()
+//   console.log('loader was hit')
+//   return <Html center>{progress} % loaded</Html>
+// }
 export default function SolarSystem() {
   return (
     <div
@@ -166,7 +180,7 @@ export default function SolarSystem() {
     >
       <Navbar />
       <div style={{ width: '100vw', height: '100vh' }}>
-        <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
+        <Canvas shadowMap camera={{ position: [30, 4, 25], fov: 23 }}>
           <color attach="background" args={[0x000000]} />
           <Suspense fallback={null}>
             <SolarSystemMaker />
