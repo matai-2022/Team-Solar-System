@@ -551,8 +551,6 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-<<<<<<< HEAD
-=======
 .container {
   width: 100%;
 }
@@ -627,18 +625,14 @@ video {
   position: fixed;
 }
 
->>>>>>> fce343166baf5bcd40c52734b822c885ebbdee1b
 .absolute {
   position: absolute;
 }
 
-<<<<<<< HEAD
-=======
 .relative {
   position: relative;
 }
 
->>>>>>> fce343166baf5bcd40c52734b822c885ebbdee1b
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -671,8 +665,6 @@ video {
   display: flex;
 }
 
-<<<<<<< HEAD
-=======
 .table {
   display: table;
 }
@@ -689,7 +681,6 @@ video {
   display: none;
 }
 
->>>>>>> fce343166baf5bcd40c52734b822c885ebbdee1b
 .h-screen {
   height: 100vh;
 }
