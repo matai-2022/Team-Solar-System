@@ -9,7 +9,7 @@ const Navbar = () => {
         background: 'rgba(0, 0, 0, 0)',
         position: 'absolute',
         zIndex: 10,
-        width: '15vw',
+        width: '20vw',
         // height: '100vh',
       }}
       className="flex flex-col text-white h-full"
@@ -22,10 +22,9 @@ const Navbar = () => {
           HOME
         </Link>
 
-
         <button
           onClick={() => setActivePlanet(activePlanet === 'sun' ? null : 'sun')}
-          className="flex pl-5 hover:text-orange-500"
+          className="flex  pl-5 hover:text-orange-500"
         >
           SUN
         </button>
