@@ -77,6 +77,7 @@ function SolarSystemMaker() {
     saturnMesh.current.rotation.y += 0.01 / 0.44
     pin6.current.rotation.y += 0.001 * 0.03
     ringMesh.current.rotation.x = 1.56
+
     uranusMesh.current.rotation.y -= 0.01 / 0.72
     pin7.current.rotation.y += 0.001 * 0.01
     neptuneMesh.current.rotation.y += 0.01 / 0.67
@@ -102,50 +103,50 @@ function SolarSystemMaker() {
 
       {/* Sun */}
       <mesh ref={sunMesh}>
-        <sphereGeometry args={[2.5]} />
+        <sphereGeometry args={[11]} />
         <meshStandardMaterial map={sunMap} />
 
         <mesh ref={ringmercuryMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[3.7, 0.005, 30, 100]} />
+          <torusGeometry args={[14.5, 0.005, 30, 100]} />
           <meshStandardMaterial color={'white'} />
         </mesh>
         <mesh ref={ringvenusMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[3.9, 0.005, 30, 100]} />
+          <torusGeometry args={[17.7, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringearthMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[4.7, 0.005, 30, 100]} />
+          <torusGeometry args={[20.3, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringmarsMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[5.6, 0.005, 30, 100]} />
+          <torusGeometry args={[25.2, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringjupiterMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[7.5, 0.005, 30, 100]} />
+          <torusGeometry args={[59.2, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringsaturnMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[12, 0.005, 30, 100]} />
+          <torusGeometry args={[99.9, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringuranusMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[15.8, 0.005, 30, 100]} />
+          <torusGeometry args={[190, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringneptuneMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[18, 0.005, 30, 100]} />
+          <torusGeometry args={[299, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
         <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[19.3, 0.005, 30, 100]} />
+          <torusGeometry args={[378, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
       </mesh>
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[3.7, 0, 0]}>
+        <mesh ref={mercuryMesh} position={[14.5, 0, 0]}>
           <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
         </mesh>
@@ -153,7 +154,7 @@ function SolarSystemMaker() {
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
-        <mesh ref={venusMesh} position={[3.9, 0, 0]}>
+        <mesh ref={venusMesh} position={[17.7, 0, 0]}>
           <sphereGeometry args={[0.09]} />
           <meshStandardMaterial map={venusMap} />
         </mesh>
@@ -161,7 +162,7 @@ function SolarSystemMaker() {
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
-        <mesh ref={earthMesh} position={[4.7, 0, 0]}>
+        <mesh ref={earthMesh} position={[20.3, 0, 0]}>
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
           {/* moon */}
@@ -174,7 +175,7 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
-        <mesh ref={marsMesh} position={[5.6, 0, 0]}>
+        <mesh ref={marsMesh} position={[25.2, 0, 0]}>
           <sphereGeometry args={[0.05]} />
           <meshStandardMaterial map={marsMap} />
         </mesh>
@@ -182,7 +183,7 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <mesh ref={jupiterMesh} position={[7.5, 0, 0]}>
+        <mesh ref={jupiterMesh} position={[59.2, 0, 0]}>
           <sphereGeometry args={[1.0]} />
           <meshStandardMaterial map={jupiterMap} />
         </mesh>
@@ -190,7 +191,7 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[12.0, 0, 0]}>
+        <mesh ref={saturnMesh} position={[99.9, 0, 0]}>
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
@@ -202,7 +203,7 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
-        <mesh ref={uranusMesh} position={[15.8, 0, 0]}>
+        <mesh ref={uranusMesh} position={[190, 0, 0]}>
           <sphereGeometry args={[0.38]} />
           <meshStandardMaterial map={uranusMap} />
         </mesh>
@@ -210,7 +211,7 @@ function SolarSystemMaker() {
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
-        <mesh ref={neptuneMesh} position={[18, 0, 0]}>
+        <mesh ref={neptuneMesh} position={[299, 0, 0]}>
           <sphereGeometry args={[0.32]} />
           <meshStandardMaterial map={neptuneMap} />
         </mesh>
@@ -218,7 +219,7 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
-        <mesh ref={plutoMesh} position={[19.3, 0, 0]}>
+        <mesh ref={plutoMesh} position={[378, 0, 0]}>
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
