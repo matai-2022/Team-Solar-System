@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ const LandingPage = () => {
         backgroundImage: 'url(/server/public/images/sunrise.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        cursor: 'url(/server/public/images/rocketsmall.png)',
       }}
     >
       {/* //holds all the stuff */}
@@ -23,7 +25,7 @@ const LandingPage = () => {
 
         <Link to="/solarsystem">
           <button
-            className="flex text-white items-center justify-self-end border border-double border-white p-3 px-6 mt-5"
+            className="flex text-white items-center justify-self-end border border-double border-white p-3 px-6 mt-5 cursor: 'url(/server/public/images/rocketsmall.png)'"
             type="button"
           >
             BLAST OFF!!!

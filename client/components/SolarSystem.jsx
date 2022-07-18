@@ -2,7 +2,7 @@ import React, { Suspense, useRef } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import { DoubleSide } from 'three'
+import { DoubleSide, LoadingManager } from 'three'
 import Navbar from './Navbar'
 
 function SolarSystemMaker() {
@@ -173,7 +173,7 @@ function SolarSystemMaker() {
 export default function SolarSystem() {
   return (
     <div
-      className="flex flex-row bg-black"
+      className="flex flex-row bg-black cursor-move"
       // style={{ width: '100vw', height: '100vh' }}
     >
       <Navbar />
