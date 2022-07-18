@@ -689,10 +689,6 @@ video {
   height: 0.75rem;
 }
 
-.w-1\/5 {
-  width: 20%;
-}
-
 .w-1 {
   width: 0.25rem;
 }
@@ -703,6 +699,10 @@ video {
 
 .w-0 {
   width: 0px;
+}
+
+.w-1\/5 {
+  width: 20%;
 }
 
 .flex-shrink {
