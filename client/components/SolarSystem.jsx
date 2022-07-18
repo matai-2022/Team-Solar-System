@@ -2,10 +2,19 @@ import React, { Suspense, useRef } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import { DoubleSide } from 'three'
+import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
+import { Provider, useDispatch, useSelector } from 'react-redux'
+import { selectPause, setPause } from '../slices/pause'
+import { selectPlanet, setPlanet } from '../slices/planet'
+import store from '../store'
 
 function SolarSystemMaker() {
+  const vec = new Vector3()
+  const pause = useSelector(selectPause)
+  const planet = useSelector(selectPlanet)
+  const dispatch = useDispatch()
+
   const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
   const earthMap = useLoader(TextureLoader, '/server/public/images/earth.jpg')
   const mercuryMap = useLoader(
@@ -52,6 +61,19 @@ function SolarSystemMaker() {
   const plutoMesh = useRef()
   const pin9 = useRef()
 
+  const planetsMeshes = new Map()
+  planetsMeshes.set('sun', sunMesh)
+  planetsMeshes.set('mercury', mercuryMesh)
+  planetsMeshes.set('venus', venusMesh)
+  planetsMeshes.set('earth', earthMesh)
+  planetsMeshes.set('mars', marsMesh)
+  planetsMeshes.set('jupiter', jupiterMesh)
+  planetsMeshes.set('saturn', saturnMesh)
+  planetsMeshes.set('uranus', uranusMesh)
+  planetsMeshes.set('neptune', neptuneMesh)
+  planetsMeshes.set('pluto', plutoMesh)
+  const planetMesh = planetsMeshes.get(planet)
+
   const ringmercuryMesh = useRef()
   const ringvenusMesh = useRef()
   const ringearthMesh = useRef()
@@ -62,28 +84,7 @@ function SolarSystemMaker() {
   const ringneptuneMesh = useRef()
   const ringplutoMesh = useRef()
 
-  useFrame(() => {
-    sunMesh.current.rotation.y += 0.01 / 27
-    mercuryMesh.current.rotation.y += 0.01 / 58.8
-    pin1.current.rotation.y += 0.001 * 4.2
-    venusMesh.current.rotation.y -= 0.01 / 244
-    pin2.current.rotation.y += 0.001 * 1.6
-    earthMesh.current.rotation.y += 0.01
-    pin3.current.rotation.y += 0.001
-    marsMesh.current.rotation.y += 0.01 / 1.03
-    pin4.current.rotation.y += 0.001 * 0.53
-    jupiterMesh.current.rotation.y += 0.01 / 0.41
-    pin5.current.rotation.y += 0.001 * 0.08
-    saturnMesh.current.rotation.y += 0.01 / 0.44
-    pin6.current.rotation.y += 0.001 * 0.03
-    ringMesh.current.rotation.x = 1.56
-    uranusMesh.current.rotation.y -= 0.01 / 0.72
-    pin7.current.rotation.y += 0.001 * 0.01
-    neptuneMesh.current.rotation.y += 0.01 / 0.67
-    pin8.current.rotation.y += 0.001 * 0.006
-    plutoMesh.current.rotation.y += 0.01 / 6.41
-    pin9.current.rotation.y += 0.001 / 248
-
+  useFrame(({ camera }) => {
     ringmercuryMesh.current.rotation.x = 1.569
     ringvenusMesh.current.rotation.x = 1.569
     ringearthMesh.current.rotation.x = 1.569
@@ -93,6 +94,37 @@ function SolarSystemMaker() {
     ringuranusMesh.current.rotation.x = 1.569
     ringneptuneMesh.current.rotation.x = 1.569
     ringplutoMesh.current.rotation.x = 1.569
+
+    if (pause === false) {
+      sunMesh.current.rotation.y += 0.01 / 27
+      mercuryMesh.current.rotation.y += 0.01 / 58.8
+      pin1.current.rotation.y += 0.001 * 4.2
+      venusMesh.current.rotation.y -= 0.01 / 244
+      pin2.current.rotation.y += 0.001 * 1.6
+      earthMesh.current.rotation.y += 0.01
+      pin3.current.rotation.y += 0.001
+      marsMesh.current.rotation.y += 0.01 / 1.03
+      pin4.current.rotation.y += 0.001 * 0.53
+      jupiterMesh.current.rotation.y += 0.01 / 0.41
+      pin5.current.rotation.y += 0.001 * 0.08
+      saturnMesh.current.rotation.y += 0.01 / 0.44
+      pin6.current.rotation.y += 0.001 * 0.03
+      ringMesh.current.rotation.x = 1.56
+
+      uranusMesh.current.rotation.y -= 0.01 / 0.72
+      pin7.current.rotation.y += 0.001 * 0.01
+      neptuneMesh.current.rotation.y += 0.01 / 0.67
+      pin8.current.rotation.y += 0.001 * 0.006
+      plutoMesh.current.rotation.y += 0.01 / 6.41
+      pin9.current.rotation.y += 0.001 / 248
+    }
+    if (planet !== '') {
+      //   console.log(planet.mesh.current.position)
+      //   camera.position.set(planet.mesh.current.position)
+      camera.lookAt(planetMesh.current.position)
+      camera.position.lerp(vec.set(0, 0, 15), 0.1)
+      camera.updateProjectionMatrix()
+    }
   })
 
   return (
@@ -101,7 +133,13 @@ function SolarSystemMaker() {
       <pointLight intensity={1} position={[0, 0, 0]} />
 
       {/* Sun */}
-      <mesh ref={sunMesh}>
+      <mesh
+        ref={sunMesh}
+        onClick={() => {
+          dispatch(setPause(planetMesh === sunMesh ? false : true))
+          dispatch(setPlanet(planetMesh !== sunMesh ? 'sun' : ''))
+        }}
+      >
         <sphereGeometry args={[2.5]} />
         <meshStandardMaterial map={sunMap} />
 
@@ -145,7 +183,14 @@ function SolarSystemMaker() {
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[3.7, 0, 0]}>
+        <mesh
+          ref={mercuryMesh}
+          position={[3.7, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === mercuryMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== mercuryMesh ? 'mercury' : ''))
+          }}
+        >
           <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
         </mesh>
@@ -153,7 +198,14 @@ function SolarSystemMaker() {
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
-        <mesh ref={venusMesh} position={[3.9, 0, 0]}>
+        <mesh
+          ref={venusMesh}
+          position={[3.9, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === venusMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== venusMesh ? 'venus' : ''))
+          }}
+        >
           <sphereGeometry args={[0.09]} />
           <meshStandardMaterial map={venusMap} />
         </mesh>
@@ -161,7 +213,14 @@ function SolarSystemMaker() {
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
-        <mesh ref={earthMesh} position={[4.7, 0, 0]}>
+        <mesh
+          ref={earthMesh}
+          position={[4.7, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === earthMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== earthMesh ? 'earth' : ''))
+          }}
+        >
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
           {/* moon */}
@@ -174,7 +233,14 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
-        <mesh ref={marsMesh} position={[5.6, 0, 0]}>
+        <mesh
+          ref={marsMesh}
+          position={[5.6, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === marsMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== marsMesh ? 'mars' : ''))
+          }}
+        >
           <sphereGeometry args={[0.05]} />
           <meshStandardMaterial map={marsMap} />
         </mesh>
@@ -182,7 +248,14 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <mesh ref={jupiterMesh} position={[7.5, 0, 0]}>
+        <mesh
+          ref={jupiterMesh}
+          position={[7.5, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === jupiterMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== jupiterMesh ? 'jupiter' : ''))
+          }}
+        >
           <sphereGeometry args={[1.0]} />
           <meshStandardMaterial map={jupiterMap} />
         </mesh>
@@ -190,7 +263,14 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[12.0, 0, 0]}>
+        <mesh
+          ref={saturnMesh}
+          position={[12.0, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === saturnMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== saturnMesh ? 'saturn' : ''))
+          }}
+        >
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
@@ -202,7 +282,14 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
-        <mesh ref={uranusMesh} position={[15.8, 0, 0]}>
+        <mesh
+          ref={uranusMesh}
+          position={[15.8, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === uranusMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== uranusMesh ? 'uranus' : ''))
+          }}
+        >
           <sphereGeometry args={[0.38]} />
           <meshStandardMaterial map={uranusMap} />
         </mesh>
@@ -210,7 +297,14 @@ function SolarSystemMaker() {
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
-        <mesh ref={neptuneMesh} position={[18, 0, 0]}>
+        <mesh
+          ref={neptuneMesh}
+          position={[18, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === neptuneMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== neptuneMesh ? 'neptune' : ''))
+          }}
+        >
           <sphereGeometry args={[0.32]} />
           <meshStandardMaterial map={neptuneMap} />
         </mesh>
@@ -218,7 +312,14 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
-        <mesh ref={plutoMesh} position={[19.3, 0, 0]}>
+        <mesh
+          ref={plutoMesh}
+          position={[19.3, 0, 0]}
+          onClick={() => {
+            dispatch(setPause(planetMesh === plutoMesh ? false : true))
+            dispatch(setPlanet(planetMesh !== plutoMesh ? 'pluto' : ''))
+          }}
+        >
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
@@ -241,9 +342,11 @@ export default function SolarSystem() {
       >
         <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
           <color attach="background" args={[0x000000]} />
-          <Suspense fallback={null}>
-            <SolarSystemMaker />
-          </Suspense>
+          <Provider store={store}>
+            <Suspense fallback={null}>
+              <SolarSystemMaker />
+            </Suspense>
+          </Provider>
           <OrbitControls />
 
           <Stars
