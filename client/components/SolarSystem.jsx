@@ -1,6 +1,6 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import { OrbitControls, Stars, Text, Billboard } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
@@ -13,6 +13,7 @@ function SolarSystemMaker() {
   const vec = new Vector3()
   const pause = useSelector(selectPause)
   const planet = useSelector(selectPlanet)
+  const [hovering, setHovering] = useState(false)
   const dispatch = useDispatch()
 
   const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
@@ -139,10 +140,21 @@ function SolarSystemMaker() {
           dispatch(setPause(planetMesh === sunMesh ? false : true))
           dispatch(setPlanet(planetMesh !== sunMesh ? 'sun' : ''))
         }}
+        onPointerOver={() => setHovering(hovering === true ? false : true)}
       >
         <sphereGeometry args={[2.5]} />
         <meshStandardMaterial map={sunMap} />
-
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={true}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[0, 3, 0]}
+        >
+          <Text fontSize={hovering ? [1.001] : [0.001]} color={'white'}>
+            Sun
+          </Text>
+        </Billboard>
         <mesh ref={ringmercuryMesh} position={[0, 0, 0]}>
           <torusGeometry args={[3.7, 0.005, 30, 100]} />
           <meshStandardMaterial color={'white'} />
@@ -183,6 +195,17 @@ function SolarSystemMaker() {
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[4, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Mercury
+          </Text>
+        </Billboard>
         <mesh
           ref={mercuryMesh}
           position={[3.7, 0, 0]}
@@ -190,6 +213,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === mercuryMesh ? false : true))
             dispatch(setPlanet(planetMesh !== mercuryMesh ? 'mercury' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
@@ -198,6 +222,17 @@ function SolarSystemMaker() {
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[3.9, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Venus
+          </Text>
+        </Billboard>
         <mesh
           ref={venusMesh}
           position={[3.9, 0, 0]}
@@ -205,6 +240,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === venusMesh ? false : true))
             dispatch(setPlanet(planetMesh !== venusMesh ? 'venus' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.09]} />
           <meshStandardMaterial map={venusMap} />
@@ -213,6 +249,17 @@ function SolarSystemMaker() {
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[4.7, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Earth
+          </Text>
+        </Billboard>
         <mesh
           ref={earthMesh}
           position={[4.7, 0, 0]}
@@ -220,6 +267,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === earthMesh ? false : true))
             dispatch(setPlanet(planetMesh !== earthMesh ? 'earth' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
@@ -233,6 +281,17 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[5.6, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Mars
+          </Text>
+        </Billboard>
         <mesh
           ref={marsMesh}
           position={[5.6, 0, 0]}
@@ -240,6 +299,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === marsMesh ? false : true))
             dispatch(setPlanet(planetMesh !== marsMesh ? 'mars' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.05]} />
           <meshStandardMaterial map={marsMap} />
@@ -248,6 +308,17 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[7.5, 1.5, 0]}
+        >
+          <Text fontSize={hovering ? [0.3] : [0.001]} color={'white'}>
+            Jupiter
+          </Text>
+        </Billboard>
         <mesh
           ref={jupiterMesh}
           position={[7.5, 0, 0]}
@@ -255,6 +326,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === jupiterMesh ? false : true))
             dispatch(setPlanet(planetMesh !== jupiterMesh ? 'jupiter' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[1.0]} />
           <meshStandardMaterial map={jupiterMap} />
@@ -263,6 +335,17 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[12, 1.3, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Saturn
+          </Text>
+        </Billboard>
         <mesh
           ref={saturnMesh}
           position={[12.0, 0, 0]}
@@ -270,9 +353,11 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === saturnMesh ? false : true))
             dispatch(setPlanet(planetMesh !== saturnMesh ? 'saturn' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
+
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
             <ringGeometry args={[1.5, 1.0, 32]} angle={0.15} />
             <meshStandardMaterial map={ringMap} side={DoubleSide} />
@@ -282,6 +367,17 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[15.8, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Uranus
+          </Text>
+        </Billboard>
         <mesh
           ref={uranusMesh}
           position={[15.8, 0, 0]}
@@ -289,6 +385,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === uranusMesh ? false : true))
             dispatch(setPlanet(planetMesh !== uranusMesh ? 'uranus' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.38]} />
           <meshStandardMaterial map={uranusMap} />
@@ -297,6 +394,17 @@ function SolarSystemMaker() {
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[18, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Neptune
+          </Text>
+        </Billboard>
         <mesh
           ref={neptuneMesh}
           position={[18, 0, 0]}
@@ -304,6 +412,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === neptuneMesh ? false : true))
             dispatch(setPlanet(planetMesh !== neptuneMesh ? 'neptune' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.32]} />
           <meshStandardMaterial map={neptuneMap} />
@@ -312,6 +421,17 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[19.3, 1, 0]}
+        >
+          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+            Pluto
+          </Text>
+        </Billboard>
         <mesh
           ref={plutoMesh}
           position={[19.3, 0, 0]}
@@ -319,6 +439,7 @@ function SolarSystemMaker() {
             dispatch(setPause(planetMesh === plutoMesh ? false : true))
             dispatch(setPlanet(planetMesh !== plutoMesh ? 'pluto' : ''))
           }}
+          onPointerOver={() => setHovering(hovering === true ? false : true)}
         >
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
