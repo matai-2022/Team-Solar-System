@@ -697,8 +697,6 @@ video {
   height: 0.75rem;
 }
 
-
-
 .h-5 {
   height: 1.25rem;
 }
@@ -710,11 +708,6 @@ video {
 .h-4 {
   height: 1rem;
 }
-
-.w-1\/5 {
-  width: 20%;
-}
-
 
 .w-1 {
   width: 0.25rem;
@@ -744,20 +737,8 @@ video {
   width: 2.5rem;
 }
 
-.w-3\/12 {
-  width: 25%;
-}
-
 .w-3 {
   width: 0.75rem;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
-}
-
-.w-6\/12 {
-  width: 50%;
 }
 
 .w-6 {
@@ -1063,25 +1044,11 @@ video {
     padding-left: 1.25rem;
   }
 
-  .lg\:text-2xl {
-    font-size: 1.5rem;
-  }
-
   .lg\:text-3xl {
     font-size: 1.875rem;
   }
-}
 
-@media (min-width: 1280px) {
-  .xl\:pl-5 {
-    padding-left: 1.25rem;
-  }
-
-  .xl\:text-4xl {
-    font-size: 2.25rem;
-  }
-
-  .xl\:text-3xl {
-    font-size: 1.875rem;
+  .lg\:text-2xl {
+    font-size: 1.5rem;
   }
 }
