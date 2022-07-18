@@ -103,7 +103,7 @@ function SolarSystemMaker() {
 
       {/* Sun */}
       <mesh ref={sunMesh}>
-        <sphereGeometry args={[11]} />
+        <sphereGeometry args={[10.355]} />
         <meshStandardMaterial map={sunMap} />
 
         <mesh ref={ringmercuryMesh} position={[0, 0, 0]}>
