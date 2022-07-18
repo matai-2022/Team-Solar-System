@@ -7,6 +7,7 @@ import { selectPlanet, setPlanet } from '../slices/planet'
 const Navbar = () => {
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
+  const [color, setColor] = useState('orange')
 
   return (
     // entire nav div
