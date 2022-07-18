@@ -2,12 +2,13 @@ import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import { DoubleSide } from 'three'
+import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
 
 function SolarSystemMaker() {
   const [pause, setPause] = useState(false)
-  const [planet, setPlanet] = useState()
+  const [planet, setPlanet] = useState(null)
+  const vec = new Vector3()
 
   const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
   const earthMap = useLoader(TextureLoader, '/server/public/images/earth.jpg')
@@ -78,8 +79,13 @@ function SolarSystemMaker() {
       pin8.current.rotation.y += 0.001 * 0.006
       plutoMesh.current.rotation.y += 0.01 / 6.41
       pin9.current.rotation.y += 0.001 / 248
-    } else {
-      // camera.position.y = planet.mesh.planet.yPosition
+    }
+    if (planet !== null) {
+      //   console.log(planet.mesh.current.position)
+      //   camera.position.set(planet.mesh.current.position)
+      camera.lookAt(planet.current.position)
+      camera.position.lerp(vec.set(0, 0, 15), 0.1)
+      camera.updateProjectionMatrix()
     }
   })
 
@@ -92,8 +98,8 @@ function SolarSystemMaker() {
       <mesh
         ref={sunMesh}
         onClick={() => {
-          setPause(!pause)
-          setPlanet({ mesh: sunMesh, yPosition: 0 })
+          setPause(planet === sunMesh ? false : true)
+          setPlanet(planet !== sunMesh ? sunMesh : null)
         }}
       >
         <sphereGeometry args={[2.5]} />
@@ -102,7 +108,14 @@ function SolarSystemMaker() {
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <mesh ref={mercuryMesh} position={[3.7, 0, 0]}>
+        <mesh
+          ref={mercuryMesh}
+          position={[3.7, 0, 0]}
+          onClick={() => {
+            setPause(planet === mercuryMesh ? false : true)
+            setPlanet(planet !== mercuryMesh ? mercuryMesh : null)
+          }}
+        >
           <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
         </mesh>
@@ -139,7 +152,14 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <mesh ref={jupiterMesh} position={[7.5, 0, 0]}>
+        <mesh
+          ref={jupiterMesh}
+          position={[7.5, 0, 0]}
+          onClick={() => {
+            setPause(planet === jupiterMesh ? false : true)
+            setPlanet(planet !== jupiterMesh ? jupiterMesh : null)
+          }}
+        >
           <sphereGeometry args={[1.0]} />
           <meshStandardMaterial map={jupiterMap} />
         </mesh>
@@ -147,7 +167,14 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[12.0, 0, 0]}>
+        <mesh
+          ref={saturnMesh}
+          position={[12.0, 0, 0]}
+          onClick={() => {
+            setPause(planet === saturnMesh ? false : true)
+            setPlanet(planet !== saturnMesh ? saturnMesh : null)
+          }}
+        >
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
@@ -184,12 +211,18 @@ function SolarSystemMaker() {
   )
 }
 export default function SolarSystem() {
+  const [planet, setPlanet] = useState('')
+
+  function setUI(selectedPlanet) {
+    setPlanet(selectedPlanet)
+  }
+
   return (
     <div
       className="flex flex-row bg-black"
       // style={{ width: '100vw', height: '100vh' }}
     >
-      <Navbar />
+      <Navbar planet={planet} />
       <div
         style={{
           width: '100vw',
@@ -199,7 +232,7 @@ export default function SolarSystem() {
         <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
           <color attach="background" args={[0x000000]} />
           <Suspense fallback={null}>
-            <SolarSystemMaker />
+            <SolarSystemMaker setUI={setUI} />
           </Suspense>
           <OrbitControls />
 
