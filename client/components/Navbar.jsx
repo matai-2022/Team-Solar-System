@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { selectPause, setPause } from '../slices/pause'
+import { selectPlanet, setPlanet } from '../slices/planet'
 
-const Navbar = ({ planet }) => {
-  const [activePlanet, setActivePlanet] = useState(null)
+const Navbar = () => {
+  // const [activePlanet, setActivePlanet] = useState(null)
+  const pause = useSelector(selectPause)
+  const planet = useSelector(selectPlanet)
+  const dispatch = useDispatch()
+
   return (
     <nav
       style={{
@@ -23,12 +30,15 @@ const Navbar = ({ planet }) => {
         </Link>
 
         <button
-          onClick={() => setActivePlanet(activePlanet === 'sun' ? null : 'sun')}
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('sun'))
+          }}
           className="flex  pl-5 hover:text-orange-500"
         >
           SUN
         </button>
-        {activePlanet === 'sun' && (
+        {planet === 'sun' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> Size: 1 Million Earths Would Fit in the Sun</li>
             <li> Temperature: 5,500°C </li>
@@ -41,14 +51,15 @@ const Navbar = ({ planet }) => {
 
         {/* Mercury */}
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'mercury' ? null : 'mercury')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('mercury'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           MERCURY
         </button>
-        {activePlanet === 'mercury' && (
+        {planet === 'mercury' && (
           <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li> 1st Planet From The Sun</li>
             <li> Size: 18 Mercuries Would Fit in Earth </li>
@@ -60,14 +71,15 @@ const Navbar = ({ planet }) => {
         )}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'venus' ? null : 'venus')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('venus'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           VENUS
         </button>
-        {activePlanet === 'venus' && (
+        {planet === 'venus' && (
           <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li>2nd Planet From The Sun </li>
             <li> Size: Almost The Same Size As Earth </li>
@@ -81,14 +93,15 @@ const Navbar = ({ planet }) => {
         )}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'earth' ? null : 'earth')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('earth'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           EARTH
         </button>
-        {activePlanet === 'earth' && (
+        {planet === 'earth' && (
           <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li>3rd Planet From The Sun</li>
             <li> Temperature: -89°C to 56°C </li>
@@ -104,14 +117,15 @@ const Navbar = ({ planet }) => {
         {/* mars */}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'mars' ? null : 'mars')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('mars'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           MARS
         </button>
-        {activePlanet === 'mars' && (
+        {planet === 'mars' && (
           <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li> 4th Planet From The Sun</li>
             <li> Size: Half the Size of Earth </li>
@@ -126,14 +140,15 @@ const Navbar = ({ planet }) => {
         {/* Jupiter */}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'jupiter' ? null : 'jupiter')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('jupiter'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           JUPITER
         </button>
-        {activePlanet === 'jupiter' && (
+        {planet === 'jupiter' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 5th Planet From The Sun</li>
             <li> Size: 1,300 Earths Would Fit in Jupiter </li>
@@ -146,14 +161,15 @@ const Navbar = ({ planet }) => {
         )}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'saturn' ? null : 'saturn')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('saturn'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           SATURN
         </button>
-        {activePlanet === 'saturn' && (
+        {planet === 'saturn' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 6th Planet From The Sun</li>
             <li> Size: 700 Earths Would Fit in Saturn </li>
@@ -170,14 +186,15 @@ const Navbar = ({ planet }) => {
         )}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'uranus' ? null : 'uranus')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('uranus'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           URANUS
         </button>
-        {activePlanet === 'uranus' && (
+        {planet === 'uranus' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 7th Planet From The Sun</li>
             <li>Size: 63 Earths Would Fit in Uranus</li>
@@ -193,14 +210,15 @@ const Navbar = ({ planet }) => {
         )}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'neptune' ? null : 'neptune')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('neptune'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           NEPTUNE
         </button>
-        {activePlanet === 'neptune' && (
+        {planet === 'neptune' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 8th Planet From The Sun</li>
             <li> Size: 57 Earths Would Fit in Neptune</li>
@@ -216,14 +234,15 @@ const Navbar = ({ planet }) => {
         )}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'pluto' ? null : 'pluto')
-          }
+          onClick={() => {
+            dispatch(setPause(true))
+            dispatch(setPlanet('pluto'))
+          }}
           className="flex pl-5 hover:text-orange-500"
         >
           PLUTO
         </button>
-        {activePlanet === 'pluto' && (
+        {planet === 'pluto' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li>
               Pluto Was Downgraded from a Planet To a Dwarf Planet in 2006
