@@ -8,9 +8,9 @@ import { Provider } from 'react-redux'
 const container = document.getElementById('app')
 const root = createRoot(container)
 root.render(
-  <Router>
-    <Provider store={store}>
+  <Provider store={store}>
+    <Router>
       <App />
-    </Provider>
-  </Router>
+    </Router>
+  </Provider>
 )

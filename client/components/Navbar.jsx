@@ -5,7 +5,6 @@ import { selectPause, setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
 const Navbar = () => {
-  // const [activePlanet, setActivePlanet] = useState(null)
   const pause = useSelector(selectPause)
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
@@ -31,8 +30,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('sun'))
+            dispatch(setPlanet(planet === 'sun' ? '' : 'sun'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex  pl-5 hover:text-orange-500"
         >
@@ -52,8 +51,8 @@ const Navbar = () => {
         {/* Mercury */}
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('mercury'))
+            dispatch(setPlanet(planet === 'mercury' ? '' : 'mercury'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -72,8 +71,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('venus'))
+            dispatch(setPlanet(planet === 'venus' ? '' : 'venus'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -94,8 +93,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('earth'))
+            dispatch(setPlanet(planet === 'earth' ? '' : 'earth'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -118,8 +117,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('mars'))
+            dispatch(setPlanet(planet === 'mars' ? '' : 'mars'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -141,8 +140,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('jupiter'))
+            dispatch(setPlanet(planet === 'jupiter' ? '' : 'jupiter'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -162,8 +161,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('saturn'))
+            dispatch(setPlanet(planet === 'saturn' ? '' : 'saturn'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -187,8 +186,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('uranus'))
+            dispatch(setPlanet(planet === 'uranus' ? '' : 'uranus'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -211,8 +210,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('neptune'))
+            dispatch(setPlanet(planet === 'neptune' ? '' : 'neptune'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -235,8 +234,8 @@ const Navbar = () => {
 
         <button
           onClick={() => {
-            dispatch(setPause(true))
-            dispatch(setPlanet('pluto'))
+            dispatch(setPlanet(planet === 'pluto' ? '' : 'pluto'))
+            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
