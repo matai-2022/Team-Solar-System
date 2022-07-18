@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [activePlanet, setActivePlanet] = useState(null)
+
   return (
+    // entire nav div
     <nav
       style={{
         background: 'rgba(0, 0, 0, 0)',
         position: 'absolute',
         zIndex: 10,
-        width: '20vw',
+
         // height: '100vh',
       }}
       className="flex flex-col text-white h-full"
     >
-      <div className="flex flex-col text-4xl">
+      {/* entire nav as well  */}
+      <div className="flex flex-col text-2xl pl-2 lg:text-3xl lg:pl-5  ">
         <Link
           className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
           to="/"
@@ -22,24 +25,31 @@ const Navbar = () => {
           HOME
         </Link>
 
-        <button
-          onClick={() => setActivePlanet(activePlanet === 'sun' ? null : 'sun')}
-          className="flex  pl-5 hover:text-orange-500"
-        >
-          SUN
-        </button>
-        {activePlanet === 'sun' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
-            <li> Size: 1 Million Earths Would Fit in the Sun</li>
-            <li> Temperature: 5,500°C </li>
-            <li> Age: 4.5 Billion Years Old</li>
-            <li> Distance from Earth: 93 Million Miles</li>
-            <li> Day Length: 26 Earth-Days</li>
-            <li> Fun Fact: The Sun is A Star! </li>
-          </ul>
-        )}
+        {/* sun div */}
+        <div className="flex flex-col">
+          <button
+            onClick={() =>
+              setActivePlanet(activePlanet === 'sun' ? null : 'sun')
+            }
+            className="flex  pl-5 hover:text-orange-500 active:text-orange-500"
+          >
+            SUN
+          </button>
 
-        {/* Mercury */}
+          {/* dropdown */}
+          {activePlanet === 'sun' && (
+            <ul className="flex flex-col list-disc space-y-0 pb-0 text-lg lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
+              <li> Size: 1 Million Earths Would Fit in the Sun</li>
+              <li> Temperature: 5,500°C </li>
+              <li> Age: 4.5 Billion Years Old</li>
+              <li> Distance from Earth: 93 Million Miles</li>
+              <li> Day Length: 26 Earth-Days</li>
+              <li> Fun Fact: The Sun is A Star! </li>
+            </ul>
+          )}
+        </div>
+
+        {/* Mercury Div */}
         <button
           onClick={() =>
             setActivePlanet(activePlanet === 'mercury' ? null : 'mercury')
@@ -49,7 +59,7 @@ const Navbar = () => {
           MERCURY
         </button>
         {activePlanet === 'mercury' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li> 1st Planet From The Sun</li>
             <li> Size: 18 Mercuries Would Fit in Earth </li>
             <li> Temperature: -180°C to 430°C </li>
@@ -59,6 +69,7 @@ const Navbar = () => {
           </ul>
         )}
 
+        {/* Venus Div */}
         <button
           onClick={() =>
             setActivePlanet(activePlanet === 'venus' ? null : 'venus')
@@ -68,7 +79,7 @@ const Navbar = () => {
           VENUS
         </button>
         {activePlanet === 'venus' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li>2nd Planet From The Sun </li>
             <li> Size: Almost The Same Size As Earth </li>
             <li> Temperature: 482°C </li>
@@ -80,6 +91,8 @@ const Navbar = () => {
           </ul>
         )}
 
+        {/* Earth Div */}
+
         <button
           onClick={() =>
             setActivePlanet(activePlanet === 'earth' ? null : 'earth')
@@ -89,7 +102,7 @@ const Navbar = () => {
           EARTH
         </button>
         {activePlanet === 'earth' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li>3rd Planet From The Sun</li>
             <li> Temperature: -89°C to 56°C </li>
             <li> Planet Type: Terrestrial Planet </li>
@@ -112,7 +125,7 @@ const Navbar = () => {
           MARS
         </button>
         {activePlanet === 'mars' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li> 4th Planet From The Sun</li>
             <li> Size: Half the Size of Earth </li>
             <li> Temperature: -153°C to 20°C</li>
@@ -134,7 +147,7 @@ const Navbar = () => {
           JUPITER
         </button>
         {activePlanet === 'jupiter' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 5th Planet From The Sun</li>
             <li> Size: 1,300 Earths Would Fit in Jupiter </li>
             <li> Temperature: -110 °C </li>
@@ -145,6 +158,8 @@ const Navbar = () => {
           </ul>
         )}
 
+        {/* Saturn Div */}
+
         <button
           onClick={() =>
             setActivePlanet(activePlanet === 'saturn' ? null : 'saturn')
@@ -154,7 +169,7 @@ const Navbar = () => {
           SATURN
         </button>
         {activePlanet === 'saturn' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 6th Planet From The Sun</li>
             <li> Size: 700 Earths Would Fit in Saturn </li>
             <li> Temperature: -139.15°C </li>
@@ -163,11 +178,13 @@ const Navbar = () => {
             <li> Moons: 53 Confirmed, 29 Provisional</li>
 
             <li>
-              Fun Fact: Saturns Rings Are Thought To Be Made Up of Broken
-              Comets, Asteroids and Shattered Moons
+              Fun Fact: Saturns Rings Are Thought To Be Made <br></br>Up of
+              Broken Comets, Asteroids and Shattered Moons
             </li>
           </ul>
         )}
+
+        {/* Uranus Div */}
 
         <button
           onClick={() =>
@@ -178,7 +195,7 @@ const Navbar = () => {
           URANUS
         </button>
         {activePlanet === 'uranus' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 7th Planet From The Sun</li>
             <li>Size: 63 Earths Would Fit in Uranus</li>
             <li> Average Temperature: -195°C</li>
@@ -186,11 +203,11 @@ const Navbar = () => {
             <li> Planet Type: Ice Giant </li>
             <li> Moons: 27</li>
 
-            <li>
-              Fun Fact: Uranus Was The First Planet Found With a Telescope.
-            </li>
+            <li>Fun Fact: The First Planet Found With a Telescope.</li>
           </ul>
         )}
+
+        {/* Neptune Div */}
 
         <button
           onClick={() =>
@@ -201,19 +218,18 @@ const Navbar = () => {
           NEPTUNE
         </button>
         {activePlanet === 'neptune' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 8th Planet From The Sun</li>
             <li> Size: 57 Earths Would Fit in Neptune</li>
             <li> Temperature: -200°C</li>
             <li> Day Length: 16 Earth Hours </li>
             <li> Planet Type: Ice Giant </li>
             <li> Moons: 14</li>
-            <li>
-              Fun Fact: Neptune Was Predicted by Mathematics Before Discovery
-              With Telescope
-            </li>
+            <li>Fun Fact: First Predicted by Mathematics</li>
           </ul>
         )}
+
+        {/* Pluto Div */}
 
         <button
           onClick={() =>
@@ -224,10 +240,8 @@ const Navbar = () => {
           PLUTO
         </button>
         {activePlanet === 'pluto' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
-            <li>
-              Pluto Was Downgraded from a Planet To a Dwarf Planet in 2006
-            </li>
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
+            <li>Downgraded to a Dwarf Planet in 2006</li>
             <li> Size: 154 Plutos can Fit in Earth </li>
             <li> Temperature: -232°C</li>
             <li> Day Length: 153 Earth Hours </li>
