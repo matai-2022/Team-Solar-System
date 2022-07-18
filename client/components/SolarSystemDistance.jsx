@@ -52,6 +52,16 @@ function SolarSystemMaker() {
   const plutoMesh = useRef()
   const pin9 = useRef()
 
+  const ringmercuryMesh = useRef()
+  const ringvenusMesh = useRef()
+  const ringearthMesh = useRef()
+  const ringmarsMesh = useRef()
+  const ringjupiterMesh = useRef()
+  const ringsaturnMesh = useRef()
+  const ringuranusMesh = useRef()
+  const ringneptuneMesh = useRef()
+  const ringplutoMesh = useRef()
+
   useFrame(() => {
     sunMesh.current.rotation.y += 0.01 / 27
     mercuryMesh.current.rotation.y += 0.01 / 58.8
@@ -74,6 +84,16 @@ function SolarSystemMaker() {
     pin8.current.rotation.y += 0.001 * 0.006
     plutoMesh.current.rotation.y += 0.01 / 6.41
     pin9.current.rotation.y += 0.001 / 248
+
+    ringmercuryMesh.current.rotation.x = 1.569
+    ringvenusMesh.current.rotation.x = 1.569
+    ringearthMesh.current.rotation.x = 1.569
+    ringmarsMesh.current.rotation.x = 1.569
+    ringjupiterMesh.current.rotation.x = 1.569
+    ringsaturnMesh.current.rotation.x = 1.569
+    ringuranusMesh.current.rotation.x = 1.569
+    ringneptuneMesh.current.rotation.x = 1.569
+    ringplutoMesh.current.rotation.x = 1.569
   })
 
   return (
@@ -85,6 +105,43 @@ function SolarSystemMaker() {
       <mesh ref={sunMesh}>
         <sphereGeometry args={[11]} />
         <meshStandardMaterial map={sunMap} />
+
+        <mesh ref={ringmercuryMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[14.5, 0.005, 30, 100]} />
+          <meshStandardMaterial color={'white'} />
+        </mesh>
+        <mesh ref={ringvenusMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[17.7, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringearthMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[20.3, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringmarsMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[25.2, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringjupiterMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[59.2, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringsaturnMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[99.9, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringuranusMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[190, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringneptuneMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[299, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
+        <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
+          <torusGeometry args={[378, 0.005, 30, 100]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
       </mesh>
 
       {/* Mercury */}

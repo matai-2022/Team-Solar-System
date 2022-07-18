@@ -45,7 +45,6 @@ function SolarSystemMaker() {
   const saturnMesh = useRef()
   const pin6 = useRef()
   const ringMesh = useRef()
-  const sunRingMesh = useRef()
   const uranusMesh = useRef()
   const pin7 = useRef()
   const neptuneMesh = useRef()
