@@ -753,6 +753,12 @@ video {
   justify-content: center;
 }
 
+.space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0px * var(--tw-space-y-reverse));
+}
+
 .justify-self-end {
   justify-self: end;
 }
@@ -823,6 +829,10 @@ video {
   padding-left: 2.5rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .font-sans {
   font-family: Darker Grotesque;
 }
@@ -845,6 +855,10 @@ video {
 
 .text-2xl {
   font-size: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
 }
 
 .uppercase {
@@ -936,4 +950,18 @@ video {
 .hover\:text-orange-500:hover {
   --tw-text-opacity: 1;
   color: rgb(249 115 22 / var(--tw-text-opacity));
+}
+
+@media (min-width: 1024px) {
+  .lg\:pl-5 {
+    padding-left: 1.25rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+  }
 }
