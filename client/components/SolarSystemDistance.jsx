@@ -191,7 +191,7 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[10, 666, 0, 0]}>
+        <mesh ref={saturnMesh} position={[10666, 0, 0]}>
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
@@ -241,7 +241,12 @@ export default function SolarSystem() {
         }}
       >
         <Canvas
-          camera={{ position: [1000, 4, 25], fov: 23, near: 0.1, far: 50000 }}
+          camera={{
+            position: [1000, 1000, 25],
+            fov: 50,
+            near: 0.1,
+            far: 50000,
+          }}
         >
           <color attach="background" args={[0x000000]} />
           <Suspense fallback={null}>

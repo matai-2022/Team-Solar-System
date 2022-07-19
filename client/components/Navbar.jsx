@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
+
 const Navbar = () => {
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
@@ -22,12 +23,21 @@ const Navbar = () => {
     >
       {/* entire nav as well  */}
       <div className="flex flex-col text-2xl pl-2 lg:text-3xl lg:pl-5  ">
-        <Link
-          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
-          to="/"
-        >
-          HOME
-        </Link>
+        <div className="flex flex row">
+          <Link
+            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+            to="/"
+          >
+            HOME
+          </Link>
+
+          {/* <Link
+            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+            to="/scale"
+          >
+            SCALE
+          </Link> */}
+        </div>
 
         <button
           onClick={() => {

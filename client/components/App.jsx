@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import SolarSystem from './SolarSystem'
 import LandingPage from './LandingPage'
-// import SolarSystemDistance from './SolarSystemDistance'
+import SolarSystemDistance from './SolarSystemDistance'
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/solarsystem" element={<SolarSystem />} />
+        <Route path="/scale" element={<SolarSystemDistance />} />
       </Routes>
     </div>
   )
