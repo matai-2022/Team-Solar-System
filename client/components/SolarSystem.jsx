@@ -83,7 +83,7 @@ function SolarSystemMaker() {
   const ringsaturnMesh = useRef()
   const ringuranusMesh = useRef()
   const ringneptuneMesh = useRef()
-  const ringplutoMesh = useRef()
+  // const ringplutoMesh = useRef()
 
   const arrayOfMeshes = [
     ringmercuryMesh,
@@ -94,7 +94,7 @@ function SolarSystemMaker() {
     ringsaturnMesh,
     ringuranusMesh,
     ringneptuneMesh,
-    ringplutoMesh,
+    // ringplutoMesh,
   ]
 
   useFrame(({ camera }) => {
@@ -122,8 +122,8 @@ function SolarSystemMaker() {
       pin7.current.rotation.y += 0.001 * 0.01
       neptuneMesh.current.rotation.y += 0.01 / 0.67
       pin8.current.rotation.y += 0.001 * 0.006
-      plutoMesh.current.rotation.y += 0.01 / 6.41
-      pin9.current.rotation.y += 0.001 / 248
+      // plutoMesh.current.rotation.y += 0.01 / 6.41
+      // pin9.current.rotation.y += 0.001 / 248
     }
     if (planet !== '') {
       //   console.log(planet.mesh.current.position)
@@ -193,10 +193,10 @@ function SolarSystemMaker() {
           <torusGeometry args={[18, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
         </mesh>
-        <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
+        {/* <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
           <torusGeometry args={[19.3, 0.005, 30, 100]} />
           <meshStandardMaterial color="white" />
-        </mesh>
+        </mesh> */}
       </mesh>
 
       {/* Mercury */}
@@ -427,7 +427,7 @@ function SolarSystemMaker() {
       </mesh>
 
       {/* Pluto */}
-      <mesh ref={pin9} position={[0, 0, 0]}>
+      {/* <mesh ref={pin9} position={[0, 0, 0]}>
         <Billboard
           follow={false}
           lockX={false}
@@ -451,7 +451,7 @@ function SolarSystemMaker() {
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
-      </mesh>
+      </mesh> */}
     </>
   )
 }

@@ -239,7 +239,7 @@ const Navbar = () => {
 
         {/* Pluto Div */}
 
-        <button
+        {/* <button
           onClick={() => {
             dispatch(setPlanet(planet === 'pluto' ? '' : 'pluto'))
             dispatch(setPause(planet === '' ? true : false))
@@ -259,7 +259,7 @@ const Navbar = () => {
             <li> Planet Type: Dwarf Planet </li>
             <li> Fun Fact: Named by an 11-Year-Old Girl in 1930</li>
           </ul>
-        )}
+        )} */}
       </div>
     </nav>
   )
