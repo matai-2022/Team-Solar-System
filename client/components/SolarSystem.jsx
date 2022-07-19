@@ -128,10 +128,6 @@ function SolarSystemMaker() {
     if (planet !== '') {
       planetMesh.current.getWorldPosition(vec)
       camera.lookAt(vec)
-      console.log(vec)
-
-      // state.camera.updateProjectionMatrix() // orbitControlsRef.current.enableRotate()
-      // orbitControlsRef.current.update()
     }
   })
 
