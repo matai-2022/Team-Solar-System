@@ -633,6 +633,16 @@ video {
   position: relative;
 }
 
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -701,16 +711,16 @@ video {
   width: 20%;
 }
 
+.w-1 {
+  width: 0.25rem;
+}
+
 .w-7 {
   width: 1.75rem;
 }
 
 .w-0 {
   width: 0px;
-}
-
-.w-1 {
-  width: 0.25rem;
 }
 
 .flex-shrink {
@@ -831,6 +841,11 @@ video {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .pt-10 {
