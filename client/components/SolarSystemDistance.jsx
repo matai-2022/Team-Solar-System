@@ -4,6 +4,7 @@ import { OrbitControls, Stars } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
 import Navbar from './Navbar'
+import ScaleSystemSecondNav from './ScaleSystemSecondNav'
 
 function SolarSystemMaker() {
   const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
@@ -240,6 +241,7 @@ export default function SolarSystem() {
           height: '100vh',
         }}
       >
+        <ScaleSystemSecondNav />
         <Canvas
           camera={{
             position: [1000, 1000, 25],
