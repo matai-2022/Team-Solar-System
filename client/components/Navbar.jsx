@@ -246,6 +246,29 @@ const Navbar = () => {
           </ul>
         )}
 
+<button
+          onClick={() => {
+            dispatch(setPlanet(planet === 'jamesWebb' ? '' : 'jamesWebb'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
+          className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'jamesWebb' ? '#ef6c00' : '' }}
+        >
+          JAMES WEBB TELESCOPE
+        </button>
+        {planet === 'jamesWebb' && (
+          <>
+          <p className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
+            
+              If you look closely at the Earth, you&apos;ll see a small triangular shape orbiting it, along with the moon.
+              This shape represents the James Webb Telescope, the successor to the Hubble telescope,
+              which has been releasing the highest quality photos of outer space we&apos;ve ever been able to capture.
+              Check out the website to see the photos.
+            </p>
+            <a href="https://webbtelescope.org/" rel="noreferrer" target="_blank">James Webb Telescope</a>
+          </>
+        )}
+
         {/* Pluto Div */}
 
         {/* <button

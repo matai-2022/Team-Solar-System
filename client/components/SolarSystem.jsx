@@ -75,6 +75,7 @@ function SolarSystemMaker() {
   planetsMeshes.set('uranus', uranusMesh)
   planetsMeshes.set('neptune', neptuneMesh)
   planetsMeshes.set('pluto', plutoMesh)
+  planetsMeshes.set('jamesWebb', telescopeMesh)
   const planetMesh = planetsMeshes.get(planet)
 
   const ringmercuryMesh = useRef()
