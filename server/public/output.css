@@ -689,16 +689,12 @@ video {
   height: 100%;
 }
 
-.h-3\/4 {
-  height: 75%;
-}
-
 .h-3 {
   height: 0.75rem;
 }
 
-.w-1\/5 {
-  width: 20%;
+.h-3\/4 {
+  height: 75%;
 }
 
 .w-1 {

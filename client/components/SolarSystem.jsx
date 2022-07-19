@@ -1,7 +1,8 @@
 import React, { Suspense, useRef } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { TextureLoader} from 'three/src/loaders/TextureLoader'
+import { CubeTextureLoader } from 'three/src/loaders/CubeTextureLoader'
 import { DoubleSide } from 'three'
 import Navbar from './Navbar'
 
@@ -28,6 +29,17 @@ function SolarSystemMaker() {
     '/server/public/images/neptune.jpg'
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
+  // const jamesWebbTexture = useLoader(TextureLoader, '/server/public/images/james-webb-x2.png')
+//FOR JAMES WEBB CUBE
+//   const loader = new CubeTextureLoader();
+// loader.setPath( '/server/public/images/' );
+
+// const jamesWebbTexture = loader.load( [
+// 	'james-webb.jpg', 'james-webb.jpg',
+// 	'james-webb.jpg', 'james-webb.jpg',
+// 	'james-webb.jpg', 'james-webb.jpg'
+// ] );
+
   const ringMap = useLoader(TextureLoader, '/server/public/images/ring2.png')
   const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
@@ -51,7 +63,7 @@ function SolarSystemMaker() {
   const pin8 = useRef()
   const plutoMesh = useRef()
   const pin9 = useRef()
-
+  const telescopeMesh = useRef()
   useFrame(() => {
     sunMesh.current.rotation.y += 0.01 / 27
     mercuryMesh.current.rotation.y += 0.01 / 58.8
@@ -67,6 +79,7 @@ function SolarSystemMaker() {
     saturnMesh.current.rotation.y += 0.01 / 0.44
     pin6.current.rotation.y += 0.001 * 0.03
     ringMesh.current.rotation.x = 1.56
+    telescopeMesh.current.rotation.x = .5
 
     uranusMesh.current.rotation.y -= 0.01 / 0.72
     pin7.current.rotation.y += 0.001 * 0.01
@@ -105,6 +118,12 @@ function SolarSystemMaker() {
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
+         {/* james webb telescope */}
+         <mesh ref={telescopeMesh} position={[5.4,0,0]} >
+            <coneBufferGeometry args={[0.02, 0.02, 8, 3, "yes", 0, 6.283185307179586]} />
+            <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
+            
+          </mesh>
         <mesh ref={earthMesh} position={[4.7, 0, 0]}>
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
@@ -115,6 +134,7 @@ function SolarSystemMaker() {
           </mesh>
         </mesh>
       </mesh>
+
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
