@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
-
 const Navbar = () => {
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
@@ -30,13 +29,6 @@ const Navbar = () => {
           >
             HOME
           </Link>
-
-          {/* <Link
-            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
-            to="/scale"
-          >
-            SCALE
-          </Link> */}
         </div>
 
         <button
@@ -99,7 +91,6 @@ const Navbar = () => {
             <li> Size: Almost The Same Size As Earth </li>
             <li> Temperature: 482°C </li>
             <li> Planet Type: Terrestrial Planet </li>
-            <li> Distance from Earth:</li>
             <li> Day Length: 225 Earth-Days</li>
             <li> Fun Fact: The Days are Longer Than the Years </li>
             <li> Hottest Planet In Solar System</li>
