@@ -85,16 +85,22 @@ function SolarSystemMaker() {
   const ringneptuneMesh = useRef()
   const ringplutoMesh = useRef()
 
+  const arrayOfMeshes = [
+    ringmercuryMesh,
+    ringvenusMesh,
+    ringearthMesh,
+    ringmarsMesh,
+    ringjupiterMesh,
+    ringsaturnMesh,
+    ringuranusMesh,
+    ringneptuneMesh,
+    ringplutoMesh,
+  ]
+
   useFrame(({ camera }) => {
-    ringmercuryMesh.current.rotation.x = 1.569
-    ringvenusMesh.current.rotation.x = 1.569
-    ringearthMesh.current.rotation.x = 1.569
-    ringmarsMesh.current.rotation.x = 1.569
-    ringjupiterMesh.current.rotation.x = 1.569
-    ringsaturnMesh.current.rotation.x = 1.569
-    ringuranusMesh.current.rotation.x = 1.569
-    ringneptuneMesh.current.rotation.x = 1.569
-    ringplutoMesh.current.rotation.x = 1.569
+    arrayOfMeshes.forEach((m) => {
+      m.current.rotation.x = 1.569
+    })
 
     if (pause === false) {
       sunMesh.current.rotation.y += 0.01 / 27
@@ -123,7 +129,7 @@ function SolarSystemMaker() {
       //   console.log(planet.mesh.current.position)
       //   camera.position.set(planet.mesh.current.position)
       camera.lookAt(planetMesh.current.position)
-      camera.position.lerp(vec.set(0, 0, 15), 0.1)
+      camera.position.lerp(vec.set(20, 10, 15), 0.1)
       camera.updateProjectionMatrix()
     }
   })
@@ -248,6 +254,7 @@ function SolarSystemMaker() {
       </mesh>
 
       {/* Earth */}
+      {/* <PlanetMesh name={'Earth'}   meshposition={[4.7, 0, 0]} Billboardposition={[4.7, 1, 0]} /> */}
       <mesh ref={pin3} position={[0, 0, 0]}>
         <Billboard
           follow={false}

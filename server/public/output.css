@@ -693,16 +693,20 @@ video {
   height: 0.75rem;
 }
 
+.w-1\/5 {
+  width: 20%;
+}
+
+.w-1 {
+  width: 0.25rem;
+}
+
 .w-7 {
   width: 1.75rem;
 }
 
 .w-0 {
   width: 0px;
-}
-
-.w-1 {
-  width: 0.25rem;
 }
 
 .flex-shrink {
@@ -942,14 +946,14 @@ video {
   transition-duration: 150ms !important;
 }
 
-.hover\:text-cyan-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(8 145 178 / var(--tw-text-opacity));
-}
-
 .hover\:text-orange-500:hover {
   --tw-text-opacity: 1;
   color: rgb(249 115 22 / var(--tw-text-opacity));
+}
+
+.hover\:text-cyan-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(8 145 178 / var(--tw-text-opacity));
 }
 
 @media (min-width: 1024px) {
@@ -957,11 +961,11 @@ video {
     padding-left: 1.25rem;
   }
 
-  .lg\:text-3xl {
-    font-size: 1.875rem;
-  }
-
   .lg\:text-2xl {
     font-size: 1.5rem;
+  }
+
+  .lg\:text-3xl {
+    font-size: 1.875rem;
   }
 }
