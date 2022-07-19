@@ -141,7 +141,6 @@ function SolarSystemMaker() {
         <mesh
           ref={sunMesh}
           onClick={() => {
-            dispatch(setPause(planetMesh === sunMesh ? false : true))
             dispatch(setPlanet(planetMesh !== sunMesh ? 'sun' : ''))
           }}
           onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -214,7 +213,6 @@ function SolarSystemMaker() {
             ref={mercuryMesh}
             position={[3.7, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === mercuryMesh ? false : true))
               dispatch(setPlanet(planetMesh !== mercuryMesh ? 'mercury' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -241,7 +239,6 @@ function SolarSystemMaker() {
             ref={venusMesh}
             position={[3.9, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === venusMesh ? false : true))
               dispatch(setPlanet(planetMesh !== venusMesh ? 'venus' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -268,7 +265,6 @@ function SolarSystemMaker() {
             ref={earthMesh}
             position={[4.7, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === earthMesh ? false : true))
               dispatch(setPlanet(planetMesh !== earthMesh ? 'earth' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -300,7 +296,6 @@ function SolarSystemMaker() {
             ref={marsMesh}
             position={[5.6, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === marsMesh ? false : true))
               dispatch(setPlanet(planetMesh !== marsMesh ? 'mars' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -327,7 +322,6 @@ function SolarSystemMaker() {
             ref={jupiterMesh}
             position={[7.5, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === jupiterMesh ? false : true))
               dispatch(setPlanet(planetMesh !== jupiterMesh ? 'jupiter' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -354,7 +348,6 @@ function SolarSystemMaker() {
             ref={saturnMesh}
             position={[12.0, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === saturnMesh ? false : true))
               dispatch(setPlanet(planetMesh !== saturnMesh ? 'saturn' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -386,7 +379,6 @@ function SolarSystemMaker() {
             ref={uranusMesh}
             position={[15.8, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === uranusMesh ? false : true))
               dispatch(setPlanet(planetMesh !== uranusMesh ? 'uranus' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -413,7 +405,6 @@ function SolarSystemMaker() {
             ref={neptuneMesh}
             position={[18, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === neptuneMesh ? false : true))
               dispatch(setPlanet(planetMesh !== neptuneMesh ? 'neptune' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -440,7 +431,6 @@ function SolarSystemMaker() {
             ref={plutoMesh}
             position={[19.3, 0, 0]}
             onClick={() => {
-              dispatch(setPause(planetMesh === plutoMesh ? false : true))
               dispatch(setPlanet(planetMesh !== plutoMesh ? 'pluto' : ''))
             }}
             onPointerOver={() => setHovering(hovering === true ? false : true)}

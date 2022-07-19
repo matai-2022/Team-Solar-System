@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
 const Navbar = () => {
@@ -32,7 +31,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'sun' ? '' : 'sun'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex  pl-5 hover:text-orange-500"
         >
@@ -53,7 +51,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'mercury' ? '' : 'mercury'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -74,7 +71,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'venus' ? '' : 'venus'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -98,7 +94,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'earth' ? '' : 'earth'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -122,7 +117,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'mars' ? '' : 'mars'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -145,7 +139,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'jupiter' ? '' : 'jupiter'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -168,7 +161,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'saturn' ? '' : 'saturn'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -195,7 +187,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'uranus' ? '' : 'uranus'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -219,7 +210,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'neptune' ? '' : 'neptune'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
@@ -242,7 +232,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'pluto' ? '' : 'pluto'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
         >
