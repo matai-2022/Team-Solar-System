@@ -8,6 +8,7 @@ import { Provider, useDispatch, useSelector } from 'react-redux'
 import { selectPause, setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 import store from '../store'
+import SecondNav from './SecondNav'
 
 function SolarSystemMaker() {
   const vec = new Vector3()
@@ -461,6 +462,7 @@ export default function SolarSystem() {
           height: '100vh',
         }}
       >
+        <SecondNav />
         <Canvas camera={{ position: [30, 4, 25], fov: 35 }}>
           <color attach="background" args={[0x000000]} />
           <Provider store={store}>
