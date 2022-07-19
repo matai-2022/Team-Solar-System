@@ -249,7 +249,7 @@ const Navbar = () => {
         </button>
         {planet === 'jamesWebb' && (
           <>
-            <p className="text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10 w-1/5">
+            <p className="text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10 w-1/4">
               If you look closely at the Earth, you&apos;ll see a small
               triangular shape. This represents the James Webb Telescope. Check
               out the{' '}
