@@ -140,7 +140,6 @@ function SolarSystemMaker() {
         onClick={() => {
           dispatch(setPlanet(planetMesh !== sunMesh ? 'sun' : ''))
         }}
-        // onPointerOver={() => setHovering(hovering === true ? false : true)}
       >
         <sphereGeometry args={[2.5]} />
         <meshStandardMaterial map={sunMap} />
@@ -470,25 +469,6 @@ export default function SolarSystem() {
             />
           </Provider>
         </Canvas>
-        {/* <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
-          <color attach="background" args={[0x000000]} />
-          <Provider store={store}>
-            <Suspense fallback={null}>
-              <SolarSystemMaker />
-            </Suspense>
-          </Provider>
-          <OrbitControls ref={orbitControlsRef} />
-
-          <Stars
-            radius={100} // Radius of the inner sphere (default=100)
-            depth={50} // Depth of area where stars should fit (default=50)
-            count={50000} // Amount of stars (default=5000)
-            factor={4} // Size factor (default=4)
-            saturation={0} // Saturation 0-1 (default=0)
-            fade
-            speed={1} // Faded dots (default=false)
-          />
-        </Canvas> */}
       </div>
     </div>
   )
