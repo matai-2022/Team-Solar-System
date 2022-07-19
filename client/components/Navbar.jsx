@@ -237,6 +237,35 @@ const Navbar = () => {
           </ul>
         )}
 
+        <button
+          onClick={() => {
+            dispatch(setPlanet(planet === 'jamesWebb' ? '' : 'jamesWebb'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
+          className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'jamesWebb' ? '#ef6c00' : '' }}
+        >
+          JAMES WEBB TELESCOPE
+        </button>
+        {planet === 'jamesWebb' && (
+          <>
+            <p className="text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10 w-1/5">
+              If you look closely at the Earth, you&apos;ll see a small
+              triangular shape. This represents the James Webb Telescope. Check
+              out the{' '}
+              <a
+                href="https://webbtelescope.org/"
+                rel="noreferrer"
+                target="_blank"
+                className="underline decoration-1"
+              >
+                website
+              </a>{' '}
+              to see the photos.
+            </p>
+          </>
+        )}
+
         {/* Pluto Div */}
 
         {/* <button

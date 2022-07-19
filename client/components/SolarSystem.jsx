@@ -60,6 +60,9 @@ function SolarSystemMaker() {
   const pin7 = useRef()
   const neptuneMesh = useRef()
   const pin8 = useRef()
+
+  const telescopeMesh = useRef()
+
   // const plutoMesh = useRef()
   // const pin9 = useRef()
 
@@ -74,6 +77,7 @@ function SolarSystemMaker() {
   planetsMeshes.set('uranus', uranusMesh)
   planetsMeshes.set('neptune', neptuneMesh)
   // planetsMeshes.set('pluto', plutoMesh)
+  planetsMeshes.set('jamesWebb', telescopeMesh)
   const planetMesh = planetsMeshes.get(planet)
 
   const ringmercuryMesh = useRef()
@@ -123,6 +127,7 @@ function SolarSystemMaker() {
       pin7.current.rotation.y += 0.001 * 0.01
       neptuneMesh.current.rotation.y += 0.01 / 0.67
       pin8.current.rotation.y += 0.001 * 0.006
+      telescopeMesh.current.rotation.y += 0.001
       // plutoMesh.current.rotation.y += 0.01 / 6.41
       // pin9.current.rotation.y += 0.001 / 248
     }
@@ -256,6 +261,12 @@ function SolarSystemMaker() {
             Earth
           </Text>
         </Billboard>
+          {/* james webb telescope */}
+          <mesh ref={telescopeMesh} position={[6.4,0,0]} >
+            <coneBufferGeometry args={[0.02, 0.02, 8, 3, "yes", 0, 6.283185307179586]} />
+            <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
+            
+          </mesh>
         <mesh
           ref={earthMesh}
           position={[6.1, 0, 0]}
@@ -272,6 +283,7 @@ function SolarSystemMaker() {
           </mesh>
         </mesh>
       </mesh>
+
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
@@ -432,8 +444,8 @@ function SolarSystemMaker() {
 
       {/* </Canvas> */}
     </>
-  )
-}
+  )}
+    
 export default function SolarSystem() {
   return (
     <div
