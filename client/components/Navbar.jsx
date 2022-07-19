@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { setPause } from '../slices/pause'
+import { selectPlanet, setPlanet } from '../slices/planet'
 
 const Navbar = () => {
-  const [activePlanet, setActivePlanet] = useState(null)
+  const planet = useSelector(selectPlanet)
+  const dispatch = useDispatch()
+
   return (
+    // entire nav div
     <nav
       style={{
         background: 'rgba(0, 0, 0, 0)',
         position: 'absolute',
         zIndex: 10,
-        width: '20vw',
+
         // height: '100vh',
       }}
       className="flex flex-col text-white h-full"
     >
-      <div className="flex flex-col text-4xl">
+      {/* entire nav as well  */}
+      <div className="flex flex-col text-2xl pl-2 lg:text-3xl lg:pl-5  ">
         <Link
           className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
           to="/"
@@ -23,12 +30,16 @@ const Navbar = () => {
         </Link>
 
         <button
-          onClick={() => setActivePlanet(activePlanet === 'sun' ? null : 'sun')}
+          onClick={() => {
+            dispatch(setPlanet(planet === 'sun' ? '' : 'sun'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex  pl-5 hover:text-orange-500"
+          style={{ color: planet === 'sun' ? '#ef6c00' : '' }}
         >
           SUN
         </button>
-        {activePlanet === 'sun' && (
+        {planet === 'sun' && (
           <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> Size: 1 Million Earths Would Fit in the Sun</li>
             <li> Temperature: 5,500°C </li>
@@ -39,16 +50,18 @@ const Navbar = () => {
           </ul>
         )}
 
-        {/* Mercury */}
+        {/* Mercury Div */}
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'mercury' ? null : 'mercury')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'mercury' ? '' : 'mercury'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'mercury' ? '#ef6c00' : '' }}
         >
           MERCURY
         </button>
-        {activePlanet === 'mercury' && (
+        {planet === 'mercury' && (
           <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li> 1st Planet From The Sun</li>
             <li> Size: 18 Mercuries Would Fit in Earth </li>
@@ -59,16 +72,19 @@ const Navbar = () => {
           </ul>
         )}
 
+        {/* Venus Div */}
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'venus' ? null : 'venus')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'venus' ? '' : 'venus'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'venus' ? '#ef6c00' : '' }}
         >
           VENUS
         </button>
-        {activePlanet === 'venus' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'venus' && (
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li>2nd Planet From The Sun </li>
             <li> Size: Almost The Same Size As Earth </li>
             <li> Temperature: 482°C </li>
@@ -80,16 +96,20 @@ const Navbar = () => {
           </ul>
         )}
 
+        {/* Earth Div */}
+
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'earth' ? null : 'earth')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'earth' ? '' : 'earth'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'earth' ? '#ef6c00' : '' }}
         >
           EARTH
         </button>
-        {activePlanet === 'earth' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'earth' && (
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li>3rd Planet From The Sun</li>
             <li> Temperature: -89°C to 56°C </li>
             <li> Planet Type: Terrestrial Planet </li>
@@ -104,15 +124,17 @@ const Navbar = () => {
         {/* mars */}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'mars' ? null : 'mars')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'mars' ? '' : 'mars'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'mars' ? '#ef6c00' : '' }}
         >
           MARS
         </button>
-        {activePlanet === 'mars' && (
-          <ul className="list-disc text-2xl  bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'mars' && (
+          <ul className="list-disc text-xl lg:text-2xl  bg-gray-600 bg-opacity-25 pl-10">
             <li> 4th Planet From The Sun</li>
             <li> Size: Half the Size of Earth </li>
             <li> Temperature: -153°C to 20°C</li>
@@ -126,15 +148,17 @@ const Navbar = () => {
         {/* Jupiter */}
 
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'jupiter' ? null : 'jupiter')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'jupiter' ? '' : 'jupiter'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'jupiter' ? '#ef6c00' : '' }}
         >
           JUPITER
         </button>
-        {activePlanet === 'jupiter' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'jupiter' && (
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 5th Planet From The Sun</li>
             <li> Size: 1,300 Earths Would Fit in Jupiter </li>
             <li> Temperature: -110 °C </li>
@@ -145,16 +169,20 @@ const Navbar = () => {
           </ul>
         )}
 
+        {/* Saturn Div */}
+
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'saturn' ? null : 'saturn')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'saturn' ? '' : 'saturn'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'saturn' ? '#ef6c00' : '' }}
         >
           SATURN
         </button>
-        {activePlanet === 'saturn' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'saturn' && (
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 6th Planet From The Sun</li>
             <li> Size: 700 Earths Would Fit in Saturn </li>
             <li> Temperature: -139.15°C </li>
@@ -163,22 +191,26 @@ const Navbar = () => {
             <li> Moons: 53 Confirmed, 29 Provisional</li>
 
             <li>
-              Fun Fact: Saturns Rings Are Thought To Be Made Up of Broken
-              Comets, Asteroids and Shattered Moons
+              Fun Fact: Saturns Rings Are Thought To Be Made <br></br>Up of
+              Broken Comets, Asteroids and Shattered Moons
             </li>
           </ul>
         )}
 
+        {/* Uranus Div */}
+
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'uranus' ? null : 'uranus')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'uranus' ? '' : 'uranus'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'uranus' ? '#ef6c00' : '' }}
         >
           URANUS
         </button>
-        {activePlanet === 'uranus' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'uranus' && (
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 7th Planet From The Sun</li>
             <li>Size: 63 Earths Would Fit in Uranus</li>
             <li> Average Temperature: -195°C</li>
@@ -186,48 +218,49 @@ const Navbar = () => {
             <li> Planet Type: Ice Giant </li>
             <li> Moons: 27</li>
 
-            <li>
-              Fun Fact: Uranus Was The First Planet Found With a Telescope.
-            </li>
+            <li>Fun Fact: The First Planet Found With a Telescope.</li>
           </ul>
         )}
 
+        {/* Neptune Div */}
+
         <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'neptune' ? null : 'neptune')
-          }
+          onClick={() => {
+            dispatch(setPlanet(planet === 'neptune' ? '' : 'neptune'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'neptune' ? '#ef6c00' : '' }}
         >
           NEPTUNE
         </button>
-        {activePlanet === 'neptune' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
+        {planet === 'neptune' && (
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
             <li> 8th Planet From The Sun</li>
             <li> Size: 57 Earths Would Fit in Neptune</li>
             <li> Temperature: -200°C</li>
             <li> Day Length: 16 Earth Hours </li>
             <li> Planet Type: Ice Giant </li>
             <li> Moons: 14</li>
-            <li>
-              Fun Fact: Neptune Was Predicted by Mathematics Before Discovery
-              With Telescope
-            </li>
+            <li>Fun Fact: First Predicted by Mathematics</li>
           </ul>
         )}
 
-        <button
-          onClick={() =>
-            setActivePlanet(activePlanet === 'pluto' ? null : 'pluto')
-          }
+        {/* Pluto Div */}
+
+        {/* <button
+          onClick={() => {
+            dispatch(setPlanet(planet === 'pluto' ? '' : 'pluto'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'pluto' ? '#ef6c00' : '' }}
         >
           PLUTO
         </button>
-        {activePlanet === 'pluto' && (
-          <ul className="list-disc text-2xl bg-gray-600 bg-opacity-25 pl-10">
-            <li>
-              Pluto Was Downgraded from a Planet To a Dwarf Planet in 2006
-            </li>
+        {planet === 'pluto' && (
+          <ul className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
+            <li>Downgraded to a Dwarf Planet in 2006</li>
             <li> Size: 154 Plutos can Fit in Earth </li>
             <li> Temperature: -232°C</li>
             <li> Day Length: 153 Earth Hours </li>
@@ -236,7 +269,7 @@ const Navbar = () => {
             <li> Planet Type: Dwarf Planet </li>
             <li> Fun Fact: Named by an 11-Year-Old Girl in 1930</li>
           </ul>
-        )}
+        )} */}
       </div>
     </nav>
   )
