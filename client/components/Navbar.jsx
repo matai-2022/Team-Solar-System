@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
+
 const Navbar = () => {
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
@@ -17,16 +18,25 @@ const Navbar = () => {
 
         // height: '100vh',
       }}
-      className="flex flex-col text-white h-full"
+      className="flex flex-col text-white h-full "
     >
       {/* entire nav as well  */}
       <div className="flex flex-col text-2xl pl-2 lg:text-3xl lg:pl-5  ">
-        <Link
-          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
-          to="/"
-        >
-          HOME
-        </Link>
+        <div className="flex flex row">
+          <Link
+            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+            to="/"
+          >
+            HOME
+          </Link>
+
+          {/* <Link
+            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+            to="/scale"
+          >
+            SCALE
+          </Link> */}
+        </div>
 
         <button
           onClick={() => {
