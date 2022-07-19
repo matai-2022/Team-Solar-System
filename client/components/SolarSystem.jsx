@@ -39,7 +39,7 @@ function SolarSystemMaker() {
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
   const ringMap = useLoader(TextureLoader, '/server/public/images/ring2.png')
-  const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
+ // const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
   const mercuryMesh = useRef()
@@ -60,7 +60,7 @@ function SolarSystemMaker() {
   const neptuneMesh = useRef()
   const pin8 = useRef()
   const plutoMesh = useRef()
-  const pin9 = useRef()
+  //const pin9 = useRef()
 
   const planetsMeshes = new Map()
   planetsMeshes.set('sun', sunMesh)
