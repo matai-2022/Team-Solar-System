@@ -140,6 +140,9 @@ function SolarSystemMaker() {
         onClick={() => {
           dispatch(setPlanet(planetMesh !== sunMesh ? 'sun' : ''))
         }}
+        onPointerMissed={() => {
+          dispatch(setPlanet(''))
+        }}
         // onPointerOver={() => setHovering(hovering === true ? false : true)}
       >
         <sphereGeometry args={[2.5]} />
@@ -209,7 +212,8 @@ function SolarSystemMaker() {
         <mesh
           ref={mercuryMesh}
           position={[4.3, 0, 0]}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation()
             dispatch(setPlanet(planetMesh !== mercuryMesh ? 'mercury' : ''))
           }}
         >
