@@ -18,7 +18,7 @@ const Navbar = () => {
 
         // height: '100vh',
       }}
-      className="flex flex-col text-white h-full"
+      className="flex flex-col text-white h-full "
     >
       {/* entire nav as well  */}
       <div className="flex flex-col text-2xl pl-2 lg:text-3xl lg:pl-5  ">
