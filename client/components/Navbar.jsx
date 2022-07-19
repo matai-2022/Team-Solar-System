@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setPause } from '../slices/pause'
@@ -27,6 +27,13 @@ const Navbar = () => {
           to="/"
         >
           HOME
+        </Link>
+
+        <Link
+          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+          to="/scale"
+        >
+          Scale
         </Link>
 
         <button
