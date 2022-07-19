@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
     //entire page div
     <div
-      className="h-full flex flex-col justify-center bg-black"
+      className="h-full flex flex-col justify-center bg-black cursor-[url(/server/public/images/rocket.png),_pointer]"
       style={{
         backgroundImage: 'url(/server/public/images/sunrise.jpg)',
         backgroundRepeat: 'no-repeat',
@@ -14,7 +14,7 @@ const LandingPage = () => {
     >
       {/* //holds all the stuff */}
       <div className="flex flex-col h-3/4 items-center">
-        <h1 className=" flex flex-col text-9xl text-white items-center pt-10 font-sans tracking-wider pb-0 mb-0">
+        <h1 className=" flex flex-col text-9xl text-white items-center pt-2 font-sans tracking-wider pb-0 mb-0">
           EXPLORE THE SOLAR SYSTEM
           <p className="text-white text-3xl font-sans py-0 mt-0">
             ITS ALMOST LAUNCH TIME - ARE YOU READY?? 3, 2, 1....
@@ -23,7 +23,7 @@ const LandingPage = () => {
 
         <Link to="/solarsystem">
           <button
-            className="flex text-white items-center justify-self-end border border-double border-white p-3 px-6 mt-5"
+            className="flex text-white items-center justify-self-end border border-double border-white p-3 px-6 mt-5 cursor-[url(/server/public/images/rocket.png),_pointer] "
             type="button"
           >
             BLAST OFF!!!
