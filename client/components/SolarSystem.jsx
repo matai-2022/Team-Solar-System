@@ -5,7 +5,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
 import { Provider, useDispatch, useSelector } from 'react-redux'
-import { selectPause, setPause } from '../slices/pause'
+import { selectPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 import store from '../store'
 
@@ -39,7 +39,7 @@ function SolarSystemMaker() {
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
   const ringMap = useLoader(TextureLoader, '/server/public/images/ring2.png')
-  const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
+  // const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
   const mercuryMesh = useRef()
@@ -59,8 +59,8 @@ function SolarSystemMaker() {
   const pin7 = useRef()
   const neptuneMesh = useRef()
   const pin8 = useRef()
-  const plutoMesh = useRef()
-  const pin9 = useRef()
+  // const plutoMesh = useRef()
+  // const pin9 = useRef()
   const orbitControlsRef = useRef()
 
   const planetsMeshes = new Map()
@@ -73,7 +73,7 @@ function SolarSystemMaker() {
   planetsMeshes.set('saturn', saturnMesh)
   planetsMeshes.set('uranus', uranusMesh)
   planetsMeshes.set('neptune', neptuneMesh)
-  planetsMeshes.set('pluto', plutoMesh)
+  // planetsMeshes.set('pluto', plutoMesh)
   const planetMesh = planetsMeshes.get(planet)
 
   const ringmercuryMesh = useRef()
@@ -84,18 +84,24 @@ function SolarSystemMaker() {
   const ringsaturnMesh = useRef()
   const ringuranusMesh = useRef()
   const ringneptuneMesh = useRef()
-  const ringplutoMesh = useRef()
+  // const ringplutoMesh = useRef()
 
-  useFrame((state) => {
-    ringmercuryMesh.current.rotation.x = 1.569
-    ringvenusMesh.current.rotation.x = 1.569
-    ringearthMesh.current.rotation.x = 1.569
-    ringmarsMesh.current.rotation.x = 1.569
-    ringjupiterMesh.current.rotation.x = 1.569
-    ringsaturnMesh.current.rotation.x = 1.569
-    ringuranusMesh.current.rotation.x = 1.569
-    ringneptuneMesh.current.rotation.x = 1.569
-    ringplutoMesh.current.rotation.x = 1.569
+  const arrayOfMeshes = [
+    ringmercuryMesh,
+    ringvenusMesh,
+    ringearthMesh,
+    ringmarsMesh,
+    ringjupiterMesh,
+    ringsaturnMesh,
+    ringuranusMesh,
+    ringneptuneMesh,
+    // ringplutoMesh,
+  ]
+
+  useFrame(({ camera }) => {
+    arrayOfMeshes.forEach((m) => {
+      m.current.rotation.x = 1.569
+    })
 
     if (pause === false) {
       sunMesh.current.rotation.y += 0.01 / 27
@@ -117,14 +123,12 @@ function SolarSystemMaker() {
       pin7.current.rotation.y += 0.001 * 0.01
       neptuneMesh.current.rotation.y += 0.01 / 0.67
       pin8.current.rotation.y += 0.001 * 0.006
-      plutoMesh.current.rotation.y += 0.01 / 6.41
-      pin9.current.rotation.y += 0.001 / 248
+      // plutoMesh.current.rotation.y += 0.01 / 6.41
+      // pin9.current.rotation.y += 0.001 / 248
     }
     if (planet !== '') {
-      //   console.log(planet.mesh.current.position)
-      //   camera.position.set(planet.mesh.current.position)
       planetMesh.current.getWorldPosition(vec)
-      state.camera.lookAt(vec)
+      camera.lookAt(vec)
 
       // state.camera.updateProjectionMatrix() // orbitControlsRef.current.enableRotate()
       // orbitControlsRef.current.update()
@@ -190,10 +194,10 @@ function SolarSystemMaker() {
             <torusGeometry args={[18, 0.005, 30, 100]} />
             <meshStandardMaterial color="white" />
           </mesh>
-          <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
+          {/* <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
             <torusGeometry args={[19.3, 0.005, 30, 100]} />
             <meshStandardMaterial color="white" />
-          </mesh>
+          </mesh> */}
         </mesh>
 
         {/* Mercury */}
@@ -249,6 +253,7 @@ function SolarSystemMaker() {
         </mesh>
 
         {/* Earth */}
+        {/* <PlanetMesh name={'Earth'}   meshposition={[4.7, 0, 0]} Billboardposition={[4.7, 1, 0]} /> */}
         <mesh ref={pin3} position={[0, 0, 0]}>
           <Billboard
             follow={false}
@@ -415,7 +420,7 @@ function SolarSystemMaker() {
         </mesh>
 
         {/* Pluto */}
-        <mesh ref={pin9} position={[0, 0, 0]}>
+        {/* <mesh ref={pin9} position={[0, 0, 0]}>
           <Billboard
             follow={false}
             lockX={false}
@@ -438,7 +443,7 @@ function SolarSystemMaker() {
             <sphereGeometry args={[0.025]} />
             <meshStandardMaterial map={plutoMap} />
           </mesh>
-        </mesh>
+        </mesh> */}
       </Suspense>
       <OrbitControls
         ref={orbitControlsRef}

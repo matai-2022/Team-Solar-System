@@ -33,6 +33,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'sun' ? '' : 'sun'))
           }}
           className="flex  pl-5 hover:text-orange-500"
+          style={{ color: planet === 'sun' ? '#ef6c00' : '' }}
         >
           SUN
         </button>
@@ -53,6 +54,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'mercury' ? '' : 'mercury'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'mercury' ? '#ef6c00' : '' }}
         >
           MERCURY
         </button>
@@ -73,6 +75,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'venus' ? '' : 'venus'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'venus' ? '#ef6c00' : '' }}
         >
           VENUS
         </button>
@@ -96,6 +99,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'earth' ? '' : 'earth'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'earth' ? '#ef6c00' : '' }}
         >
           EARTH
         </button>
@@ -119,6 +123,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'mars' ? '' : 'mars'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'mars' ? '#ef6c00' : '' }}
         >
           MARS
         </button>
@@ -141,6 +146,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'jupiter' ? '' : 'jupiter'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'jupiter' ? '#ef6c00' : '' }}
         >
           JUPITER
         </button>
@@ -163,6 +169,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'saturn' ? '' : 'saturn'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'saturn' ? '#ef6c00' : '' }}
         >
           SATURN
         </button>
@@ -189,6 +196,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'uranus' ? '' : 'uranus'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'uranus' ? '#ef6c00' : '' }}
         >
           URANUS
         </button>
@@ -212,6 +220,7 @@ const Navbar = () => {
             dispatch(setPlanet(planet === 'neptune' ? '' : 'neptune'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'neptune' ? '#ef6c00' : '' }}
         >
           NEPTUNE
         </button>
@@ -229,11 +238,12 @@ const Navbar = () => {
 
         {/* Pluto Div */}
 
-        <button
+        {/* <button
           onClick={() => {
             dispatch(setPlanet(planet === 'pluto' ? '' : 'pluto'))
           }}
           className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'pluto' ? '#ef6c00' : '' }}
         >
           PLUTO
         </button>
@@ -248,7 +258,7 @@ const Navbar = () => {
             <li> Planet Type: Dwarf Planet </li>
             <li> Fun Fact: Named by an 11-Year-Old Girl in 1930</li>
           </ul>
-        )}
+        )} */}
       </div>
     </nav>
   )
