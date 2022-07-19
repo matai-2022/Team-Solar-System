@@ -241,7 +241,12 @@ export default function SolarSystem() {
         }}
       >
         <Canvas
-          camera={{ position: [1000, 4, 25], fov: 23, near: 0.1, far: 50000 }}
+          camera={{
+            position: [1000, 1000, 25],
+            fov: 50,
+            near: 0.1,
+            far: 50000,
+          }}
         >
           <color attach="background" args={[0x000000]} />
           <Suspense fallback={null}>
