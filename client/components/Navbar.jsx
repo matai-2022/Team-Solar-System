@@ -24,6 +24,18 @@ const Navbar = () => {
         >
           HOME
         </Link>
+        <Link
+          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+          to="/solarsystemdistance"
+        >
+          Accurate distances
+        </Link>
+        <Link
+          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+          to="/solarsystem"
+        >
+          Accessable view
+        </Link>
 
         {/* sun div */}
         <div className="flex flex-col">
