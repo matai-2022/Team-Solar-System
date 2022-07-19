@@ -11,7 +11,8 @@ import store from '../store'
 import SecondNav from './SecondNav'
 
 function SolarSystemMaker() {
-  const vec = new Vector3()
+  const planetVec = new Vector3()
+  // const cameraVec = new Vector3()
   const pause = useSelector(selectPause)
   const planet = useSelector(selectPlanet)
   const [hovering, setHovering] = useState(false)
@@ -127,8 +128,30 @@ function SolarSystemMaker() {
       // pin9.current.rotation.y += 0.001 / 248
     }
     if (planet !== '') {
-      planetMesh.current.getWorldPosition(vec)
-      camera.lookAt(vec)
+      planetMesh.current.getWorldPosition(planetVec)
+      // planetMesh.current.getWorldDirection(cameraVec)
+      camera.lookAt(planetVec)
+
+      // if (
+      //   planet === 'mercury' ||
+      //   planet === 'venus' ||
+      //   planet === 'earth' ||
+      //   planet === 'mars'
+      // ) {
+      //   camera.position.x = planetVec.x
+      //   camera.position.y = planetVec.y + 0.9
+      //   camera.position.z = planetVec.z + 3
+      // } else if (planet === 'uranus' || planet === 'neptune') {
+      //   camera.position.x = planetVec.x
+      //   camera.position.y = planetVec.y + 0.9
+      //   camera.position.z = planetVec.z + 3
+      // } else {
+      //   camera.position.x = planetVec.x + 10
+      //   camera.position.y = planetVec.y + 0.9
+      //   camera.position.z = planetVec.z + 15
+      // }
+      // camera.updateProjectionMatrix()
+      // console.log(camera.position)
     }
   })
 
@@ -212,8 +235,7 @@ function SolarSystemMaker() {
         <mesh
           ref={mercuryMesh}
           position={[4.3, 0, 0]}
-          onClick={(e) => {
-            e.stopPropagation()
+          onClick={() => {
             dispatch(setPlanet(planetMesh !== mercuryMesh ? 'mercury' : ''))
           }}
         >
