@@ -14,7 +14,7 @@ const LandingPage = () => {
     >
       {/* //holds all the stuff */}
       <div className="flex flex-col h-3/4 items-center">
-        <h1 className=" flex flex-col text-9xl text-white items-center pt-10 font-sans tracking-wider pb-0 mb-0">
+        <h1 className=" flex flex-col text-9xl text-white items-center pt-2 font-sans tracking-wider pb-0 mb-0">
           EXPLORE THE SOLAR SYSTEM
           <p className="text-white text-3xl font-sans py-0 mt-0">
             ITS ALMOST LAUNCH TIME - ARE YOU READY?? 3, 2, 1....
