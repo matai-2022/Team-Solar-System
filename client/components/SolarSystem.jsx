@@ -127,7 +127,7 @@ function SolarSystemMaker() {
       pin7.current.rotation.y += 0.001 * 0.01
       neptuneMesh.current.rotation.y += 0.01 / 0.67
       pin8.current.rotation.y += 0.001 * 0.006
-      telescopeMesh.current.rotation.x = .5
+      telescopeMesh.current.rotation.y += 0.001
       // plutoMesh.current.rotation.y += 0.01 / 6.41
       // pin9.current.rotation.y += 0.001 / 248
     }
@@ -271,6 +271,12 @@ function SolarSystemMaker() {
             Earth
           </Text>
         </Billboard>
+          {/* james webb telescope */}
+          <mesh ref={telescopeMesh} position={[6.4,0,0]} >
+            <coneBufferGeometry args={[0.02, 0.02, 8, 3, "yes", 0, 6.283185307179586]} />
+            <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
+            
+          </mesh>
         <mesh
           ref={earthMesh}
           position={[6.1, 0, 0]}
@@ -279,11 +285,6 @@ function SolarSystemMaker() {
             dispatch(setPlanet(planetMesh !== earthMesh ? 'earth' : ''))
           }}
         >
-          <mesh ref={telescopeMesh} position={[5.4,0,0]} >
-            <coneBufferGeometry args={[0.02, 0.02, 8, 3, "yes", 0, 6.283185307179586]} />
-            <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
-            
-          </mesh>
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
           {/* moon */}
