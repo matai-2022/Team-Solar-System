@@ -29,6 +29,13 @@ const Navbar = () => {
           HOME
         </Link>
 
+        <Link
+          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+          to="/scale"
+        >
+          Scale
+        </Link>
+
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'sun' ? '' : 'sun'))
