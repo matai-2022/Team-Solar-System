@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
-
 const Navbar = () => {
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
@@ -256,7 +255,7 @@ const Navbar = () => {
           </ul>
         )}
 
-<button
+        <button
           onClick={() => {
             dispatch(setPlanet(planet === 'jamesWebb' ? '' : 'jamesWebb'))
             dispatch(setPause(planet === '' ? true : false))
@@ -268,13 +267,19 @@ const Navbar = () => {
         </button>
         {planet === 'jamesWebb' && (
           <>
-          <p className="list-disc text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10">
-            
-              If you look closely at the Earth, you&apos;ll see a small triangular shape orbiting it, along with the moon.
-              This shape represents the James Webb Telescope, the successor to the Hubble telescope,
-              which has been releasing the highest quality photos of outer space we&apos;ve ever been able to capture.
-              Check out the website to see the photos. 
-            <a href="https://webbtelescope.org/" rel="noreferrer" target="_blank"> James Webb Telescope</a>
+            <p className="text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10 w-1/5">
+              If you look closely at the Earth, you&apos;ll see a small
+              triangular shape. This represents the James Webb Telescope. Check
+              out the{' '}
+              <a
+                href="https://webbtelescope.org/"
+                rel="noreferrer"
+                target="_blank"
+                className="underline decoration-1"
+              >
+                website
+              </a>{' '}
+              to see the photos.
             </p>
           </>
         )}
