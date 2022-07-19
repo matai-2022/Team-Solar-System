@@ -5,7 +5,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
 import { Provider, useDispatch, useSelector } from 'react-redux'
-import { selectPause, setPause } from '../slices/pause'
+import { selectPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 import store from '../store'
 import SecondNav from './SecondNav'
@@ -86,7 +86,7 @@ function SolarSystemMaker() {
   const ringneptuneMesh = useRef()
   // const ringplutoMesh = useRef()
 
-  const arrayOfMeshes = [
+  const orbitLinesMeshes = [
     ringmercuryMesh,
     ringvenusMesh,
     ringearthMesh,
@@ -99,8 +99,8 @@ function SolarSystemMaker() {
   ]
 
   useFrame(({ camera }) => {
-    arrayOfMeshes.forEach((m) => {
-      m.current.rotation.x = 1.569
+    orbitLinesMeshes.forEach((orbitLinesMesh) => {
+      orbitLinesMesh.current.rotation.x = 1.569
     })
 
     if (pause === false) {
@@ -127,24 +127,17 @@ function SolarSystemMaker() {
       // pin9.current.rotation.y += 0.001 / 248
     }
     if (planet !== '') {
-      //   console.log(planet.mesh.current.position)
-      //   camera.position.set(planet.mesh.current.position)
-      camera.lookAt(planetMesh.current.position)
-      camera.position.lerp(vec.set(20, 10, 15), 0.1)
-      camera.updateProjectionMatrix()
+      planetMesh.current.getWorldPosition(vec)
+      camera.lookAt(vec)
     }
   })
 
   return (
     <>
-      <ambientLight intensity={0.3} />
-      <pointLight intensity={1} position={[0, 0, 0]} />
-
       {/* Sun */}
       <mesh
         ref={sunMesh}
         onClick={() => {
-          dispatch(setPause(planetMesh === sunMesh ? false : true))
           dispatch(setPlanet(planetMesh !== sunMesh ? 'sun' : ''))
         }}
         // onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -195,9 +188,9 @@ function SolarSystemMaker() {
           <meshStandardMaterial color="white" />
         </mesh>
         {/* <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[19.3, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
-        </mesh> */}
+            <torusGeometry args={[19.3, 0.005, 30, 100]} />
+            <meshStandardMaterial color="white" />
+          </mesh> */}
       </mesh>
 
       {/* Mercury */}
@@ -217,7 +210,6 @@ function SolarSystemMaker() {
           ref={mercuryMesh}
           position={[4.3, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === mercuryMesh ? false : true))
             dispatch(setPlanet(planetMesh !== mercuryMesh ? 'mercury' : ''))
           }}
         >
@@ -243,7 +235,6 @@ function SolarSystemMaker() {
           ref={venusMesh}
           position={[5.2, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === venusMesh ? false : true))
             dispatch(setPlanet(planetMesh !== venusMesh ? 'venus' : ''))
           }}
         >
@@ -270,7 +261,6 @@ function SolarSystemMaker() {
           ref={earthMesh}
           position={[6.1, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === earthMesh ? false : true))
             dispatch(setPlanet(planetMesh !== earthMesh ? 'earth' : ''))
           }}
         >
@@ -301,7 +291,6 @@ function SolarSystemMaker() {
           ref={marsMesh}
           position={[7.2, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === marsMesh ? false : true))
             dispatch(setPlanet(planetMesh !== marsMesh ? 'mars' : ''))
           }}
         >
@@ -327,7 +316,6 @@ function SolarSystemMaker() {
           ref={jupiterMesh}
           position={[9.5, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === jupiterMesh ? false : true))
             dispatch(setPlanet(planetMesh !== jupiterMesh ? 'jupiter' : ''))
           }}
         >
@@ -353,7 +341,6 @@ function SolarSystemMaker() {
           ref={saturnMesh}
           position={[14.0, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === saturnMesh ? false : true))
             dispatch(setPlanet(planetMesh !== saturnMesh ? 'saturn' : ''))
           }}
         >
@@ -384,7 +371,6 @@ function SolarSystemMaker() {
           ref={uranusMesh}
           position={[17.3, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === uranusMesh ? false : true))
             dispatch(setPlanet(planetMesh !== uranusMesh ? 'uranus' : ''))
           }}
         >
@@ -410,7 +396,6 @@ function SolarSystemMaker() {
           ref={neptuneMesh}
           position={[19.5, 0, 0]}
           onClick={() => {
-            dispatch(setPause(planetMesh === neptuneMesh ? false : true))
             dispatch(setPlanet(planetMesh !== neptuneMesh ? 'neptune' : ''))
           }}
           onPointerOver={() => setHovering(hovering === true ? false : true)}
@@ -422,30 +407,31 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       {/* <mesh ref={pin9} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[19.3, 1, 0]}
-        >
-          <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
-            Pluto
-          </Text>
-        </Billboard>
-        <mesh
-          ref={plutoMesh}
-          position={[19.3, 0, 0]}
-          onClick={() => {
-            dispatch(setPause(planetMesh === plutoMesh ? false : true))
-            dispatch(setPlanet(planetMesh !== plutoMesh ? 'pluto' : ''))
-          }}
-          onPointerOver={() => setHovering(hovering === true ? false : true)}
-        >
-          <sphereGeometry args={[0.025]} />
-          <meshStandardMaterial map={plutoMap} />
-        </mesh>
-      </mesh> */}
+          <Billboard
+            follow={false}
+            lockX={false}
+            lockY={false}
+            lockZ={false} // Lock the rotation on the z axis (default=false)
+            position={[19.3, 1, 0]}
+          >
+            <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
+              Pluto
+            </Text>
+          </Billboard>
+          <mesh
+            ref={plutoMesh}
+            position={[19.3, 0, 0]}
+            onClick={() => {
+              dispatch(setPlanet(planetMesh !== plutoMesh ? 'pluto' : ''))
+            }}
+            onPointerOver={() => setHovering(hovering === true ? false : true)}
+          >
+            <sphereGeometry args={[0.025]} />
+            <meshStandardMaterial map={plutoMap} />
+          </mesh>
+        </mesh> */}
+
+      {/* </Canvas> */}
     </>
   )
 }
@@ -467,10 +453,31 @@ export default function SolarSystem() {
           <color attach="background" args={[0x000000]} />
           <Provider store={store}>
             <Suspense fallback={null}>
+              <ambientLight intensity={0.3} />
+              <pointLight intensity={1} position={[0, 0, 0]} />
+
+              <SolarSystemMaker />
+            </Suspense>
+            <OrbitControls />
+            <Stars
+              radius={100} // Radius of the inner sphere (default=100)
+              depth={50} // Depth of area where stars should fit (default=50)
+              count={50000} // Amount of stars (default=5000)
+              factor={4} // Size factor (default=4)
+              saturation={0} // Saturation 0-1 (default=0)
+              fade
+              speed={1} // Faded dots (default=false)
+            />
+          </Provider>
+        </Canvas>
+        {/* <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
+          <color attach="background" args={[0x000000]} />
+          <Provider store={store}>
+            <Suspense fallback={null}>
               <SolarSystemMaker />
             </Suspense>
           </Provider>
-          <OrbitControls />
+          <OrbitControls ref={orbitControlsRef} />
 
           <Stars
             radius={100} // Radius of the inner sphere (default=100)
@@ -481,7 +488,7 @@ export default function SolarSystem() {
             fade
             speed={1} // Faded dots (default=false)
           />
-        </Canvas>
+        </Canvas> */}
       </div>
     </div>
   )
