@@ -761,6 +761,10 @@ video {
   align-items: center;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -867,6 +871,14 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
 }
 
 .font-sans {
