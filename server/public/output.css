@@ -697,16 +697,16 @@ video {
   width: 20%;
 }
 
+.w-1 {
+  width: 0.25rem;
+}
+
 .w-7 {
   width: 1.75rem;
 }
 
 .w-0 {
   width: 0px;
-}
-
-.w-1 {
-  width: 0.25rem;
 }
 
 .flex-shrink {
