@@ -263,9 +263,9 @@ const Navbar = () => {
               If you look closely at the Earth, you&apos;ll see a small triangular shape orbiting it, along with the moon.
               This shape represents the James Webb Telescope, the successor to the Hubble telescope,
               which has been releasing the highest quality photos of outer space we&apos;ve ever been able to capture.
-              Check out the website to see the photos.
+              Check out the website to see the photos. 
+            <a href="https://webbtelescope.org/" rel="noreferrer" target="_blank"> James Webb Telescope</a>
             </p>
-            <a href="https://webbtelescope.org/" rel="noreferrer" target="_blank">James Webb Telescope</a>
           </>
         )}
 
