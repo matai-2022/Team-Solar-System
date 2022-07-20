@@ -1,6 +1,12 @@
 import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars, Text, Billboard } from '@react-three/drei'
+import {
+  OrbitControls,
+  Stars,
+  Text,
+  Billboard,
+  useTexture,
+} from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
@@ -40,7 +46,12 @@ function SolarSystemMaker() {
     '/server/public/images/neptune.jpg'
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
-  const ringMap = useLoader(TextureLoader, '/server/public/images/ring3.png')
+  // const ringMap = useLoader(
+  //   TextureLoader,
+  //   '/server/public/images/saturnRing.png'
+
+  // )
+  const ringMap = useTexture('/server/public/images/ring4.png')
   // const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
@@ -416,8 +427,13 @@ function SolarSystemMaker() {
           <meshStandardMaterial map={saturnMap} />
 
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
-            <ringGeometry args={[1.5, 1.0, 32]} angle={0.15} />
-            <meshStandardMaterial map={ringMap} side={DoubleSide} />
+            <planeGeometry args={[3.5, 3.5]} />
+            <meshStandardMaterial
+              map={ringMap}
+              side={DoubleSide}
+              transparent={true}
+              opacity={0.7}
+            />
           </mesh>
         </mesh>
       </mesh>

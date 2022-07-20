@@ -13,7 +13,7 @@ function SolarSystemMaker() {
   const planet = useSelector(selectPlanet)
   //const dispatch = useDispatch()
 
-  const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
+  const sunMap = useLoader(TextureLoader, '/server/public/images/sun2.jpg')
   const earthMap = useLoader(TextureLoader, '/server/public/images/earth.jpg')
   const mercuryMap = useLoader(
     TextureLoader,
@@ -386,7 +386,7 @@ export default function SolarSystem() {
             position: [1200, 600, 50],
             fov: 50,
             near: 0.1,
-            far: 10000000,
+            far: 1000000,
           }}
         >
           <color attach="background" args={[0x000000]} />
@@ -399,10 +399,10 @@ export default function SolarSystem() {
             <Stars
               radius={100000} // Radius of the inner sphere (default=100)
               depth={5000} // Depth of area where stars should fit (default=50)
-              count={200000} // Amount of stars (default=5000)
-              factor={4} // Size factor (default=4)
+              count={300000} // Amount of stars (default=5000)
+              factor={500} // Size factor (default=4)
               saturation={0} // Saturation 0-1 (default=0)
-              fade
+              // fade
               speed={1} // Faded dots (default=false)
             />
           </Provider>
