@@ -18,7 +18,7 @@ function SolarSystemMaker() {
   const [hovering, setHovering] = useState(false)
   const dispatch = useDispatch()
 
-  const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
+  const sunMap = useLoader(TextureLoader, '/server/public/images/sun2.jpg')
   const earthMap = useLoader(TextureLoader, '/server/public/images/earth.jpg')
   const mercuryMap = useLoader(
     TextureLoader,
