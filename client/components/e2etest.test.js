@@ -30,3 +30,11 @@ test('User can click button and load the solar system', async () => {
   await Promise.all([page.waitForNavigation(), page.click('text=BLAST OFF')])
   expect(await page.url()).toContain('http://localhost:3000/solarsystem')
 })
+
+test('User can click scale and it should navigate to the scaled solar system', async () => {
+  await page.goto(serverUrl)
+
+  await Promise.all([page.waitForNavigation(), page.click('text=BLAST OFF')])
+  await Promise.all([page.waitForNavigation(), page.click('text=SCALE')])
+  expect(await page.url()).toContain('http://localhost:3000/solarsystem')
+})
