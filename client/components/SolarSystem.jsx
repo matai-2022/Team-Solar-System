@@ -40,7 +40,7 @@ function SolarSystemMaker() {
     '/server/public/images/neptune.jpg'
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
-  const ringMap = useLoader(TextureLoader, '/server/public/images/ring3.png')
+  const ringMap = useLoader(TextureLoader, '/server/public/images/ring2.png')
   // const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
