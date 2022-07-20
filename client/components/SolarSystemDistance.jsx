@@ -179,7 +179,10 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[419.95, 100, 0]}
         >
-          <Text fontSize={50} color={'white'}>
+          <Text
+            fontSize={50}
+            color={planet === 'mercury' ? '#39FF14' : 'white'}
+          >
             Mercury
           </Text>
         </Billboard>
@@ -198,7 +201,7 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[803.91, 100, 0]}
         >
-          <Text fontSize={70} color={'white'}>
+          <Text fontSize={70} color={planet === 'venus' ? '#39FF14' : 'white'}>
             Venus
           </Text>
         </Billboard>
@@ -217,7 +220,7 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[1115.88, 100, 0]}
         >
-          <Text fontSize={90} color={'white'}>
+          <Text fontSize={90} color={planet === 'earth' ? '#39FF14' : 'white'}>
             Earth
           </Text>
         </Billboard>
@@ -241,7 +244,7 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[1703, 100, 0]}
         >
-          <Text fontSize={110} color={'white'}>
+          <Text fontSize={110} color={planet === 'mars' ? '#39FF14' : 'white'}>
             Mars
           </Text>
         </Billboard>
@@ -260,7 +263,10 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[5807, 100, 0]}
         >
-          <Text fontSize={500} color={'white'}>
+          <Text
+            fontSize={500}
+            color={planet === 'jupiter' ? '#39FF14' : 'white'}
+          >
             Jupiter
           </Text>
         </Billboard>
@@ -279,7 +285,10 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[10666, 100, 0]}
         >
-          <Text fontSize={700} color={'white'}>
+          <Text
+            fontSize={700}
+            color={planet === 'saturn' ? '#39FF14' : 'white'}
+          >
             Saturn
           </Text>
         </Billboard>
@@ -302,7 +311,10 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[21477, 100, 0]}
         >
-          <Text fontSize={1000} color={'white'}>
+          <Text
+            fontSize={1000}
+            color={planet === 'uranus' ? '#39FF14' : 'white'}
+          >
             Uranus
           </Text>
         </Billboard>
@@ -321,7 +333,10 @@ function SolarSystemMaker() {
           lockZ={false} // Lock the rotation on the z axis (default=false)
           position={[34556, 100, 0]}
         >
-          <Text fontSize={1500} color={'white'}>
+          <Text
+            fontSize={1500}
+            color={planet === 'neptune' ? '#39FF14' : 'white'}
+          >
             Neptune
           </Text>
         </Billboard>
