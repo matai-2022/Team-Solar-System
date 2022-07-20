@@ -44,6 +44,7 @@
     "@react-three/drei": "^9.17.1",
     "@react-three/fiber": "^8.1.0",
     "@reduxjs/toolkit": "^1.8.3",
+    "@testing-library/jest-dom": "^5.16.4",
     "autoprefixer": "^10.4.7",
     "camera-controls": "^1.35.0",
     "esbuild": "^0.14.49",
