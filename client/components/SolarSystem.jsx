@@ -134,8 +134,11 @@ function SolarSystemMaker() {
     }
     if (planet !== '') {
       if (planet === 'jamesWebb') {
-        earthMesh.current.getWorldPosition(planetVec)
+        planetMesh.current.getWorldPosition(planetVec)
         camera.lookAt(planetVec)
+        camera.position.x = planetVec.x
+        camera.position.y = planetVec.y + 0.9
+        camera.position.z = planetVec.z + 3
       } else {
         planetMesh.current.getWorldPosition(planetVec)
         camera.lookAt(planetVec)
