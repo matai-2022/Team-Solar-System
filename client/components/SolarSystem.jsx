@@ -40,7 +40,7 @@ function SolarSystemMaker() {
     '/server/public/images/neptune.jpg'
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
-  const ringMap = useLoader(TextureLoader, '/server/public/images/ring2.png')
+  const ringMap = useLoader(TextureLoader, '/server/public/images/ring3.png')
   // const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
@@ -61,6 +61,9 @@ function SolarSystemMaker() {
   const pin7 = useRef()
   const neptuneMesh = useRef()
   const pin8 = useRef()
+
+  const telescopeMesh = useRef()
+
   // const plutoMesh = useRef()
   // const pin9 = useRef()
 
@@ -75,6 +78,7 @@ function SolarSystemMaker() {
   planetsMeshes.set('uranus', uranusMesh)
   planetsMeshes.set('neptune', neptuneMesh)
   // planetsMeshes.set('pluto', plutoMesh)
+  planetsMeshes.set('jamesWebb', telescopeMesh)
   const planetMesh = planetsMeshes.get(planet)
 
   const ringmercuryMesh = useRef()
@@ -124,6 +128,7 @@ function SolarSystemMaker() {
       pin7.current.rotation.y += 0.001 * 0.01
       neptuneMesh.current.rotation.y += 0.01 / 0.67
       pin8.current.rotation.y += 0.001 * 0.006
+      telescopeMesh.current.rotation.y += 0.001
       // plutoMesh.current.rotation.y += 0.01 / 6.41
       // pin9.current.rotation.y += 0.001 / 248
     }
@@ -283,6 +288,12 @@ function SolarSystemMaker() {
             Earth
           </Text>
         </Billboard>
+          {/* james webb telescope */}
+          <mesh ref={telescopeMesh} position={[6.4,0,0]} >
+            <coneBufferGeometry args={[0.02, 0.02, 8, 3, "yes", 0, 6.283185307179586]} />
+            <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
+            
+          </mesh>
         <mesh
           ref={earthMesh}
           position={[6.1, 0, 0]}
@@ -299,6 +310,7 @@ function SolarSystemMaker() {
           </mesh>
         </mesh>
       </mesh>
+
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
@@ -459,8 +471,8 @@ function SolarSystemMaker() {
 
       {/* </Canvas> */}
     </>
-  )
-}
+  )}
+    
 export default function SolarSystem() {
   return (
     <div
@@ -496,25 +508,6 @@ export default function SolarSystem() {
             />
           </Provider>
         </Canvas>
-        {/* <Canvas camera={{ position: [30, 4, 25], fov: 23 }}>
-          <color attach="background" args={[0x000000]} />
-          <Provider store={store}>
-            <Suspense fallback={null}>
-              <SolarSystemMaker />
-            </Suspense>
-          </Provider>
-          <OrbitControls ref={orbitControlsRef} />
-
-          <Stars
-            radius={100} // Radius of the inner sphere (default=100)
-            depth={50} // Depth of area where stars should fit (default=50)
-            count={50000} // Amount of stars (default=5000)
-            factor={4} // Size factor (default=4)
-            saturation={0} // Saturation 0-1 (default=0)
-            fade
-            speed={1} // Faded dots (default=false)
-          />
-        </Canvas> */}
       </div>
     </div>
   )

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
-
 const Navbar = () => {
   const planet = useSelector(selectPlanet)
   const dispatch = useDispatch()
@@ -29,13 +28,6 @@ const Navbar = () => {
           >
             HOME
           </Link>
-
-          {/* <Link
-            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
-            to="/scale"
-          >
-            SCALE
-          </Link> */}
         </div>
 
         <button
@@ -95,7 +87,6 @@ const Navbar = () => {
             <li> Size: Almost The Same Size As Earth </li>
             <li> Temperature: 482°C </li>
             <li> Planet Type: Terrestrial Planet </li>
-            <li> Distance from Earth:</li>
             <li> Day Length: 225 Earth-Days</li>
             <li> Fun Fact: The Days are Longer Than the Years </li>
             <li> Hottest Planet In Solar System</li>
@@ -244,6 +235,35 @@ const Navbar = () => {
             <li> Moons: 14</li>
             <li>Fun Fact: First Predicted by Mathematics</li>
           </ul>
+        )}
+
+        <button
+          onClick={() => {
+            dispatch(setPlanet(planet === 'jamesWebb' ? '' : 'jamesWebb'))
+            dispatch(setPause(planet === '' ? true : false))
+          }}
+          className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'jamesWebb' ? '#ef6c00' : '' }}
+        >
+          JAMES WEBB TELESCOPE
+        </button>
+        {planet === 'jamesWebb' && (
+          <>
+            <p className="text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10 w-1/4">
+              If you look closely at the Earth, you&apos;ll see a small
+              triangular shape. This represents the James Webb Telescope. Check
+              out the{' '}
+              <a
+                href="https://webbtelescope.org/"
+                rel="noreferrer"
+                target="_blank"
+                className="underline decoration-1"
+              >
+                website
+              </a>{' '}
+              to see the photos.
+            </p>
+          </>
         )}
 
         {/* Pluto Div */}
