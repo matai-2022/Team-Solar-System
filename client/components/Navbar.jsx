@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 
 const Navbar = () => {
@@ -18,21 +17,22 @@ const Navbar = () => {
 
         // height: '100vh',
       }}
-      className="flex flex-col text-white h-full"
+      className="flex flex-col text-white h-full "
     >
       {/* entire nav as well  */}
       <div className="flex flex-col text-2xl pl-2 lg:text-3xl lg:pl-5  ">
-        <Link
-          className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
-          to="/"
-        >
-          HOME
-        </Link>
+        <div className="flex flex row">
+          <Link
+            className="flex pl-5 mb-2 underline decoration-1 hover:text-cyan-600"
+            to="/"
+          >
+            HOME
+          </Link>
+        </div>
 
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'sun' ? '' : 'sun'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex  pl-5 hover:text-orange-500"
           style={{ color: planet === 'sun' ? '#ef6c00' : '' }}
@@ -54,7 +54,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'mercury' ? '' : 'mercury'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'mercury' ? '#ef6c00' : '' }}
@@ -76,7 +75,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'venus' ? '' : 'venus'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'venus' ? '#ef6c00' : '' }}
@@ -89,7 +87,6 @@ const Navbar = () => {
             <li> Size: Almost The Same Size As Earth </li>
             <li> Temperature: 482°C </li>
             <li> Planet Type: Terrestrial Planet </li>
-            <li> Distance from Earth:</li>
             <li> Day Length: 225 Earth-Days</li>
             <li> Fun Fact: The Days are Longer Than the Years </li>
             <li> Hottest Planet In Solar System</li>
@@ -101,7 +98,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'earth' ? '' : 'earth'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'earth' ? '#ef6c00' : '' }}
@@ -126,7 +122,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'mars' ? '' : 'mars'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'mars' ? '#ef6c00' : '' }}
@@ -150,7 +145,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'jupiter' ? '' : 'jupiter'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'jupiter' ? '#ef6c00' : '' }}
@@ -174,7 +168,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'saturn' ? '' : 'saturn'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'saturn' ? '#ef6c00' : '' }}
@@ -202,7 +195,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'uranus' ? '' : 'uranus'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'uranus' ? '#ef6c00' : '' }}
@@ -227,7 +219,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'neptune' ? '' : 'neptune'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'neptune' ? '#ef6c00' : '' }}
@@ -246,12 +237,39 @@ const Navbar = () => {
           </ul>
         )}
 
+        <button
+          onClick={() => {
+            dispatch(setPlanet(planet === 'jamesWebb' ? '' : 'jamesWebb'))
+          }}
+          className="flex pl-5 hover:text-orange-500"
+          style={{ color: planet === 'jamesWebb' ? '#ef6c00' : '' }}
+        >
+          JAMES WEBB TELESCOPE
+        </button>
+        {planet === 'jamesWebb' && (
+          <>
+            <p className="text-xl lg:text-2xl bg-gray-600 bg-opacity-25 pl-10 w-1/4">
+              If you look closely at the Earth, you&apos;ll see a small
+              triangular shape. This represents the James Webb Telescope. Check
+              out the{' '}
+              <a
+                href="https://webbtelescope.org/"
+                rel="noreferrer"
+                target="_blank"
+                className="underline decoration-1"
+              >
+                website
+              </a>{' '}
+              to see the photos.
+            </p>
+          </>
+        )}
+
         {/* Pluto Div */}
 
         {/* <button
           onClick={() => {
             dispatch(setPlanet(planet === 'pluto' ? '' : 'pluto'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'pluto' ? '#ef6c00' : '' }}

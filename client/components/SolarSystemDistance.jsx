@@ -1,11 +1,18 @@
 import React, { Suspense, useRef } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
+import { OrbitControls, Stars, Text, Billboard } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide } from 'three'
+import { Provider, useSelector } from 'react-redux'
+import { selectPlanet } from '../slices/planet'
 import Navbar from './Navbar'
+import store from '../store'
+import ScaleSystemSecondNav from './ScaleSystemSecondNav'
 
 function SolarSystemMaker() {
+  const planet = useSelector(selectPlanet)
+  //const dispatch = useDispatch()
+
   const sunMap = useLoader(TextureLoader, '/server/public/images/sun.jpg')
   const earthMap = useLoader(TextureLoader, '/server/public/images/earth.jpg')
   const mercuryMap = useLoader(
@@ -99,7 +106,7 @@ function SolarSystemMaker() {
   return (
     <>
       <ambientLight intensity={0.3} />
-      <pointLight intensity={10} position={[0, 0, 0]} />
+      <pointLight intensity={3} position={[0, 0, 0]} />
 
       {/* Sun */}
       <mesh ref={sunMesh}>
@@ -108,44 +115,74 @@ function SolarSystemMaker() {
 
         <mesh ref={ringmercuryMesh} position={[0, 0, 0]}>
           <torusGeometry args={[419.95, 0.5, 30, 100]} />
-          <meshStandardMaterial color={'white'} />
+          <meshStandardMaterial
+            color={planet === 'mercury' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringvenusMesh} position={[0, 0, 0]}>
           <torusGeometry args={[803.91, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'venus' ? '#39FF14' : 'white'}
+          />
         </mesh>
+
         <mesh ref={ringearthMesh} position={[0, 0, 0]}>
           <torusGeometry args={[1115.88, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'earth' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringmarsMesh} position={[0, 0, 0]}>
           <torusGeometry args={[1703, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'mars' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringjupiterMesh} position={[0, 0, 0]}>
           <torusGeometry args={[5807, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'jupiter' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringsaturnMesh} position={[0, 0, 0]}>
           <torusGeometry args={[10666, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'saturn' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringuranusMesh} position={[0, 0, 0]}>
           <torusGeometry args={[21477, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'uranus' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringneptuneMesh} position={[0, 0, 0]}>
           <torusGeometry args={[34556, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'neptune' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
           <torusGeometry args={[44035, 0.5, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'pluto' ? '#39FF14' : 'white'}
+          />
         </mesh>
       </mesh>
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[419.95, 100, 0]}
+        >
+          <Text fontSize={50} color={'white'}>
+            Mercury
+          </Text>
+        </Billboard>
         <mesh ref={mercuryMesh} position={[419.95, 0, 0]}>
           <sphereGeometry args={[0.04]} />
           <meshStandardMaterial map={mercuryMap} />
@@ -154,6 +191,17 @@ function SolarSystemMaker() {
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[803.91, 100, 0]}
+        >
+          <Text fontSize={70} color={'white'}>
+            Venus
+          </Text>
+        </Billboard>
         <mesh ref={venusMesh} position={[803.91, 0, 0]}>
           <sphereGeometry args={[0.09]} />
           <meshStandardMaterial map={venusMap} />
@@ -162,6 +210,17 @@ function SolarSystemMaker() {
 
       {/* Earth */}
       <mesh ref={pin3} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[1115.88, 100, 0]}
+        >
+          <Text fontSize={90} color={'white'}>
+            Earth
+          </Text>
+        </Billboard>
         <mesh ref={earthMesh} position={[1115.88, 0, 0]}>
           <sphereGeometry args={[0.095]} />
           <meshStandardMaterial map={earthMap} />
@@ -175,6 +234,17 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[1703, 100, 0]}
+        >
+          <Text fontSize={110} color={'white'}>
+            Mars
+          </Text>
+        </Billboard>
         <mesh ref={marsMesh} position={[1703, 0, 0]}>
           <sphereGeometry args={[0.05]} />
           <meshStandardMaterial map={marsMap} />
@@ -183,6 +253,17 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[5807, 100, 0]}
+        >
+          <Text fontSize={500} color={'white'}>
+            Jupiter
+          </Text>
+        </Billboard>
         <mesh ref={jupiterMesh} position={[5807, 0, 0]}>
           <sphereGeometry args={[1.0]} />
           <meshStandardMaterial map={jupiterMap} />
@@ -191,7 +272,18 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <mesh ref={saturnMesh} position={[10, 666, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[10666, 100, 0]}
+        >
+          <Text fontSize={700} color={'white'}>
+            Saturn
+          </Text>
+        </Billboard>
+        <mesh ref={saturnMesh} position={[10666, 0, 0]}>
           <sphereGeometry args={[0.85]} />
           <meshStandardMaterial map={saturnMap} />
           <mesh ref={ringMesh} position={[0, 0, 0]} angle={0.15}>
@@ -203,6 +295,17 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[21477, 100, 0]}
+        >
+          <Text fontSize={1000} color={'white'}>
+            Uranus
+          </Text>
+        </Billboard>
         <mesh ref={uranusMesh} position={[21477, 0, 0]}>
           <sphereGeometry args={[0.38]} />
           <meshStandardMaterial map={uranusMap} />
@@ -211,6 +314,17 @@ function SolarSystemMaker() {
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[34556, 100, 0]}
+        >
+          <Text fontSize={1500} color={'white'}>
+            Neptune
+          </Text>
+        </Billboard>
         <mesh ref={neptuneMesh} position={[34556, 0, 0]}>
           <sphereGeometry args={[0.32]} />
           <meshStandardMaterial map={neptuneMap} />
@@ -219,6 +333,17 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       <mesh ref={pin9} position={[0, 0, 0]}>
+        <Billboard
+          follow={false}
+          lockX={false}
+          lockY={false}
+          lockZ={false} // Lock the rotation on the z axis (default=false)
+          position={[44035, 100, 0]}
+        >
+          <Text fontSize={50} color={'white'}>
+            Pluto
+          </Text>
+        </Billboard>
         <mesh ref={plutoMesh} position={[44035, 0, 0]}>
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
@@ -240,24 +365,32 @@ export default function SolarSystem() {
           height: '100vh',
         }}
       >
+        <ScaleSystemSecondNav />
         <Canvas
-          camera={{ position: [1000, 4, 25], fov: 23, near: 0.1, far: 50000 }}
+          camera={{
+            position: [1200, 600, 50],
+            fov: 50,
+            near: 0.1,
+            far: 10000000,
+          }}
         >
           <color attach="background" args={[0x000000]} />
-          <Suspense fallback={null}>
-            <SolarSystemMaker />
-          </Suspense>
-          <OrbitControls />
+          <Provider store={store}>
+            <Suspense fallback={null}>
+              <SolarSystemMaker />
+            </Suspense>
+            <OrbitControls />
 
-          <Stars
-            radius={50000} // Radius of the inner sphere (default=100)
-            depth={50} // Depth of area where stars should fit (default=50)
-            count={500000} // Amount of stars (default=5000)
-            factor={4} // Size factor (default=4)
-            saturation={0} // Saturation 0-1 (default=0)
-            fade
-            speed={1} // Faded dots (default=false)
-          />
+            <Stars
+              radius={100000} // Radius of the inner sphere (default=100)
+              depth={5000} // Depth of area where stars should fit (default=50)
+              count={200000} // Amount of stars (default=5000)
+              factor={4} // Size factor (default=4)
+              saturation={0} // Saturation 0-1 (default=0)
+              fade
+              speed={1} // Faded dots (default=false)
+            />
+          </Provider>
         </Canvas>
       </div>
     </div>
