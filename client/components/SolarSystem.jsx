@@ -51,7 +51,7 @@ function SolarSystemMaker() {
   //   '/server/public/images/saturnRing.png'
 
   // )
-  const ringMap = useTexture('/server/public/images/ring4.png')
+  const ringMap = useTexture('/server/public/images/saturnsRing2.png')
   // const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
@@ -432,7 +432,7 @@ function SolarSystemMaker() {
               map={ringMap}
               side={DoubleSide}
               transparent={true}
-              opacity={0.7}
+              opacity={1.1}
             />
           </mesh>
         </mesh>
