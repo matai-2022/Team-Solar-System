@@ -133,9 +133,17 @@ function SolarSystemMaker() {
       // pin9.current.rotation.y += 0.001 / 248
     }
     if (planet !== '') {
-      planetMesh.current.getWorldPosition(planetVec)
+      if (planet === 'jamesWebb') {
+        planetMesh.current.getWorldPosition(planetVec)
+        camera.lookAt(planetVec)
+        camera.position.x = planetVec.x
+        camera.position.y = planetVec.y + 0.9
+        camera.position.z = planetVec.z + 3
+      } else {
+        planetMesh.current.getWorldPosition(planetVec)
+        camera.lookAt(planetVec)
+      }
       // planetMesh.current.getWorldDirection(cameraVec)
-      camera.lookAt(planetVec)
 
       // if (
       //   planet === 'mercury' ||
@@ -288,12 +296,19 @@ function SolarSystemMaker() {
             Earth
           </Text>
         </Billboard>
-          {/* james webb telescope */}
-          <mesh ref={telescopeMesh} position={[6.4,0,0]} >
-            <coneBufferGeometry args={[0.02, 0.02, 8, 3, "yes", 0, 6.283185307179586]} />
-            <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
-            
-          </mesh>
+        {/* james webb telescope */}
+        <mesh
+          ref={telescopeMesh}
+          position={[6.4, 0, 0]}
+          onClick={() => {
+            dispatch(setPlanet(planetMesh !== telescopeMesh ? 'jamesWebb' : ''))
+          }}
+        >
+          <coneBufferGeometry
+            args={[0.02, 0.02, 8, 3, 'yes', 0, 6.283185307179586]}
+          />
+          <meshBasicMaterial wireframe={true} color="grey" linewidth="1" />
+        </mesh>
         <mesh
           ref={earthMesh}
           position={[6.1, 0, 0]}
@@ -310,7 +325,6 @@ function SolarSystemMaker() {
           </mesh>
         </mesh>
       </mesh>
-
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
@@ -471,8 +485,9 @@ function SolarSystemMaker() {
 
       {/* </Canvas> */}
     </>
-  )}
-    
+  )
+}
+
 export default function SolarSystem() {
   return (
     <div
