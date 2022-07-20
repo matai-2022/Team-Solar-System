@@ -240,7 +240,6 @@ const Navbar = () => {
         <button
           onClick={() => {
             dispatch(setPlanet(planet === 'jamesWebb' ? '' : 'jamesWebb'))
-            dispatch(setPause(planet === '' ? true : false))
           }}
           className="flex pl-5 hover:text-orange-500"
           style={{ color: planet === 'jamesWebb' ? '#ef6c00' : '' }}
