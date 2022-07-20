@@ -36,7 +36,7 @@ function SolarSystemMaker() {
   )
   const moonMap = useLoader(TextureLoader, '/server/public/images/moon.jpg')
   const ringMap = useLoader(TextureLoader, '/server/public/images/ring2.png')
-  const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
+  //const plutoMap = useLoader(TextureLoader, '/server/public/images/pluto.jpg')
 
   const sunMesh = useRef()
   const mercuryMesh = useRef()
@@ -56,8 +56,8 @@ function SolarSystemMaker() {
   const pin7 = useRef()
   const neptuneMesh = useRef()
   const pin8 = useRef()
-  const plutoMesh = useRef()
-  const pin9 = useRef()
+  //const plutoMesh = useRef()
+  //const pin9 = useRef()
 
   const ringmercuryMesh = useRef()
   const ringvenusMesh = useRef()
@@ -67,7 +67,7 @@ function SolarSystemMaker() {
   const ringsaturnMesh = useRef()
   const ringuranusMesh = useRef()
   const ringneptuneMesh = useRef()
-  const ringplutoMesh = useRef()
+  //const ringplutoMesh = useRef()
 
   useFrame(() => {
     sunMesh.current.rotation.y += 0.01 / 27
@@ -89,8 +89,8 @@ function SolarSystemMaker() {
     pin7.current.rotation.y += 0.001 * 0.01
     neptuneMesh.current.rotation.y += 0.01 / 0.67
     pin8.current.rotation.y += 0.001 * 0.006
-    plutoMesh.current.rotation.y += 0.01 / 6.41
-    pin9.current.rotation.y += 0.001 / 248
+    //plutoMesh.current.rotation.y += 0.01 / 6.41
+    //pin9.current.rotation.y += 0.001 / 248
 
     ringmercuryMesh.current.rotation.x = 1.569
     ringvenusMesh.current.rotation.x = 1.569
@@ -100,7 +100,7 @@ function SolarSystemMaker() {
     ringsaturnMesh.current.rotation.x = 1.569
     ringuranusMesh.current.rotation.x = 1.569
     ringneptuneMesh.current.rotation.x = 1.569
-    ringplutoMesh.current.rotation.x = 1.569
+    //ringplutoMesh.current.rotation.x = 1.569
   })
 
   return (
@@ -162,12 +162,12 @@ function SolarSystemMaker() {
             color={planet === 'neptune' ? '#39FF14' : 'white'}
           />
         </mesh>
-        <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
+        {/* <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
           <torusGeometry args={[44035, 0.5, 30, 100]} />
           <meshStandardMaterial
             color={planet === 'pluto' ? '#39FF14' : 'white'}
           />
-        </mesh>
+        </mesh> */}
       </mesh>
 
       {/* Mercury */}
@@ -347,7 +347,7 @@ function SolarSystemMaker() {
       </mesh>
 
       {/* Pluto */}
-      <mesh ref={pin9} position={[0, 0, 0]}>
+      {/* <mesh ref={pin9} position={[0, 0, 0]}>
         <Billboard
           follow={false}
           lockX={false}
@@ -363,7 +363,7 @@ function SolarSystemMaker() {
           <sphereGeometry args={[0.025]} />
           <meshStandardMaterial map={plutoMap} />
         </mesh>
-      </mesh>
+      </mesh> */}
     </>
   )
 }
