@@ -164,3 +164,31 @@ plan manpower required
 plan for tomorrow morning: 
 get a planet 
 
+16th of July retro
+
+What went well: 
+
+Showing up on the weekend
+Mariokart 
+Lunch 
+Nav links 
+MVP is more polished 
+Vite is now in css 
+DB - foundation 
+Roles more split up and targeting more things 
+Refactoring works better - dryer code 
+
+
+What could be better:
+
+Git accidental merge instead of pull
+Better sleep/ wellbeing
+Saturns ring texture is being rude and not showing up
+
+
+Actions: 
+Check in
+Take tickets when you want if you feel like working later tonight
+Mariokart. 
+
+
