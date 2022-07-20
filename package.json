@@ -23,7 +23,6 @@
     "vite:build": "vite build",
     "test:e2e": "jest --selectProjects e2e --runInBand"
   },
- 
   "babel": {
     "presets": [
       "@babel/preset-env",
@@ -47,6 +46,7 @@
     "@reduxjs/toolkit": "^1.8.3",
     "autoprefixer": "^10.4.7",
     "camera-controls": "^1.35.0",
+    "esbuild": "^0.14.49",
     "express": "^4.17.2",
     "knex": "^2.1.0",
     "pg": "^8.7.1",
