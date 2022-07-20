@@ -1,31 +1,12 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { screen, render } from '@testing-library/react'
+import ReactThreeTestRenderer from '@react-three/test-renderer'
 
-import App from './App'
-//import { fetchFruits } from '../actions'
+// import { App } from './App'
+import SolarSystem from './SolarSystem'
 
-jest.mock('../actions')
-
-// fetchFruits.mockImplementation(() => () => {})
-
-// test('page header includes fruit', () => {
-//   render(<Provider store={store}><App /></Provider>)
-//   const heading = screen.getByRole('heading')
-//   expect(heading.innerHTML).toMatch(/Fruit/)
-// })
-
-// test('renders an <li> for each fruit', () => {
-//   const fruits = ['orange', 'persimmons', 'kiwi fruit']
-//   jest.spyOn(store, 'getState')
-//   store.getState.mockImplementation(() => ({ fruits }))
-
-//   render(<Provider store={store}><App /></Provider>)
-//   const li = screen.getAllByRole('listitem')
-//   expect(li).toHaveLength(3)
-// })
-
-// test('dispatches fetchFruits action', () => {
-//   render(<Provider store={store}><App /></Provider>)
-//   expect(fetchFruits).toHaveBeenCalled()
-// })
+test('mesh to have two children', async () => {
+  console.log('test')
+  const renderer = await ReactThreeTestRenderer.create(<SolarSystem />)
+  const mesh = renderer.scene.children[0].allChildren
+  expect(mesh).toBe(2)
+})
