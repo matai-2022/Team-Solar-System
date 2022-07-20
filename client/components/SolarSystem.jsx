@@ -196,35 +196,51 @@ function SolarSystemMaker() {
         </Billboard>
         <mesh ref={ringmercuryMesh} position={[0, 0, 0]}>
           <torusGeometry args={[4.3, 0.005, 30, 100]} />
-          <meshStandardMaterial color={'white'} />
+          <meshStandardMaterial
+            color={planet === 'mercury' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringvenusMesh} position={[0, 0, 0]}>
           <torusGeometry args={[5.2, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'venus' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringearthMesh} position={[0, 0, 0]}>
           <torusGeometry args={[6.1, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'earth' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringmarsMesh} position={[0, 0, 0]}>
           <torusGeometry args={[7.2, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'mars' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringjupiterMesh} position={[0, 0, 0]}>
           <torusGeometry args={[9.5, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'jupiter' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringsaturnMesh} position={[0, 0, 0]}>
           <torusGeometry args={[14, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'saturn' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringuranusMesh} position={[0, 0, 0]}>
           <torusGeometry args={[17.3, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'uranus' ? '#39FF14' : 'white'}
+          />
         </mesh>
         <mesh ref={ringneptuneMesh} position={[0, 0, 0]}>
           <torusGeometry args={[19.5, 0.005, 30, 100]} />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial
+            color={planet === 'neptune' ? '#39FF14' : 'white'}
+          />
         </mesh>
         {/* <mesh ref={ringplutoMesh} position={[0, 0, 0]}>
             <torusGeometry args={[19.3, 0.005, 30, 100]} />
