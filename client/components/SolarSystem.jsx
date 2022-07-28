@@ -15,6 +15,7 @@ import { selectPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 import store from '../store'
 import SecondNav from './SecondNav'
+import CreateOrbitLines from './CreateOrbitLines'
 
 function SolarSystemMaker() {
   const planetVec = new Vector3()
@@ -205,58 +206,18 @@ function SolarSystemMaker() {
             Sun
           </Text>
         </Billboard>
-        <mesh ref={orbitmercuryMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[4.3, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'mercury' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbitvenusMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[5.2, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'venus' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbitearthMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[6.1, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'earth' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbitmarsMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[7.2, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'mars' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbitjupiterMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[9.5, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'jupiter' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbitsaturnMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[14, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'saturn' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbituranusMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[17.3, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'uranus' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        <mesh ref={orbitneptuneMesh} position={[0, 0, 0]}>
-          <torusGeometry args={[19.5, 0.005, 30, 100]} />
-          <meshStandardMaterial
-            color={planet === 'neptune' ? '#39FF14' : 'white'}
-          />
-        </mesh>
-        {/* <mesh ref={orbitplutoMesh} position={[0, 0, 0]}>
-            <torusGeometry args={[19.3, 0.005, 30, 100]} />
-            <meshStandardMaterial color="white" />
-          </mesh> */}
+        <CreateOrbitLines planetName={'mercury'} args={[4.3, 0.005, 30, 100]} />
+        <CreateOrbitLines planetName={'venus'} args={[5.2, 0.005, 30, 100]} />
+        <CreateOrbitLines planetName={'earth'} args={[6.1, 0.005, 30, 100]} />
+        <CreateOrbitLines planetName={'mars'} args={[7.2, 0.005, 30, 100]} />
+        <CreateOrbitLines planetName={'jupiter'} args={[9.5, 0.005, 30, 100]} />
+        <CreateOrbitLines planetName={'saturn'} args={[14, 0.005, 30, 100]} />
+        <CreateOrbitLines planetName={'uranus'} args={[17.3, 0.005, 30, 100]} />
+        <CreateOrbitLines
+          planetName={'neptune'}
+          args={[19.5, 0.005, 30, 100]}
+        />
+        {/* <CreateOrbitLines planetName={'pluto'} args={[19.3, 0.005, 30, 100]} /> */}
       </mesh>
 
       {/* Mercury */}
