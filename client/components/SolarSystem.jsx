@@ -1,12 +1,6 @@
 import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import {
-  OrbitControls,
-  Stars,
-  Text,
-  Billboard,
-  useTexture,
-} from '@react-three/drei'
+import { OrbitControls, Stars, useTexture } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { DoubleSide, Vector3 } from 'three'
 import Navbar from './Navbar'
@@ -15,8 +9,8 @@ import { selectPause } from '../slices/pause'
 import { selectPlanet, setPlanet } from '../slices/planet'
 import store from '../store'
 import SecondNav from './SecondNav'
-import CreateOrbitLines from './CreateOrbitLines'
 import OrbitLines from './OrbitLines'
+import CreateBillboard from './CreateBillboard'
 
 function SolarSystemMaker() {
   const planetVec = new Vector3()
@@ -196,33 +190,13 @@ function SolarSystemMaker() {
       >
         <sphereGeometry args={[2.5]} />
         <meshStandardMaterial map={sunMap} />
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={true}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[0, 3, 0]}
-        >
-          <Text fontSize={1.001} color={'white'}>
-            Sun
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[0, 3, 0]} fontSize={1.001} />
         <OrbitLines />
       </mesh>
 
       {/* Mercury */}
       <mesh ref={pin1} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[4.3, 0.5, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Mercury
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[4.3, 0.5, 0]} fontSize={0.2} />
         <mesh
           ref={mercuryMesh}
           position={[4.3, 0, 0]}
@@ -237,17 +211,7 @@ function SolarSystemMaker() {
 
       {/* Venus */}
       <mesh ref={pin2} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[5.2, 0.5, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Venus
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[5.2, 0.5, 0]} fontSize={0.2} />
         <mesh
           ref={venusMesh}
           position={[5.2, 0, 0]}
@@ -263,17 +227,7 @@ function SolarSystemMaker() {
       {/* Earth */}
       {/* <PlanetMesh name={'Earth'}   meshposition={[4.7, 0, 0]} Billboardposition={[4.7, 1, 0]} /> */}
       <mesh ref={pin3} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[6.1, 0.5, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Earth
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[6.1, 0.5, 0]} fontSize={0.2} />
         {/* james webb telescope */}
         <mesh
           ref={telescopeMesh}
@@ -306,17 +260,7 @@ function SolarSystemMaker() {
 
       {/* Mars */}
       <mesh ref={pin4} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[7.2, 0.5, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Mars
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[7.2, 0.5, 0]} fontSize={0.2} />
         <mesh
           ref={marsMesh}
           position={[7.2, 0, 0]}
@@ -331,17 +275,7 @@ function SolarSystemMaker() {
 
       {/* Jupiter */}
       <mesh ref={pin5} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[9.5, 1.5, 0]}
-        >
-          <Text fontSize={0.3} color={'white'}>
-            Jupiter
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[9.5, 1.5, 0]} fontSize={0.3} />
         <mesh
           ref={jupiterMesh}
           position={[9.5, 0, 0]}
@@ -356,17 +290,7 @@ function SolarSystemMaker() {
 
       {/* Saturn */}
       <mesh ref={pin6} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[14, 1.3, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Saturn
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[14, 1.3, 0]} fontSize={0.2} />
         <mesh
           ref={saturnMesh}
           position={[14.0, 0, 0]}
@@ -391,17 +315,7 @@ function SolarSystemMaker() {
 
       {/* Uranus */}
       <mesh ref={pin7} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[17.3, 0.7, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Uranus
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[17.3, 0.7, 0]} fontSize={0.2} />
         <mesh
           ref={uranusMesh}
           position={[17.3, 0, 0]}
@@ -416,17 +330,7 @@ function SolarSystemMaker() {
 
       {/* Neptune */}
       <mesh ref={pin8} position={[0, 0, 0]}>
-        <Billboard
-          follow={false}
-          lockX={false}
-          lockY={false}
-          lockZ={false} // Lock the rotation on the z axis (default=false)
-          position={[19.5, 0.7, 0]}
-        >
-          <Text fontSize={0.2} color={'white'}>
-            Neptune
-          </Text>
-        </Billboard>
+        <CreateBillboard position={[19.5, 0.7, 0]} fontSize={0.2} />
         <mesh
           ref={neptuneMesh}
           position={[19.5, 0, 0]}
@@ -442,17 +346,7 @@ function SolarSystemMaker() {
 
       {/* Pluto */}
       {/* <mesh ref={pin9} position={[0, 0, 0]}>
-          <Billboard
-            follow={false}
-            lockX={false}
-            lockY={false}
-            lockZ={false} // Lock the rotation on the z axis (default=false)
-            position={[19.3, 1, 0]}
-          >
-            <Text fontSize={hovering ? [0.2] : [0.001]} color={'white'}>
-              Pluto
-            </Text>
-          </Billboard>
+            <CreateBillboard position={[19.3, 1, 0]} fontSize={0.2} />
           <mesh
             ref={plutoMesh}
             position={[19.3, 0, 0]}
